@@ -1,0 +1,168 @@
+import 'dart:convert';
+
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:timezone/data/latest.dart' as timezone;
+
+import '../constants.dart';
+import '../utils.dart';
+import '../views/home_view.dart';
+import '../views/note_details_view.dart';
+import '../firebase_options.dart';
+import '../i18n/localizations.dart';
+import '../theme/app_theme_state.dart';
+import '../models/app_widget_launch_details.dart';
+import '../models/note.dart';
+import '../services/folder_service.dart';
+import '../services/label_service.dart';
+import '../services/note_service.dart';
+import '../services/note_widget_service.dart';
+import '../services/theme_service.dart';
+import 'widgets/shared/app_theme_controller.dart';
+
+late String appVersion;
+// late bool canAuthenticateWithFingerprint;
+late AndroidDeviceInfo androidDeviceInfo;
+late NoteWidgetLaunchDetails noteWidgetLaunchDetails;
+late NotificationAppLaunchDetails? notificationAppLaunchDetails;
+
+final GlobalKey<NavigatorState> navigator = GlobalKey<NavigatorState>();
+final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+Future<void> _onReceiveNotification(NotificationResponse response) async {
+  Note note;
+
+  final data = jsonDecode(response.payload!);
+
+  if (data is Map)
+    note = Note.fromMap(data);
+  else
+    note = GetIt.I<NoteService>().get(data);
+
+  navigator.currentState
+      ?.push(MaterialPageRoute(builder: (_) => NoteDetailsView(note: note)));
+}
+
+class NoteFlowController with Utils {
+  final _productIDs = ['premium', 'donation'];
+  final _statuses = [PurchaseStatus.purchased, PurchaseStatus.restored];
+
+  static Future<void> initializeApp(bool isDebug) async {
+    WidgetsFlutterBinding.ensureInitialized();
+
+    if (!isDebug) {
+      await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+      FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+    }
+
+    timezone.initializeTimeZones();
+    await flutterLocalNotificationsPlugin.initialize(
+      InitializationSettings(
+        iOS: null,
+        macOS: null,
+        android: AndroidInitializationSettings('ic_stat_app'),
+      ),
+      onDidReceiveNotificationResponse: _onReceiveNotification,
+    );
+
+    GetIt.I.registerSingleton(NoteService());
+    GetIt.I.registerSingleton(LabelService());
+    GetIt.I.registerSingleton(ThemeService());
+    GetIt.I.registerSingleton(FolderService());
+    GetIt.I.registerSingleton(NoteWidgetService());
+
+    await Hive.initFlutter();
+    await GetIt.I<NoteService>().init();
+    await GetIt.I<LabelService>().init();
+    await GetIt.I<ThemeService>().init();
+    await GetIt.I<FolderService>().init();
+    await GetIt.I<FolderService>().migrateIfNeeded();
+
+    androidDeviceInfo = await DeviceInfoPlugin().androidInfo;
+    appVersion = await channelMain.invokeMethod('getAppVersion');
+    noteWidgetLaunchDetails = await GetIt.I<NoteWidgetService>().getLaunchDetails();
+    notificationAppLaunchDetails =
+        await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+  }
+
+  void initState(WidgetRef ref) {
+    GetIt.I<NoteWidgetService>().unlockWidgetIfDonatedBefore(ref);
+    GetIt.I<NoteWidgetService>().updateAppWidgetIfThemeChanged(ref);
+
+    InAppPurchase.instance.purchaseStream.listen((event) {
+      event.forEach((details) async {
+        if (details.error != null) {
+          showToast(AppLocalizations.instance.m1(details.error!.code));
+          return;
+        }
+
+        if (details.status == PurchaseStatus.pending) {
+          showToast(AppLocalizations.instance.w120);
+          return;
+        }
+
+        final json = jsonDecode(details.verificationData.localVerificationData);
+        final isValidProductID = _productIDs.contains(details.productID);
+        final isValidStatus = _statuses.contains(details.status);
+        final isValidPurchase = json['purchaseState'] == 0;
+
+        if (isValidProductID && isValidStatus && isValidPurchase) {
+          ref.read(appThemeController.notifier).upgradePremium();
+
+          if (details.pendingCompletePurchase)
+            await InAppPurchase.instance.completePurchase(details);
+          if (details.status == PurchaseStatus.restored)
+            showToast(AppLocalizations.instance.w121);
+
+          showToast(AppLocalizations.instance.w122);
+        }
+      });
+    });
+  }
+
+  Widget getWidget(WidgetRef ref) {
+    Widget view;
+
+    if (notificationAppLaunchDetails!.didNotificationLaunchApp) {
+      final payload =
+          jsonDecode(notificationAppLaunchDetails!.notificationResponse!.payload!);
+      view = NoteDetailsView(
+          note: payload is Map
+              ? Note.fromMap(payload)
+              : GetIt.I<NoteService>().get(payload));
+    } else {
+      switch (noteWidgetLaunchDetails.launchAction) {
+        case NoteWidgetLaunchAction.Show:
+          final noteID = noteWidgetLaunchDetails.launchedNoteID!;
+          view = NoteDetailsView(note: GetIt.I<NoteService>().get(noteID));
+          break;
+        case NoteWidgetLaunchAction.Add:
+          view = NoteDetailsView();
+          break;
+        default:
+          view = HomeView();
+          break;
+      }
+    }
+
+    return view;
+  }
+
+  Locale getLocale(Language language) {
+    final locales = AppLocalizationsDelegate.locales;
+
+    switch (language) {
+      case Language.English:
+        return Locale(locales[0]);
+      case Language.Turkish:
+        return Locale(locales[1]);
+    }
+  }
+}

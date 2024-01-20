@@ -1,0 +1,719 @@
+{
+  "@@last_modified": "2021-07-13T22:39:59.005443",
+  "p0": "{num,plural, =1{Notu Sil}other{Notları Sil}}",
+  "@p0": {
+    "type": "text",
+    "placeholders_order": [
+      "num"
+    ],
+    "placeholders": {
+      "num": {}
+    }
+  },
+  "p1": "{num,plural, =1{Bu notu silmek istediğinize emin misiniz?}other{Seçilen notları silmek istediğinize emin misiniz?}}",
+  "@p1": {
+    "type": "text",
+    "placeholders_order": [
+      "num"
+    ],
+    "placeholders": {
+      "num": {}
+    }
+  },
+  "p3": "{num,plural, =1{Bildirim}other{Bildirimler}}",
+  "@p3": {
+    "type": "text",
+    "placeholders_order": [
+      "num"
+    ],
+    "placeholders": {
+      "num": {}
+    }
+  },
+  "m1": "Hata kodu: {errorCode}",
+  "@m1": {
+    "type": "text",
+    "placeholders_order": [
+      "errorCode"
+    ],
+    "placeholders": {
+      "errorCode": {}
+    }
+  },
+  "m2": "Version {version}",
+  "@m2": {
+    "type": "text",
+    "placeholders_order": [
+      "version"
+    ],
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "w0": "Dün",
+  "@w0": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w1": "İptal",
+  "@w1": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w2": "Bitti",
+  "@w2": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w3": "Klasör adı",
+  "@w3": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w4": "Klasör Oluştur",
+  "@w4": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w5": "Tüm Notlar",
+  "@w5": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w6": "Başlık",
+  "@w6": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w7": "Birşeyler yaz...",
+  "@w7": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w8": "Hatırlatıcı başarıyla ayarlandı",
+  "@w8": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w9": "Hatırlatıcı boş bir not için ayarlananamaz",
+  "@w9": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w10": "Hatırlatıcı geçmişe ayarlanamaz",
+  "@w10": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w11": "Klasörler",
+  "@w11": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w12": "Ara",
+  "@w12": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w16": "Notlar içinde ara",
+  "@w16": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w17": "Klasör Seçin",
+  "@w17": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w18": "Hatırlatıcıyı Kur",
+  "@w18": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w19": "Klasörü Sil",
+  "@w19": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w20": "Bu klasörü ve tüm notlarını silmek istediğinizden emin misiniz?",
+  "@w20": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w21": "Klasörü Düzenle",
+  "@w21": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w22": "Notlar",
+  "@w22": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w23": "Taşı",
+  "@w23": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w24": "Sil",
+  "@w24": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w25": "Notification",
+  "@w25": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w26": "Ayarlar",
+  "@w26": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w27": "Nasıl yardımcı olabiliriz?",
+  "@w27": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w28": "Sorun bildirin",
+  "@w28": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w29": "Özellik önerin",
+  "@w29": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w30": "Çeviri hatası bildirin",
+  "@w30": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w31": "Çeviriye katkıda bulunun",
+  "@w31": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w32": "Dil Seçin",
+  "@w32": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w33": "Genel",
+  "@w33": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w34": "Tema",
+  "@w34": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w35": "Yazı tipi",
+  "@w35": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w36": "Dil",
+  "@w36": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w38": "Düzenlenme (Önce Yeni)",
+  "@w38": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w39": "Düzenlenme (Önce Eski)",
+  "@w39": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w40": "Yedekleme ve Geri Yükleme",
+  "@w40": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w41": "Cihaz deposuna yedekleyin",
+  "@w41": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w42": "Yedeklenen veriler, cihazın indirilenler klasöründe nf_backup.json olarak bulunur. E-posta, bluetooth vb. ile başka bir telefona gönderebilirsiniz",
+  "@w42": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w43": "Cihaz deposundan geri yükleyin",
+  "@w43": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w44": "Lütfen yedekleme dosyasının cihazın indirilenler klasöründe nf_backup.json olarak bulunduğundan emin olun",
+  "@w44": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w45": "Hakkında",
+  "@w45": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w46": "Geribildirim gönder",
+  "@w46": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w47": "Derecelendir",
+  "@w47": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w49": "Başarılı",
+  "@w49": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w50": "Bilinmeyen bir hata oluştu",
+  "@w50": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w52": "Dosya okunurken bir hata oluştu",
+  "@w52": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w53": "Yedekleme dosyası bulunamadı",
+  "@w53": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w54": "Uygulamamızı beğendiniz mi?",
+  "@w54": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w55": "Bildirimlerle ilgili sorun mu yaşıyorsunuz?",
+  "@w55": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w56": "Zamanında bildirim almak için NoteFlow'un arka planda çalışmasına izin verin",
+  "@w56": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w57": "Sistem bildirim ayarları",
+  "@w57": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w58": "Bildirim sesi",
+  "@w58": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w60": "Sıralama ölçütü",
+  "@w60": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w66": "Hatırlatıcı iptal edildi",
+  "@w66": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w67": "Sistem",
+  "@w67": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w68": "Karanlık",
+  "@w68": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w69": "Açık",
+  "@w69": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w70": "Tema Seçin",
+  "@w70": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w71": "Paylaş",
+  "@w71": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w72": "Gövde",
+  "@w72": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w73": "Katkıda Bulunun",
+  "@w73": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w74": "Anladım",
+  "@w74": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w75": "NoteFlow tek bir geliştirici tarafından yapılmıştır ve diğer dillere çevrilmesi gerekmektedir. Çeviriye katkıda bulunmak isterseniz bana geri bildirim bölümünden e-posta gönderebilirsiniz. Başkalarına ve bana çok yardımı dokunur :)",
+  "@w75": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w76": "Birincil",
+  "@w76": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w77": "İkincil",
+  "@w77": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w78": "Özel",
+  "@w78": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w79": "Temizle",
+  "@w79": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w80": "Etiketi Düzenle",
+  "@w80": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w81": "Etiket Oluştur",
+  "@w81": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w82": "Etiket adı",
+  "@w82": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w83": "Etiketler",
+  "@w83": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w84": "Sabitleme",
+  "@w84": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w85": "Sabitle",
+  "@w85": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w86": "Filtreleri Seçin",
+  "@w86": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w88": "Filtrele",
+  "@w88": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w89": "Sabitlenmiş",
+  "@w89": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w90": "Kart üzerinde sadece başlığı göster",
+  "@w90": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w91": "Not içinde ve kart üzerinde etiketleri göster",
+  "@w91": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w94": "Etiket Seçin",
+  "@w94": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w95": "Sıralama Ölçütü",
+  "@w95": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w96": "Alfabetik (A-Z)",
+  "@w96": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w97": "Alfabetik (Z-A)",
+  "@w97": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w98": "Oluşturulma (Önce Yeni)",
+  "@w98": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w99": "Oluşturulma (Önce Eski)",
+  "@w99": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w102": "Not: Zaten bir yedekleme dosyanız varsa, onun üstüne yazmanız gerekir. Aksi halde sistem onu yeni bir dosya olarak oluşturur ve depolama alanınızı gereksiz yere tüketir. Üstüne yazmak için dosyanın üzerine dokunun ve kaydete basın",
+  "@w102": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w103": "Renk Seçin",
+  "@w103": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w104": "Bugün",
+  "@w104": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w105": "Tüm yazı tiplerinin kilidini açın",
+  "@w105": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w106": "Geri yükleme seçeneğinin kilidini açın",
+  "@w106": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w107": "Sınırsız etiket",
+  "@w107": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w108": "Android uygulama widget'ı",
+  "@w108": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w109": "Noteflow'un gelişimini destekleyin",
+  "@w109": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w110": "Satın Al",
+  "@w110": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w111": "Premium'a Geçin",
+  "@w111": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w112": "Tek geliştirici olarak uzun uğraşlar sonucu ve büyük bir özveriyle yaptığım bu uygulamada Premium'a yükselterek bana destek olabilirsiniz. Her ne kadar bu basit bir şey gibi görünse de benim için büyük bir motivasyon ve güç kaynağı olmakta :)",
+  "@w112": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w113": "Notlarınızı düzenlemek için daha fazla etikete mi ihtiyacınız var? Sorun değil!",
+  "@w113": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w114": "Notlarınızı görmek için uygulamaya sürekli girmekten sıkıldınız mı? Widget'ı kullanın!",
+  "@w114": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w115": "Noteflow muhteşem kullanıcılarının desteğine güveniyor!",
+  "@w115": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w116": "Bu not zaten mevcut",
+  "@w116": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w117": "Premium'a yükseltin",
+  "@w117": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w118": "Başlangıç klasörü",
+  "@w118": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w119": "Not Seçin",
+  "@w119": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w120": "Ödemeniz beklemede",
+  "@w120": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w121": "Satın alma işlemleri geri yüklendi",
+  "@w121": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w122": "Premium etkinleştirildi",
+  "@w122": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w123": "Yarın",
+  "@w123": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w124": "Ürün detayları alınamadı",
+  "@w124": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w125": "İnternet bağlantınızı kontrol edin",
+  "@w125": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w126": "Sıfırla",
+  "@w126": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w127": "Hatırlatıcıyı İptal Et",
+  "@w127": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+}

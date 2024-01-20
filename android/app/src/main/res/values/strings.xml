@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="note_widget_preview_title" translatable="false">Lorem Ipsum</string>
+    <string name="note_widget_preview_content" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut pharetra justo. Duis rutrum, mi id posuere varius, lacus justo vulputate purus, a placerat arcu odio eu erat.</string>
+    <string name="note_widget_initial_text">Tap to left icon to select note and right icon to add new note</string>
+    <string name="note_widget_premium_required_text">In order to use widgets you need to buy premium</string>
+</resources>

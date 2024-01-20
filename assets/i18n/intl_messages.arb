@@ -1,0 +1,701 @@
+{
+  "@@last_modified": "2023-12-31T00:08:37.946101",
+  "p0": "{num,plural, =1{Delete Note}other{Delete Notes}}",
+  "@p0": {
+    "type": "text",
+    "placeholders_order": [
+      "num"
+    ],
+    "placeholders": {
+      "num": {}
+    }
+  },
+  "p1": "{num,plural, =1{Are you sure you want to delete this note?}other{Are you sure you want to delete selected notes?}}",
+  "@p1": {
+    "type": "text",
+    "placeholders_order": [
+      "num"
+    ],
+    "placeholders": {
+      "num": {}
+    }
+  },
+  "p3": "{num,plural, =1{Notification}other{Notifications}}",
+  "@p3": {
+    "type": "text",
+    "placeholders_order": [
+      "num"
+    ],
+    "placeholders": {
+      "num": {}
+    }
+  },
+  "m1": "Error code: {errorCode}",
+  "@m1": {
+    "type": "text",
+    "placeholders_order": [
+      "errorCode"
+    ],
+    "placeholders": {
+      "errorCode": {}
+    }
+  },
+  "m2": "Version {version}",
+  "@m2": {
+    "type": "text",
+    "placeholders_order": [
+      "version"
+    ],
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "w0": "Yesterday",
+  "@w0": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w1": "Cancel",
+  "@w1": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w2": "Done",
+  "@w2": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w3": "Folder name",
+  "@w3": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w4": "Create Folder",
+  "@w4": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w5": "All Notes",
+  "@w5": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w6": "Title",
+  "@w6": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w7": "Type something...",
+  "@w7": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w8": "Reminder set successfully",
+  "@w8": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w9": "Reminder cannot set for an empty note",
+  "@w9": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w10": "Reminder cannot set past",
+  "@w10": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w11": "Folders",
+  "@w11": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w12": "Search",
+  "@w12": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w16": "Search in notes",
+  "@w16": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w17": "Select Folder",
+  "@w17": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w18": "Set Reminder",
+  "@w18": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w19": "Delete Folder",
+  "@w19": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w20": "Are you sure you want to delete this folder and all of its notes?",
+  "@w20": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w21": "Edit Folder",
+  "@w21": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w22": "Notes",
+  "@w22": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w23": "Move",
+  "@w23": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w24": "Delete",
+  "@w24": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w26": "Settings",
+  "@w26": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w27": "How can we help?",
+  "@w27": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w28": "Report an issue",
+  "@w28": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w29": "Request a feature",
+  "@w29": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w30": "Report translation error",
+  "@w30": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w31": "Contribute to translation",
+  "@w31": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w32": "Select Language",
+  "@w32": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w33": "General",
+  "@w33": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w34": "Theme",
+  "@w34": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w35": "Font",
+  "@w35": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w36": "Language",
+  "@w36": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w38": "Edited (Newest First)",
+  "@w38": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w39": "Edited (Oldest First)",
+  "@w39": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w40": "Backup and Restore",
+  "@w40": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w41": "Backup to device storage",
+  "@w41": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w42": "Backed up data is located in the device's downloads folder as nf_backup.json. You can send it to another phone via email, bluetooth etc.",
+  "@w42": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w43": "Restore from device storage",
+  "@w43": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w44": "Please ensure the backup file located at device's downloads folder as nf_backup.json",
+  "@w44": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w45": "About",
+  "@w45": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w46": "Send feedback",
+  "@w46": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w47": "Rate it",
+  "@w47": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w49": "Successful",
+  "@w49": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w50": "An unknown error occurred",
+  "@w50": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w52": "An error occurred while reading file",
+  "@w52": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w53": "Backup file couldn't found",
+  "@w53": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w54": "Enjoying our app?",
+  "@w54": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w55": "Having trouble with notifications?",
+  "@w55": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w56": "Allow NoteFlow to run in the background to get notification on time",
+  "@w56": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w57": "System notification settings",
+  "@w57": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w58": "Notification sound",
+  "@w58": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w60": "Sort type",
+  "@w60": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w66": "Reminder canceled",
+  "@w66": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w67": "System",
+  "@w67": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w68": "Dark",
+  "@w68": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w69": "Light",
+  "@w69": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w70": "Select Theme",
+  "@w70": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w71": "Share",
+  "@w71": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w72": "Body",
+  "@w72": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w73": "Contribute",
+  "@w73": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w74": "Got it",
+  "@w74": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w75": "NoteFlow made by independent developer and it needs to be translated to other languages. So, If you want to contribute to the translation please email me from feedback section. It really helps to other people and also me :)",
+  "@w75": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w76": "Primary",
+  "@w76": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w77": "Accent",
+  "@w77": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w78": "Custom",
+  "@w78": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w79": "Clear",
+  "@w79": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w80": "Edit Label",
+  "@w80": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w81": "Create Label",
+  "@w81": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w82": "Label name",
+  "@w82": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w83": "Labels",
+  "@w83": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w84": "Unpin",
+  "@w84": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w85": "Pin",
+  "@w85": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w86": "Filter Notes",
+  "@w86": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w89": "Pinned",
+  "@w89": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w90": "Show only title",
+  "@w90": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w91": "Shows only note's title on the note card even if the note has body",
+  "@w91": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w94": "Select Labels",
+  "@w94": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w95": "Sort By",
+  "@w95": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w96": "Alphabetically (A-Z)",
+  "@w96": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w97": "Alphabetically (Z-A)",
+  "@w97": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w98": "Created (Newest First)",
+  "@w98": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w99": "Created (Oldest First)",
+  "@w99": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w102": "Note: If you already have backup file you need to override it. Otherwise, the system will create it as a new file that will consume your storage space unnecessarily. To override, simply tap on it and then press save button",
+  "@w102": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w103": "Select Color",
+  "@w103": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w104": "Today",
+  "@w104": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w105": "Unlock all fonts",
+  "@w105": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w106": "Unlock restore option",
+  "@w106": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w107": "Unlimited labels",
+  "@w107": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w108": "Android app widget",
+  "@w108": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w109": "Support Noteflow development",
+  "@w109": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w110": "Buy Now",
+  "@w110": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w111": "Get Premium",
+  "@w111": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w112": "As a sole developer behind this app, creating a top-notched experience requires dedication and time. Your Premium upgrade isn't just a feature unlock. Instead, it's a source of motivation that empowers me to continue expanding Noteflow.",
+  "@w112": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w113": "Need more labels to organize your notes? No problem!",
+  "@w113": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w114": "Bored of re-entering the app to see your notes? Just use widget!",
+  "@w114": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w115": "Noteflow relies on the support of its amazing users!",
+  "@w115": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w116": "This note is already selected",
+  "@w116": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w117": "Upgrade to premium",
+  "@w117": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w118": "Startup folder",
+  "@w118": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w119": "Select Note",
+  "@w119": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w120": "Your payment is pending",
+  "@w120": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w121": "Purchases restored",
+  "@w121": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w122": "Premium activated",
+  "@w122": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w123": "Tomorrow",
+  "@w123": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w124": "Couldn't fetch product details",
+  "@w124": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w125": "Check your internet connection",
+  "@w125": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  },
+  "w126": "Reset",
+  "@w126": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  }
+}

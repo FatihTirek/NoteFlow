@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="note_widget_initial_text">Not seçmek için sol simgeye, yeni not eklemek için sağ simgeye dokunun</string>
+    <string name="note_widget_premium_required_text">Widget\'ları kullanabilmek için premium satın almanız gerekir</string>
+</resources>
