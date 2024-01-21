@@ -13,8 +13,7 @@ class FolderViewController {
 
   List<Note> getNotesFromFolderID(WidgetRef ref, String id) {
     final notes = GetIt.I<NoteService>().getFromFolderID(id);
-    final result =
-        GetIt.I<NoteService>().sort(notes, ref.read(appThemeController).noteSortType);
+    final result = GetIt.I<NoteService>().sort(notes, ref.read(appThemeController).noteSortType);
 
     cachedNotes = result;
     return result;

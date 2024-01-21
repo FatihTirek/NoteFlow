@@ -25,8 +25,7 @@ class ColorPickerController {
     primaryColor = ValueNotifier(isPrimary ? color : Colors.red.shade700);
     accentColor = ValueNotifier(isAccent ? color : Colors.redAccent.shade700);
     primarySwatchColor = ValueNotifier(isPrimary ? _getPrimarySwatch(color) : Colors.red);
-    accentSwatchColor =
-        ValueNotifier(isAccent ? _getAccentSwatch(color) : Colors.redAccent);
+    accentSwatchColor = ValueNotifier(isAccent ? _getAccentSwatch(color) : Colors.redAccent);
     pickerMode = ValueNotifier(
       isPrimary
           ? ColorPickerMode.Primary

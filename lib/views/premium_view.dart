@@ -25,6 +25,7 @@ class _PremiumViewState extends ConsumerState<PremiumView> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     final primaryColor = Theme.of(context).primaryColor;
 
     return Scaffold(
@@ -33,16 +34,16 @@ class _PremiumViewState extends ConsumerState<PremiumView> {
         shape: Border.all(color: Colors.transparent),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         leading: IconButton(
-          onPressed: () => Navigator.pop(context),
           icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 4),
             child: IconButton(
               iconSize: 26,
-              onPressed: controller.onTapRestore,
               icon: Icon(Icons.restore_outlined),
+              onPressed: controller.onTapRestore,
             ),
           ),
         ],
@@ -55,37 +56,17 @@ class _PremiumViewState extends ConsumerState<PremiumView> {
             children: [
               Icon(Icons.diamond_outlined, size: 80, color: primaryColor),
               const SizedBox(height: 12),
-              Text(
-                AppLocalizations.instance.w111,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
+              Text(AppLocalizations.instance.w111, textAlign: TextAlign.center, style: textTheme.headlineLarge),
               const SizedBox(height: 24),
-              Text(
-                AppLocalizations.instance.w112,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
+              Text(AppLocalizations.instance.w112, textAlign: TextAlign.center, style: textTheme.bodyMedium),
               const SizedBox(height: 16),
               buildTile(context, AppLocalizations.instance.w105),
               buildTile(context, AppLocalizations.instance.w106),
-              buildTile(
-                context,
-                AppLocalizations.instance.w107,
-                AppLocalizations.instance.w113,
-              ),
+              buildTile(context, AppLocalizations.instance.w107, AppLocalizations.instance.w113),
               const SizedBox(height: 12),
-              buildTile(
-                context,
-                AppLocalizations.instance.w108,
-                AppLocalizations.instance.w114,
-              ),
+              buildTile(context, AppLocalizations.instance.w108, AppLocalizations.instance.w114),
               const SizedBox(height: 12),
-              buildTile(
-                context,
-                AppLocalizations.instance.w109,
-                AppLocalizations.instance.w115,
-              ),
+              buildTile(context, AppLocalizations.instance.w109, AppLocalizations.instance.w115),
               const SizedBox(height: 24),
               SizedBox(
                 width: double.infinity,
@@ -112,17 +93,11 @@ class _PremiumViewState extends ConsumerState<PremiumView> {
       visualDensity: VisualDensity.standard,
       titleAlignment: ListTileTitleAlignment.center,
       title: Text(title, style: textTheme.bodyLarge),
-      leading: Icon(
-        Icons.stars_rounded,
-        size: 28,
-        color: Theme.of(context).primaryColor,
-      ),
+      leading: Icon(Icons.stars_rounded, size: 28, color: Theme.of(context).primaryColor),
       subtitle: subtitle != null
           ? Text(
               subtitle,
-              style: textTheme.bodySmall!.copyWith(
-                color: AppTheme.lowEmphasise(context),
-              ),
+              style: textTheme.bodySmall!.copyWith(color: AppTheme.lowEmphasise(context)),
             )
           : null,
     );

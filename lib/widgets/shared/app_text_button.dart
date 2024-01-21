@@ -40,17 +40,13 @@ class AppTextButton extends StatelessWidget {
                   : BorderSide.none,
             ),
             foregroundColor: textStyle.color!.withOpacity(.12),
-            backgroundColor:
-                backgroundColor != null ? backgroundColor : colorScheme.surface,
+            backgroundColor: backgroundColor != null ? backgroundColor : colorScheme.surface,
           ),
         );
       case AppTextButtonSize.Small:
         return TextButton(
           onPressed: onPressed,
-          child: Text(
-            text,
-            style: textTheme.labelMedium!.copyWith(color: textColor),
-          ),
+          child: Text(text, style: textTheme.labelMedium!.copyWith(color: textColor)),
           style: TextButton.styleFrom(
             foregroundColor: textColor?.withOpacity(.12) ?? Theme.of(context).splashColor,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),

@@ -65,16 +65,12 @@ class ContextualBarController extends AutoDisposeNotifier<ContextualAppBarState>
     if (value != null) {
       state.notes.forEach((note) {
         if (note.folderID != value) {
-          final result = note.copyWith(
-            folderID: value,
-            acceptNullFolderID: value == StringConstants.clearFlag,
-          );
+          final result = note.copyWith(folderID: value, acceptNullFolderID: value == StringConstants.clearFlag);
 
           GetIt.I<NoteService>().write(result);
           GetIt.I<FolderService>().updateCountIfNeeded(note.folderID);
 
-          if (value != StringConstants.clearFlag)
-            GetIt.I<FolderService>().updateCountIfNeeded(value, increase: true);
+          if (value != StringConstants.clearFlag) GetIt.I<FolderService>().updateCountIfNeeded(value, increase: true);
         }
       });
 
@@ -101,6 +97,4 @@ class ContextualBarController extends AutoDisposeNotifier<ContextualAppBarState>
   }
 }
 
-final contextualBarController =
-    NotifierProvider.autoDispose<ContextualBarController, ContextualAppBarState>(
-        () => ContextualBarController());
+final contextualBarController = NotifierProvider.autoDispose<ContextualBarController, ContextualAppBarState>(() => ContextualBarController());

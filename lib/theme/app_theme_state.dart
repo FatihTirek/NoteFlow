@@ -8,17 +8,7 @@ enum LabelSortType { AlphabeticallyAZ, AlphabeticallyZA, CreatedNF, CreatedOF }
 
 enum FolderSortType { AlphabeticallyAZ, AlphabeticallyZA, CreatedNF, CreatedOF }
 
-enum Font {
-  JosefinSans,
-  PtSans,
-  Rubik,
-  SourceSans,
-  FiraSans,
-  OpenSans,
-  QuickSand,
-  IBMPlexSans,
-  Kanit
-}
+enum Font { JosefinSans, PtSans, Rubik, SourceSans, FiraSans, OpenSans, QuickSand, IBMPlexSans, Kanit }
 
 class AppThemeState {
   final Font font;
@@ -128,8 +118,7 @@ class AppThemeState {
       noteSortType: noteSortType ?? this.noteSortType,
       labelSortType: labelSortType ?? this.labelSortType,
       folderSortType: folderSortType ?? this.folderSortType,
-      startupFolderID:
-          acceptNullStartupFolderID ? null : startupFolderID ?? this.startupFolderID,
+      startupFolderID: acceptNullStartupFolderID ? null : startupFolderID ?? this.startupFolderID,
     );
   }
 }

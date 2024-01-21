@@ -100,8 +100,7 @@ class ColorPicker extends StatelessWidget {
                 spacing: 4,
                 runSpacing: 4,
                 children: Colors.primaries
-                    .map((color) => buildColorBox(context, color,
-                        controller.primarySwatchColor.value.shade500, true))
+                    .map((color) => buildColorBox(context, color, controller.primarySwatchColor.value.shade500, true))
                     .toList(),
               ),
               child!,
@@ -110,8 +109,7 @@ class ColorPicker extends StatelessWidget {
                 runSpacing: 4,
                 children: controller
                     .getCurrentPrimaryShades()
-                    .map((color) => buildColorBox(
-                        context, color, controller.primaryColor.value, false))
+                    .map((color) => buildColorBox(context, color, controller.primaryColor.value, false))
                     .toList(),
               ),
             ],
@@ -127,8 +125,7 @@ class ColorPicker extends StatelessWidget {
                 spacing: 4,
                 runSpacing: 4,
                 children: Colors.accents
-                    .map((color) => buildColorBox(context, color,
-                        controller.accentSwatchColor.value.shade200, true))
+                    .map((color) => buildColorBox(context, color, controller.accentSwatchColor.value.shade200, true))
                     .toList(),
               ),
               child!,
@@ -137,8 +134,7 @@ class ColorPicker extends StatelessWidget {
                 runSpacing: 4,
                 children: controller
                     .getCurrentAccentShades()
-                    .map((color) => buildColorBox(
-                        context, color, controller.accentColor.value, false))
+                    .map((color) => buildColorBox(context, color, controller.accentColor.value, false))
                     .toList(),
               ),
             ],
@@ -219,10 +215,7 @@ class ColorPicker extends StatelessWidget {
           color: color,
           borderRadius: BorderRadius.circular(1),
           border: Theme.of(context).brightness == Brightness.light
-              ? Border.all(
-                  width: 1.25,
-                  color: Colors.black,
-                )
+              ? Border.all(width: 1.25, color: Colors.black)
               : null,
         ),
         child: current.value == color.value

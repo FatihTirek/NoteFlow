@@ -48,8 +48,7 @@ class AllFoldersViewController with Utils {
     animationController.dispose();
   }
 
-  void showFolderDialog() =>
-      showModal(context: ref.context, builder: (_) => FolderDialog());
+  void showFolderDialog() => showModal(context: ref.context, builder: (_) => FolderDialog());
 
   void showSortPicker() async {
     final value = await showSheet(ref.context, SortTypePicker(SortTypePickerMode.Folder));

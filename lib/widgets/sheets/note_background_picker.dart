@@ -92,8 +92,7 @@ class _NoteBackgroundPickerState extends ConsumerState<NoteBackgroundPicker>
                       child: AppTextButton(
                         text: AppLocalizations.instance.w6,
                         textColor: controller.selectedTitleColor.value,
-                        onPressed: () =>
-                            controller.openColorPicker(controller.selectedTitleColor),
+                        onPressed: () => controller.openColorPicker(controller.selectedTitleColor),
                       ),
                     ),
                   ),
@@ -104,8 +103,7 @@ class _NoteBackgroundPickerState extends ConsumerState<NoteBackgroundPicker>
                       child: AppTextButton(
                         text: AppLocalizations.instance.w72,
                         textColor: controller.selectedContentColor.value,
-                        onPressed: () =>
-                            controller.openColorPicker(controller.selectedContentColor),
+                        onPressed: () => controller.openColorPicker(controller.selectedContentColor),
                       ),
                     ),
                   ),
@@ -179,12 +177,7 @@ class _NoteBackgroundPickerState extends ConsumerState<NoteBackgroundPicker>
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(16),
-        border: index == null
-            ? Border.all(
-                width: 1.25,
-                color: Theme.of(context).colorScheme.outline,
-              )
-            : null,
+        border: index == null ? Border.all(width: 1.25, color: Theme.of(context).colorScheme.outline) : null,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -192,9 +185,7 @@ class _NoteBackgroundPickerState extends ConsumerState<NoteBackgroundPicker>
           lineWidget,
           lineWidget,
           lineWidget,
-          Row(
-            children: [Expanded(child: lineWidget), const SizedBox(width: 12)],
-          ),
+          Row(children: [Expanded(child: lineWidget), const SizedBox(width: 12)]),
         ],
       ),
     );

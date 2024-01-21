@@ -22,8 +22,7 @@ class NoteWidgetService with Utils {
   }
 
   void updateWidgetIfExist(Note note, WidgetRef ref) async {
-    if (await isWidgetExist(note.id))
-      channelMain.invokeMethod('updateNoteWidget', _toMap(note, ref));
+    if (await isWidgetExist(note.id)) channelMain.invokeMethod('updateNoteWidget', _toMap(note, ref));
   }
 
   void updateAppWidgetIfThemeChanged(WidgetRef ref) async {
@@ -60,8 +59,7 @@ class NoteWidgetService with Utils {
   }
 
   Future<NoteWidgetLaunchDetails> getLaunchDetails() async =>
-      NoteWidgetLaunchDetails.fromMap(
-          await channelMain.invokeMethod('getNoteWidgetLaunchDetails'));
+      NoteWidgetLaunchDetails.fromMap(await channelMain.invokeMethod('getNoteWidgetLaunchDetails'));
 
   Future<bool> isWidgetExist(String id) async {
     final prefs = await SharedPreferences.getInstance();
@@ -76,8 +74,7 @@ class NoteWidgetService with Utils {
     map['id'] = note.id;
     map['title'] = note.title;
     map['content'] = note.content;
-    map['backgroundColor'] =
-        getNoteBackgroundColor(ref, note.backgroundIndex, true).getHexValue();
+    map['backgroundColor'] = getNoteBackgroundColor(ref, note.backgroundIndex, true).getHexValue();
     map['contentColor'] = note.backgroundIndex == null
         ? AppTheme.mediumEmphasise(ref.context, true).getHexValue()
         : AppTheme.onMediumEmphasise(ref.context, true).getHexValue();

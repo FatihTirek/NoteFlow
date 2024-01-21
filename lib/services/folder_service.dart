@@ -15,11 +15,9 @@ class FolderService {
 
   Folder get(String id) => Folder.fromMap(Hive.box(StringConstants.dbFolders).get(id));
 
-  List<Folder> getAll() =>
-      Hive.box(StringConstants.dbFolders).values.map((e) => Folder.fromMap(e)).toList();
+  List<Folder> getAll() => Hive.box(StringConstants.dbFolders).values.map((e) => Folder.fromMap(e)).toList();
 
-  List<Map> getAllRaw() =>
-      Hive.box(StringConstants.dbFolders).values.toList().cast<Map>();
+  List<Map> getAllRaw() => Hive.box(StringConstants.dbFolders).values.toList().cast<Map>();
 
   List<Folder> getAllSorted(FolderSortType folderSortType) {
     return getAll()
@@ -37,8 +35,7 @@ class FolderService {
       });
   }
 
-  void write(Folder folder) =>
-      Hive.box(StringConstants.dbFolders).put(folder.id, folder.toMap());
+  void write(Folder folder) => Hive.box(StringConstants.dbFolders).put(folder.id, folder.toMap());
 
   void delete(String id) {
     Hive.box(StringConstants.dbFolders).delete(id);
@@ -56,8 +53,7 @@ class FolderService {
     final trimmed = text.trim().toLowerCase();
     final contains = (String s) => s.toLowerCase().contains(trimmed);
 
-    if (trimmed.isNotEmpty)
-      return items.where((folder) => contains(folder.name)).toList();
+    if (trimmed.isNotEmpty) return items.where((folder) => contains(folder.name)).toList();
 
     return [];
   }

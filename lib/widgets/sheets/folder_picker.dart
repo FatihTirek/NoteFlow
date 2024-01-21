@@ -22,8 +22,7 @@ class FolderPicker extends ConsumerWidget {
   }
 
   Widget buildTitle(WidgetRef ref) {
-    final showButton = folderID != null ||
-        ref.watch(contextualBarController.select((state) => state.active));
+    final showButton = folderID != null || ref.watch(contextualBarController.select((state) => state.active));
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),

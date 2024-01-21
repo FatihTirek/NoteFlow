@@ -13,15 +13,11 @@ import '../shared/app_theme_controller.dart';
 class FolderPickerController {
   ValueListenable listenable() => GetIt.I<FolderService>().listenable;
 
-  List<Folder> getAllFolders(WidgetRef ref) =>
-      GetIt.I<FolderService>().getAllSorted(ref.read(appThemeController).folderSortType);
+  List<Folder> getAllFolders(WidgetRef ref) => GetIt.I<FolderService>().getAllSorted(ref.read(appThemeController).folderSortType);
 
-  void showFolderDialog(BuildContext context) =>
-      showModal(context: context, builder: (_) => FolderDialog());
+  void showFolderDialog(BuildContext context) => showModal(context: context, builder: (_) => FolderDialog());
 
-  void onTapClear(BuildContext context) =>
-      Navigator.pop(context, StringConstants.clearFlag);
+  void onTapClear(BuildContext context) => Navigator.pop(context, StringConstants.clearFlag);
 
-  void onTapFolder(Folder folder, BuildContext context) =>
-      Navigator.pop(context, folder.id);
+  void onTapFolder(Folder folder, BuildContext context) => Navigator.pop(context, folder.id);
 }

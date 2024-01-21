@@ -27,8 +27,7 @@ class HomeViewController with Utils {
         ref.read(appThemeController).noteSortType,
       ),
     );
-    allFolders = ValueNotifier(GetIt.I<FolderService>()
-        .getAllSorted(ref.read(appThemeController).folderSortType));
+    allFolders = ValueNotifier(GetIt.I<FolderService>().getAllSorted(ref.read(appThemeController).folderSortType));
   }
 
   void initState(bool mounted) {
@@ -41,10 +40,8 @@ class HomeViewController with Utils {
     });
 
     GetIt.I<FolderService>().listenable.addListener(() {
-      if (mounted) {
-        allFolders.value = GetIt.I<FolderService>()
-            .getAllSorted(ref.read(appThemeController).folderSortType);
-      }
+      if (mounted)
+        allFolders.value = GetIt.I<FolderService>().getAllSorted(ref.read(appThemeController).folderSortType);
     });
 
     GetIt.I<NoteService>().listenable.addListener(() {
@@ -62,12 +59,9 @@ class HomeViewController with Utils {
     GetIt.I<NoteService>().listenable.removeListener(() {});
   }
 
-  List<Note> getNotesFromFolderID(String? id) => id != null
-      ? allNotes.value.where((note) => note.folderID == id).toList()
-      : allNotes.value;
+  List<Note> getNotesFromFolderID(String? id) => id != null ? allNotes.value.where((note) => note.folderID == id).toList() : allNotes.value;
 
-  List<Note> getCurrentNotes(int index) =>
-      getNotesFromFolderID(index == 0 ? null : allFolders.value[index - 1].id);
+  List<Note> getCurrentNotes(int index) => getNotesFromFolderID(index == 0 ? null : allFolders.value[index - 1].id);
 
   int getStartupFolderIndex() {
     final folderID = ref.read(appThemeController).startupFolderID;

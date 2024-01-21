@@ -25,9 +25,7 @@ class FolderView extends ConsumerWidget {
     } else {
       appbar = AppBar(
         title: Text(folder.name, style: Theme.of(context).textTheme.titleLarge),
-        leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: Icon(Icons.arrow_back_rounded)),
+        leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back_rounded)),
       );
     }
 
@@ -39,9 +37,7 @@ class FolderView extends ConsumerWidget {
         floatingActionButton: AppFloatingActionButton(folderID: folder.id),
         body: ValueListenableBuilder(
           valueListenable: controller.listenable(),
-          builder: (_, __, ___) => NoteLayoutResolver(
-            controller.getNotesFromFolderID(ref, folder.id),
-          ),
+          builder: (_, __, ___) => NoteLayoutResolver(controller.getNotesFromFolderID(ref, folder.id)),
         ),
       ),
     );

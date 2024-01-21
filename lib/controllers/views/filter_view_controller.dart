@@ -23,14 +23,11 @@ class FilterViewController {
 
   ValueListenable noteListenable() => GetIt.I<NoteService>().listenable;
 
-  List<Label> getAllLabels(WidgetRef ref) =>
-      GetIt.I<LabelService>().getAllAndSort(ref.read(appThemeController).labelSortType);
+  List<Label> getAllLabels(WidgetRef ref) => GetIt.I<LabelService>().getAllAndSort(ref.read(appThemeController).labelSortType);
 
   List<Note> getNotesFromBackgroundIndexesAndLabelIDs(WidgetRef ref) {
-    final notes = GetIt.I<NoteService>().getFromBgIndexesAndLabelIDs(
-        selectedLabelIDs.value, selectedBackgroundIndexes.value);
-    final result =
-        GetIt.I<NoteService>().sort(notes, ref.read(appThemeController).noteSortType);
+    final notes = GetIt.I<NoteService>().getFromBgIndexesAndLabelIDs(selectedLabelIDs.value, selectedBackgroundIndexes.value);
+    final result = GetIt.I<NoteService>().sort(notes, ref.read(appThemeController).noteSortType);
 
     cachedNotes = result;
     return result;

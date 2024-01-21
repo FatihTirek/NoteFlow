@@ -42,8 +42,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
     final primaryColor = Theme.of(context).primaryColor;
     final active = ref.watch(contextualBarController.select((state) => state.active));
     final isGridView = ref.watch(appThemeController.select((state) => state.isGridView));
-    final isSelectAction =
-        noteWidgetLaunchDetails.launchAction == NoteWidgetLaunchAction.Select;
+    final isSelectAction = noteWidgetLaunchDetails.launchAction == NoteWidgetLaunchAction.Select;
 
     return PopScope(
       canPop: !active,
@@ -63,8 +62,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                   headerSliverBuilder: (_, __) => [
                     active
                         ? ContextualAppBar(
-                            controller
-                                .getCurrentNotes(DefaultTabController.of(context).index),
+                            controller.getCurrentNotes(DefaultTabController.of(context).index),
                             sliver: true,
                           )
                         : SliverAppBar(
@@ -74,9 +72,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                             forceElevated: false,
                             automaticallyImplyLeading: false,
                             title: Text(
-                              isSelectAction
-                                  ? AppLocalizations.instance.w119
-                                  : 'NoteFlow',
+                              isSelectAction ? AppLocalizations.instance.w119 : 'NoteFlow',
                               style: textTheme.titleLarge,
                             ),
                             leading: isSelectAction
@@ -98,13 +94,9 @@ class _HomeViewState extends ConsumerState<HomeView> {
                                     ),
                                     IconButton(
                                       iconSize: isGridView ? 26 : 24,
-                                      onPressed: ref
-                                          .read(appThemeController.notifier)
-                                          .setIsGridView,
+                                      onPressed: ref.read(appThemeController.notifier).setIsGridView,
                                       icon: Icon(
-                                        isGridView
-                                            ? Icons.view_list_outlined
-                                            : Icons.grid_view_outlined,
+                                        isGridView ? Icons.view_list_outlined : Icons.grid_view_outlined,
                                       ),
                                     ),
                                     buildPopUpMenu()
@@ -122,13 +114,10 @@ class _HomeViewState extends ConsumerState<HomeView> {
                                   indicatorSize: TabBarIndicatorSize.label,
                                   tabs: [
                                     Tab(text: AppLocalizations.instance.w5),
-                                    ...controller.allFolders.value
-                                        .map((folder) => Tab(text: folder.name))
-                                        .toList()
+                                    ...controller.allFolders.value.map((folder) => Tab(text: folder.name)).toList()
                                   ],
                                   unselectedLabelColor: AppTheme.lowEmphasise(context),
-                                  overlayColor: MaterialStateProperty.all(
-                                      Theme.of(context).splashColor),
+                                  overlayColor: MaterialStateProperty.all(Theme.of(context).splashColor),
                                 ),
                               ),
                             ),
@@ -206,8 +195,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
       valueListenable: controller.allNotes,
       builder: (_, value, __) {
         return TabBarView(
-          physics:
-              active ? const NeverScrollableScrollPhysics() : const PageScrollPhysics(),
+          physics: active ? const NeverScrollableScrollPhysics() : const PageScrollPhysics(),
           children: [
             NoteLayoutResolver(value, hasAnimation: true),
             ...controller.allFolders.value

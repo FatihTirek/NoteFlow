@@ -14,10 +14,8 @@ class NoteWidgetLaunchDetails {
       final noteID = map['noteId'];
       final launchAction = map['launchAction'];
 
-      if (launchAction != -1) {
-        return NoteWidgetLaunchDetails(noteID,
-            launchAction: NoteWidgetLaunchAction.values[launchAction]);
-      }
+      if (launchAction != -1)
+        return NoteWidgetLaunchDetails(noteID, launchAction: NoteWidgetLaunchAction.values[launchAction]);
     }
 
     return NoteWidgetLaunchDetails(null);

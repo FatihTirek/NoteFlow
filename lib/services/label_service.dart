@@ -16,8 +16,7 @@ class LabelService {
 
   List<Label> getFromIDs(List<String> ids) => ids.map((e) => get(e)).toList();
 
-  List<Label> getAll() =>
-      Hive.box(StringConstants.dbLabels).values.map((e) => Label.fromMap(e)).toList();
+  List<Label> getAll() => Hive.box(StringConstants.dbLabels).values.map((e) => Label.fromMap(e)).toList();
 
   List<Label> getAllAndSort(LabelSortType labelSortType) {
     return getAll()
@@ -37,8 +36,7 @@ class LabelService {
 
   List<Map> getAllRaw() => Hive.box(StringConstants.dbLabels).values.toList().cast<Map>();
 
-  void write(Label label) =>
-      Hive.box(StringConstants.dbLabels).put(label.id, label.toMap());
+  void write(Label label) => Hive.box(StringConstants.dbLabels).put(label.id, label.toMap());
 
   void delete(String id) {
     Hive.box(StringConstants.dbLabels).delete(id);

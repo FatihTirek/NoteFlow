@@ -26,18 +26,11 @@ class AppFilterChip extends StatelessWidget {
             .copyWith(color: selected ? primaryColor : null),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
-          side: BorderSide(
-            width: 1.25,
-            color: selected ? primaryColor : colorScheme.outline,
-          ),
+          side: BorderSide(width: 1.25, color: selected ? primaryColor : colorScheme.outline),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          child: Text(
-            label,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
+          child: Text(label, maxLines: 1, overflow: TextOverflow.ellipsis),
         ),
       ),
     );

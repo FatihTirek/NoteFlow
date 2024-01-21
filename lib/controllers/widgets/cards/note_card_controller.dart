@@ -15,8 +15,8 @@ import '../shared/contextual_appbar_controller.dart';
 class NoteCardController {
   const NoteCardController();
 
-  List<Label> getCurrentLabels(Note note, int limit) => GetIt.I<LabelService>()
-      .getFromIDs(note.labelIDs.sublist(0, min(limit, note.labelIDs.length)));
+  List<Label> getCurrentLabels(Note note, int limit) =>
+      GetIt.I<LabelService>().getFromIDs(note.labelIDs.sublist(0, min(limit, note.labelIDs.length)));
 
   void onTapCard(WidgetRef ref, Note note) {
     if (noteWidgetLaunchDetails.launchAction == NoteWidgetLaunchAction.Select) {
@@ -29,8 +29,7 @@ class NoteCardController {
 
   void onLongPressCard(WidgetRef ref, Note note) {
     final isNotActive = !ref.read(contextualBarController).active;
-    final isActionNotSelect =
-        noteWidgetLaunchDetails.launchAction != NoteWidgetLaunchAction.Select;
+    final isActionNotSelect = noteWidgetLaunchDetails.launchAction != NoteWidgetLaunchAction.Select;
 
     if (isActionNotSelect && isNotActive) {
       ref.read(contextualBarController.notifier).openBar();

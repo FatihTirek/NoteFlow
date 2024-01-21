@@ -20,14 +20,14 @@ class PremiumViewController with Utils {
       showToast(AppLocalizations.instance.w124);
       showToast(AppLocalizations.instance.w125);
 
-      if (details.error != null)
-        showToast(AppLocalizations.instance.m1(details.error!.code));
+      if (details.error != null) showToast(AppLocalizations.instance.m1(details.error!.code));
 
       return;
     }
 
     InAppPurchase.instance.buyNonConsumable(
-        purchaseParam: PurchaseParam(productDetails: details.productDetails.first));
+      purchaseParam: PurchaseParam(productDetails: details.productDetails.first),
+    );
   }
 
   void onTapRestore() => InAppPurchase.instance.restorePurchases();

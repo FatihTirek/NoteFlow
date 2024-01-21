@@ -40,7 +40,7 @@ class Note {
   int get hashCode => id.hashCode;
 
   Note addLabel(String id) => copyWith(labelIDs: labelIDs..add(id));
-  
+
   Note removeLabel(String id) => copyWith(labelIDs: labelIDs..remove(id));
 
   factory Note.fromMap(Map map) {

@@ -38,19 +38,14 @@ class FilterView extends ConsumerWidget with Utils {
                 automaticallyImplyLeading: false,
                 actions: [BackdropToggleButton(color: titleLarge.color!)],
                 title: Text(AppLocalizations.instance.w86, style: titleLarge),
-                leading: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: Icon(Icons.arrow_back_outlined),
-                ),
+                leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back_outlined)),
               ),
         backLayer: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            buildColorListView(ref),
-            buildLabelGridView(ref),
-          ],
+          children: [buildColorListView(ref), buildLabelGridView(ref)],
         ),
         frontLayer: AnimatedBuilder(
+          builder: (_, __) => NoteLayoutResolver(controller.getNotesFromBackgroundIndexesAndLabelIDs(ref)),
           animation: Listenable.merge(
             [
               controller.selectedBackgroundIndexes,
@@ -58,8 +53,6 @@ class FilterView extends ConsumerWidget with Utils {
               controller.selectedLabelIDs,
             ],
           ),
-          builder: (_, __) => NoteLayoutResolver(
-              controller.getNotesFromBackgroundIndexesAndLabelIDs(ref)),
         ),
       ),
     );
@@ -98,8 +91,7 @@ class FilterView extends ConsumerWidget with Utils {
             side: contains
                 ? BorderSide(color: Theme.of(ref.context).primaryColor, width: 1.25)
                 : index == null
-                    ? BorderSide(
-                        color: Theme.of(ref.context).colorScheme.outline, width: 1.25)
+                    ? BorderSide(color: Theme.of(ref.context).colorScheme.outline, width: 1.25)
                     : BorderSide.none,
           ),
         ),
@@ -124,8 +116,7 @@ class FilterView extends ConsumerWidget with Utils {
             scrollDirection: Axis.horizontal,
             physics: BouncingScrollPhysics(),
             padding: const EdgeInsets.all(16),
-            gridDelegate:
-                SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemBuilder: (_, index) {
               final label = labels[index];
 

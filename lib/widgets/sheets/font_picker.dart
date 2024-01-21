@@ -24,6 +24,7 @@ class FontPicker extends ConsumerWidget {
           crossAxisSpacing: 8,
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.all(16),
+          gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           children: Font.values.map((font) {
             final name = ref.read(appThemeController.notifier).getFont(font);
             final active = font == ref.read(appThemeController).font;
@@ -39,17 +40,13 @@ class FontPicker extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
                       width: 1.25,
-                      color:
-                          active ? Theme.of(context).primaryColor : colorScheme.outline,
+                      color: active ? Theme.of(context).primaryColor : colorScheme.outline,
                     ),
                   ),
                 ),
               ),
             );
           }).toList(),
-          gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-          ),
         ),
       ),
     );

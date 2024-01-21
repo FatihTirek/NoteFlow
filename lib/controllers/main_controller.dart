@@ -46,8 +46,7 @@ Future<void> _onReceiveNotification(NotificationResponse response) async {
   else
     note = GetIt.I<NoteService>().get(data);
 
-  navigator.currentState
-      ?.push(MaterialPageRoute(builder: (_) => NoteDetailsView(note: note)));
+  navigator.currentState?.push(MaterialPageRoute(builder: (_) => NoteDetailsView(note: note)));
 }
 
 class NoteFlowController with Utils {
@@ -88,8 +87,7 @@ class NoteFlowController with Utils {
     androidDeviceInfo = await DeviceInfoPlugin().androidInfo;
     appVersion = await channelMain.invokeMethod('getAppVersion');
     noteWidgetLaunchDetails = await GetIt.I<NoteWidgetService>().getLaunchDetails();
-    notificationAppLaunchDetails =
-        await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+    notificationAppLaunchDetails = await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
   }
 
   void initState(WidgetRef ref) {
@@ -98,6 +96,8 @@ class NoteFlowController with Utils {
 
     InAppPurchase.instance.purchaseStream.listen((event) {
       event.forEach((details) async {
+        if (details.status == PurchaseStatus.canceled) return;
+
         if (details.error != null) {
           showToast(AppLocalizations.instance.m1(details.error!.code));
           return;
@@ -116,10 +116,8 @@ class NoteFlowController with Utils {
         if (isValidProductID && isValidStatus && isValidPurchase) {
           ref.read(appThemeController.notifier).upgradePremium();
 
-          if (details.pendingCompletePurchase)
-            await InAppPurchase.instance.completePurchase(details);
-          if (details.status == PurchaseStatus.restored)
-            showToast(AppLocalizations.instance.w121);
+          if (details.pendingCompletePurchase) await InAppPurchase.instance.completePurchase(details);
+          if (details.status == PurchaseStatus.restored) showToast(AppLocalizations.instance.w121);
 
           showToast(AppLocalizations.instance.w122);
         }
@@ -131,12 +129,8 @@ class NoteFlowController with Utils {
     Widget view;
 
     if (notificationAppLaunchDetails!.didNotificationLaunchApp) {
-      final payload =
-          jsonDecode(notificationAppLaunchDetails!.notificationResponse!.payload!);
-      view = NoteDetailsView(
-          note: payload is Map
-              ? Note.fromMap(payload)
-              : GetIt.I<NoteService>().get(payload));
+      final payload = jsonDecode(notificationAppLaunchDetails!.notificationResponse!.payload!);
+      view = NoteDetailsView(note: payload is Map ? Note.fromMap(payload) : GetIt.I<NoteService>().get(payload));
     } else {
       switch (noteWidgetLaunchDetails.launchAction) {
         case NoteWidgetLaunchAction.Show:

@@ -4,14 +4,11 @@ import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -79,7 +76,6 @@ public class NoteWidgetProvider extends AppWidgetProvider {
                 views.setTextViewText(R.id.note_widget_note_content, noteWidget.content);
                 views.setTextColor(R.id.note_widget_note_content, noteWidget.contentColor);
                 views.setViewVisibility(R.id.note_widget_note_content, View.VISIBLE);
-                views.setInt(R.id.note_widget_note_content, "setGravity", Gravity.START);
             } else {
                 views.setViewVisibility(R.id.note_widget_note_content, View.GONE);
             }
@@ -94,7 +90,7 @@ public class NoteWidgetProvider extends AppWidgetProvider {
             views.setInt(R.id.note_widget_action_select, "setColorFilter", context.getColor(R.color.note_widget_initial_title_color));
             views.setInt(R.id.note_widget_divider_vertical, "setColorFilter", context.getColor(R.color.note_widget_initial_title_color));
             views.setInt(R.id.note_widget_divider_horizontal, "setColorFilter", context.getColor(R.color.note_widget_initial_title_color));
-            views.setInt(R.id.note_widget_background, "setBackgroundColor", noteWidget.backgroundColor);
+            views.setInt(R.id.note_widget_background, "setColorFilter", noteWidget.backgroundColor);
         } else {
             showPendingIntent.cancel();
 
@@ -104,8 +100,7 @@ public class NoteWidgetProvider extends AppWidgetProvider {
             views.setInt(R.id.note_widget_action_select, "setColorFilter", context.getColor(R.color.note_widget_initial_title_color));
             views.setInt(R.id.note_widget_divider_vertical, "setColorFilter", context.getColor(R.color.note_widget_initial_title_color));
             views.setInt(R.id.note_widget_divider_horizontal, "setColorFilter", context.getColor(R.color.note_widget_initial_title_color));
-            views.setInt(R.id.note_widget_background, "setBackgroundColor", context.getColor(R.color.note_widget_initial_background_color));
-            views.setInt(R.id.note_widget_note_content, "setGravity", Gravity.CENTER);
+            views.setInt(R.id.note_widget_background, "setColorFilter", context.getColor(R.color.note_widget_initial_background_color));
             views.setTextViewText(R.id.note_widget_note_content, context.getResources().getString(R.string.note_widget_initial_text));
         }
 

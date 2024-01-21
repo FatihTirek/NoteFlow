@@ -51,9 +51,7 @@ class LanguagePicker extends ConsumerWidget {
                 onChanged: controller.onChanged,
                 contentPadding: EdgeInsets.zero,
                 value: Language.values[index],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4),
-                ),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
               ),
               child: Text(
                 ref.read(appThemeController.notifier).getLanguage(Language.values[index]),

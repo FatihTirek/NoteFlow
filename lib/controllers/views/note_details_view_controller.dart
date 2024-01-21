@@ -71,12 +71,10 @@ class NoteDetailsViewController with Utils {
     contentHistoryController = UndoHistoryController();
     titleController = TextEditingController(text: note?.title);
     contentController = TextEditingController(text: note?.content);
-    currentNotificationID = (note?.notificationID ??
-        GetIt.I<NoteService>().generateNotificationID()) as FutureOr<int>;
+    currentNotificationID = (note?.notificationID ?? GetIt.I<NoteService>().generateNotificationID()) as FutureOr<int>;
   }
 
-  List<Label> getCurrentLabels() =>
-      GetIt.I<LabelService>().getFromIDs(selectedLabelIDs.value);
+  List<Label> getCurrentLabels() => GetIt.I<LabelService>().getFromIDs(selectedLabelIDs.value);
 
   void dispose() {
     titleController.dispose();
@@ -104,9 +102,7 @@ class NoteDetailsViewController with Utils {
   }
 
   void onTapReminder() async {
-    final value = selectedReminder.value?.isAfter(DateTime.now()) ?? false
-        ? selectedReminder.value
-        : null;
+    final value = selectedReminder.value?.isAfter(DateTime.now()) ?? false ? selectedReminder.value : null;
 
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()!
@@ -146,14 +142,12 @@ class NoteDetailsViewController with Utils {
   }
 
   void onTapFolder() async {
-    final value =
-        await showSheet(ref.context, FolderPicker(folderID: selectedFolderID.value));
+    final value = await showSheet(ref.context, FolderPicker(folderID: selectedFolderID.value));
 
     if (value != null && selectedFolderID.value != value) {
       if (isPreviouslySaved) {
         GetIt.I<FolderService>().updateCountIfNeeded(selectedFolderID.value);
-        if (value != StringConstants.clearFlag)
-          GetIt.I<FolderService>().updateCountIfNeeded(value, increase: true);
+        if (value != StringConstants.clearFlag) GetIt.I<FolderService>().updateCountIfNeeded(value, increase: true);
       }
 
       if (value == StringConstants.clearFlag)
@@ -166,8 +160,7 @@ class NoteDetailsViewController with Utils {
   }
 
   void onTapLabel() async {
-    final value =
-        await showSheet(ref.context, LabelPicker(labelIDs: selectedLabelIDs.value));
+    final value = await showSheet(ref.context, LabelPicker(labelIDs: selectedLabelIDs.value));
 
     if (value != null && value != selectedLabelIDs.value) {
       selectedLabelIDs.value = value;
@@ -176,8 +169,7 @@ class NoteDetailsViewController with Utils {
   }
 
   void onTapShare() {
-    final text =
-        '${AppLocalizations.instance.w6}: ${titleController.text} \n${AppLocalizations.instance.w72}: ${contentController.text}';
+    final text = '${AppLocalizations.instance.w6}: ${titleController.text} \n${AppLocalizations.instance.w72}: ${contentController.text}';
     Share.share(text, subject: titleController.text);
   }
 
@@ -266,8 +258,7 @@ class NoteDetailsViewController with Utils {
 
       if (!isPreviouslySaved) {
         isPreviouslySaved = true;
-        GetIt.I<FolderService>()
-            .updateCountIfNeeded(selectedFolderID.value, increase: true);
+        GetIt.I<FolderService>().updateCountIfNeeded(selectedFolderID.value, increase: true);
       }
 
       GetIt.I<NoteService>().write(note);

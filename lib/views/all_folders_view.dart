@@ -13,8 +13,7 @@ class AllFoldersView extends ConsumerStatefulWidget {
   _AllFoldersViewState createState() => _AllFoldersViewState();
 }
 
-class _AllFoldersViewState extends ConsumerState<AllFoldersView>
-    with SingleTickerProviderStateMixin {
+class _AllFoldersViewState extends ConsumerState<AllFoldersView> with SingleTickerProviderStateMixin {
   late AllFoldersViewController controller;
 
   @override
@@ -37,8 +36,7 @@ class _AllFoldersViewState extends ConsumerState<AllFoldersView>
 
   @override
   Widget build(BuildContext context) {
-    final folderSortType =
-        ref.watch(appThemeController.select((state) => state.folderSortType));
+    final folderSortType = ref.watch(appThemeController.select((state) => state.folderSortType));
 
     return ValueListenableBuilder(
       valueListenable: controller.searchMode,
@@ -126,9 +124,7 @@ class _AllFoldersViewState extends ConsumerState<AllFoldersView>
       actions: [
         IconButton(
           onPressed: controller.onSearchBarOpen,
-          icon: Icon(
-            Icons.search_outlined,
-          ),
+          icon: Icon(Icons.search_outlined),
         ),
         IconButton(
           onPressed: controller.showSortPicker,

@@ -12,8 +12,7 @@ class AppFloatingActionButton extends ConsumerStatefulWidget {
   const AppFloatingActionButton({this.folderID});
 
   @override
-  _AnimatedFloatingActionButtonState createState() =>
-      _AnimatedFloatingActionButtonState();
+  _AnimatedFloatingActionButtonState createState() => _AnimatedFloatingActionButtonState();
 }
 
 class _AnimatedFloatingActionButtonState extends ConsumerState<AppFloatingActionButton>
@@ -51,6 +50,7 @@ class _AnimatedFloatingActionButtonState extends ConsumerState<AppFloatingAction
 
     return AnimatedBuilder(
       animation: controller,
+      builder: (_, child) => FadeScaleTransition(animation: controller, child: child),
       child: Visibility(
         visible: controller.status != AnimationStatus.dismissed,
         child: OpenContainer(
@@ -60,9 +60,7 @@ class _AnimatedFloatingActionButtonState extends ConsumerState<AppFloatingAction
           openColor: Theme.of(context).colorScheme.surface,
           transitionType: ContainerTransitionType.fadeThrough,
           openBuilder: (_, __) => NoteDetailsView(folderID: widget.folderID),
-          closedShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(64),
-          ),
+          closedShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(64)),
           closedBuilder: (_, __) => SizedBox(
             width: 60,
             height: 60,
@@ -75,10 +73,6 @@ class _AnimatedFloatingActionButtonState extends ConsumerState<AppFloatingAction
             ),
           ),
         ),
-      ),
-      builder: (_, child) => FadeScaleTransition(
-        animation: controller,
-        child: child,
       ),
     );
   }

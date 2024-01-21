@@ -37,14 +37,11 @@ class SettingsViewController with Utils {
 
   void goPremiumView() => goToView(PremiumView());
 
-  void showFeedbackDialog() =>
-      showModal(context: ref.context, builder: (_) => FeedBackDialog());
+  void showFeedbackDialog() => showModal(context: ref.context, builder: (_) => FeedBackDialog());
 
-  void showThemePicker() =>
-      showModal(context: ref.context, builder: (_) => ThemePicker(ref));
+  void showThemePicker() => showModal(context: ref.context, builder: (_) => ThemePicker(ref));
 
-  void showLanguagePicker() =>
-      showModal(context: ref.context, builder: (_) => LanguagePicker(ref));
+  void showLanguagePicker() => showModal(context: ref.context, builder: (_) => LanguagePicker(ref));
 
   void showFontPicker() => showSheet(ref.context, FontPicker());
 
@@ -58,13 +55,11 @@ class SettingsViewController with Utils {
   void openStore() => StoreRedirect.redirect();
 
   void ignoreBatteryOptimizations() async {
-    if (!await Permission.ignoreBatteryOptimizations.isGranted)
-      Permission.ignoreBatteryOptimizations.request();
+    if (!await Permission.ignoreBatteryOptimizations.isGranted) Permission.ignoreBatteryOptimizations.request();
   }
 
   void changeNotificationSound() async {
-    final soundUri = await channelMain
-        .invokeMethod('getSoundUri', {'soundUri': ref.read(appThemeController).soundUri});
+    final soundUri = await channelMain.invokeMethod('getSoundUri', {'soundUri': ref.read(appThemeController).soundUri});
     if (soundUri != null) ref.read(appThemeController.notifier).setSoundUri(soundUri);
   }
 
@@ -106,8 +101,7 @@ class SettingsViewController with Utils {
   }
 
   void onTapRestore() async {
-    final isPremiumUser =
-        await ref.read(appThemeController.notifier).isPremiumUser(ref.context);
+    final isPremiumUser = await ref.read(appThemeController.notifier).isPremiumUser(ref.context);
 
     if (isPremiumUser && await _isGranted()) {
       final file = File('/storage/emulated/0/Download/nf_backup.json');
@@ -124,17 +118,14 @@ class SettingsViewController with Utils {
           final note = Note.fromMap(e);
 
           if (note.reminder?.isAfter(DateTime.now()) ?? false) {
-            final copy = note.copyWith(
-                notificationID: await GetIt.I<NoteService>().generateNotificationID());
+            final copy = note.copyWith(notificationID: await GetIt.I<NoteService>().generateNotificationID());
             GetIt.I<NoteService>().scheduleNotification(copy, ref);
           }
 
           GetIt.I<NoteService>().write(note);
         });
-        json[StringConstants.dbFolders]
-            .forEach((e) => GetIt.I<FolderService>().write(Folder.fromMap(e)));
-        json[StringConstants.dbLabels]
-            .forEach((e) => GetIt.I<LabelService>().write(Label.fromMap(e)));
+        json[StringConstants.dbFolders].forEach((e) => GetIt.I<FolderService>().write(Folder.fromMap(e)));
+        json[StringConstants.dbLabels].forEach((e) => GetIt.I<LabelService>().write(Label.fromMap(e)));
 
         showToast(AppLocalizations.instance.w49);
       } else {

@@ -25,17 +25,13 @@ extension DateTimeX on DateTime {
     if (current == yesterday)
       result = AppLocalizations.instance.w0;
     else if (current == today)
-      result = todayAsText
-          ? AppLocalizations.instance.w104
-          : TimeOfDay(hour: this.hour, minute: this.minute).format(context);
+      result = todayAsText ? AppLocalizations.instance.w104 : TimeOfDay(hour: this.hour, minute: this.minute).format(context);
     else if (current == tomorrow)
       result = AppLocalizations.instance.w123;
     else if (current.year == now.year)
       result = withoutYearFormatter.format(current);
     else
-      result = shortenedYear
-          ? withShortenedYearFormatter.format(current)
-          : withYearFormatter.format(current);
+      result = shortenedYear ? withShortenedYearFormatter.format(current) : withYearFormatter.format(current);
 
     return result;
   }

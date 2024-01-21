@@ -26,13 +26,11 @@ class NoteService with Utils {
 
   Note get(String id) => Note.fromMap(Hive.box(StringConstants.dbNotes).get(id));
 
-  List<Note> getAll() =>
-      Hive.box(StringConstants.dbNotes).values.map((e) => Note.fromMap(e)).toList();
+  List<Note> getAll() => Hive.box(StringConstants.dbNotes).values.map((e) => Note.fromMap(e)).toList();
 
   List<Map> getAllRaw() => Hive.box(StringConstants.dbNotes).values.toList().cast<Map>();
 
-  List<Note> getFromFolderID(String id) =>
-      getAll().where((note) => note.folderID == id).toList();
+  List<Note> getFromFolderID(String id) => getAll().where((note) => note.folderID == id).toList();
 
   List<Note> getFromLabelIDs(List<String> ids) {
     if (ids.isEmpty) return [];
@@ -48,9 +46,7 @@ class NoteService with Utils {
       else if (indexes.isEmpty)
         test = (note) => note.labelIDs.toSet().containsAll(ids);
       else
-        test = (note) =>
-            indexes.contains(note.backgroundIndex) &&
-            note.labelIDs.toSet().containsAll(ids);
+        test = (note) => indexes.contains(note.backgroundIndex) && note.labelIDs.toSet().containsAll(ids);
 
       return getAll().where(test).toList();
     }
@@ -66,8 +62,7 @@ class NoteService with Utils {
     flutterLocalNotificationsPlugin.cancel(notificationID);
   }
 
-  void deleteFromFolderID(String id) =>
-      getFromFolderID(id).forEach((note) => delete(note.id, note.notificationID));
+  void deleteFromFolderID(String id) => getFromFolderID(id).forEach((note) => delete(note.id, note.notificationID));
 
   List<Note> sort(List<Note> notes, NoteSortType noteSortType) {
     return [...notes]..sort((a, b) {
@@ -96,9 +91,7 @@ class NoteService with Utils {
     final contains = (String s) => s.toLowerCase().contains(trimmed);
 
     if (trimmed.isNotEmpty) {
-      return items
-          .where((note) => contains(note.title) || contains(note.content))
-          .toList();
+      return items.where((note) => contains(note.title) || contains(note.content)).toList();
     }
 
     return [];
@@ -135,9 +128,7 @@ class NoteService with Utils {
         styleInformation: BigTextStyleInformation(
           note.content.isEmpty ? note.title : note.content,
           contentTitle: note.title.isEmpty ? note.content : note.title,
-          summaryText: note.folderID != null
-              ? GetIt.I<FolderService>().get(note.folderID!).name
-              : null,
+          summaryText: note.folderID != null ? GetIt.I<FolderService>().get(note.folderID!).name : null,
         ),
       );
 
@@ -149,8 +140,7 @@ class NoteService with Utils {
         NotificationDetails(android: details),
         payload: jsonEncode(note.id),
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
+        uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       );
     }
   }

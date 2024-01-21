@@ -24,8 +24,7 @@ class NoteDetailsView extends ConsumerStatefulWidget {
   _NoteDetailsViewState createState() => _NoteDetailsViewState();
 }
 
-class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
-    with SingleTickerProviderStateMixin, Utils {
+class _NoteDetailsViewState extends ConsumerState<NoteDetailsView> with SingleTickerProviderStateMixin, Utils {
   late NoteDetailsViewController controller;
 
   final titleFocus = FocusNode();
@@ -46,8 +45,7 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
     );
 
     KeyboardVisibilityController().onChange.listen((visible) {
-      if (!visible && mounted && (titleFocus.hasFocus || contentFocus.hasFocus))
-        controller.onKeyboardClose();
+      if (!visible && mounted && (titleFocus.hasFocus || contentFocus.hasFocus)) controller.onKeyboardClose();
     });
   }
 
@@ -78,10 +76,9 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
     return AppBar(
       shape: const RoundedRectangleBorder(),
       backgroundColor: Colors.transparent,
-      systemOverlayStyle:
-          ThemeData.estimateBrightnessForColor(backgroundColor) == Brightness.light
-              ? SystemUiOverlayStyle.dark
-              : SystemUiOverlayStyle.light,
+      systemOverlayStyle: ThemeData.estimateBrightnessForColor(backgroundColor) == Brightness.light
+          ? SystemUiOverlayStyle.dark
+          : SystemUiOverlayStyle.light,
       leading: Padding(
         padding: const EdgeInsets.only(left: 8),
         child: IconButton(
@@ -104,8 +101,8 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
                     controller.contentHistoryController,
                   ]),
                   builder: (_, child) {
-                    final current = titleFocus.hasFocus
-                        ? controller.titleHistoryController
+                    final current = titleFocus.hasFocus 
+                        ? controller.titleHistoryController 
                         : controller.contentHistoryController;
 
                     return Row(
@@ -113,18 +110,18 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
                         IconButton(
                           iconSize: 28,
                           icon: Icon(Icons.undo_rounded),
+                          onPressed: current.value.canUndo ? current.undo : null,
                           disabledColor: controller.selectedBackgroundIndex.value != null
                               ? AppTheme.onInactive(context)
                               : AppTheme.inactive(context),
-                          onPressed: current.value.canUndo ? current.undo : null,
                         ),
                         IconButton(
                           iconSize: 28,
                           icon: Icon(Icons.redo_rounded),
+                          onPressed: current.value.canRedo ? current.redo : null,
                           disabledColor: controller.selectedBackgroundIndex.value != null
                               ? AppTheme.onInactive(context)
                               : AppTheme.inactive(context),
-                          onPressed: current.value.canRedo ? current.redo : null,
                         ),
                         child!
                       ],
@@ -191,8 +188,7 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
     final textTheme = Theme.of(context).textTheme;
     final primaryColor = Theme.of(context).primaryColor;
     final showLabels = ref.watch(appThemeController.select((state) => state.showLabels));
-    final backgroundColor =
-        getOnNoteBackgroundColor(ref, controller.selectedBackgroundIndex.value);
+    final backgroundColor = getOnNoteBackgroundColor(ref, controller.selectedBackgroundIndex.value);
 
     return CustomScrollView(
       slivers: [
@@ -209,12 +205,11 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
                 controller: controller.titleController,
                 undoController: controller.titleHistoryController,
                 style: textTheme.headlineMedium!.copyWith(color: value),
+                contextMenuBuilder: (_, editableTextState) => AppContextMenu(editableTextState),
                 decoration: InputDecoration.collapsed(
                   hintText: AppLocalizations.instance.w6,
                   hintStyle: textTheme.headlineMedium,
                 ),
-                contextMenuBuilder: (_, editableTextState) =>
-                    AppContextMenu(editableTextState),
               ),
             ),
           ),
@@ -232,9 +227,9 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
                 onTap: controller.onTapTextField,
                 controller: controller.contentController,
                 undoController: controller.contentHistoryController,
+                contextMenuBuilder: (_, editableTextState) => AppContextMenu(editableTextState),
                 style: textTheme.titleSmall!.copyWith(
-                  color: value ??
-                      (controller.selectedBackgroundIndex.value != null
+                  color: value ?? (controller.selectedBackgroundIndex.value != null
                           ? AppTheme.onMediumEmphasise(context)
                           : AppTheme.mediumEmphasise(context)),
                 ),
@@ -246,8 +241,6 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
                         : AppTheme.mediumEmphasise(context),
                   ),
                 ),
-                contextMenuBuilder: (_, editableTextState) =>
-                    AppContextMenu(editableTextState),
               ),
             ),
             builder: (_, value, child) => value.isNotEmpty && showLabels
@@ -269,19 +262,10 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
                           (label) => Material(
                             color: backgroundColor,
                             textStyle: textTheme.bodySmall,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                             child: Padding(
-                              child: Text(
-                                label.name,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 8,
-                              ),
+                              child: Text(label.name, maxLines: 1, overflow: TextOverflow.ellipsis),
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                             ),
                           ),
                         ),
@@ -325,9 +309,7 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
               color: AppTheme.lowEmphasise(context),
             ),
             title: Text(
-              controller.pinned.value
-                  ? AppLocalizations.instance.w84
-                  : AppLocalizations.instance.w85,
+              controller.pinned.value ? AppLocalizations.instance.w84 : AppLocalizations.instance.w85,
               style: labelMedium,
             ),
           ),
@@ -339,10 +321,7 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
             dense: true,
             horizontalTitleGap: 0,
             title: Text(AppLocalizations.instance.w71, style: labelMedium),
-            leading: Icon(
-              Icons.share_outlined,
-              color: AppTheme.lowEmphasise(context),
-            ),
+            leading: Icon(Icons.share_outlined, color: AppTheme.lowEmphasise(context)),
           ),
         ),
         PopupMenuItem(
@@ -352,10 +331,7 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView>
             dense: true,
             horizontalTitleGap: 0,
             title: Text(AppLocalizations.instance.w24, style: labelMedium),
-            leading: Icon(
-              Icons.delete_outline_rounded,
-              color: AppTheme.lowEmphasise(context),
-            ),
+            leading: Icon(Icons.delete_outline_rounded, color: AppTheme.lowEmphasise(context)),
           ),
         ),
       ],

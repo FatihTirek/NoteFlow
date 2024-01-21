@@ -13,6 +13,5 @@ class ThemeService {
     return AppThemeState.fromMap(iterable.first);
   }
 
-  void write(AppThemeState appThemeState) =>
-      Hive.box(StringConstants.dbTheme).put('Theme_ID', appThemeState.toMap());
+  void write(AppThemeState appThemeState) => Hive.box(StringConstants.dbTheme).put('Theme_ID', appThemeState.toMap());
 }

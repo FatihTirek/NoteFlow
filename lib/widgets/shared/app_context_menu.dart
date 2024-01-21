@@ -38,8 +38,7 @@ class AppContextMenu extends StatelessWidget {
         ...List.generate(
           totalItems,
           (index) => TextButton(
-            onPressed: () =>
-                (items[index]['onPressed'] as void Function(SelectionChangedCause))
+            onPressed: () => (items[index]['onPressed'] as void Function(SelectionChangedCause))
                     .call(SelectionChangedCause.toolbar),
             child: Text(
               items[index]['text'] as String,

@@ -68,8 +68,7 @@ mixin Utils {
 
     switch (themeMode) {
       case ThemeMode.system:
-        if (WidgetsBinding.instance.platformDispatcher.platformBrightness ==
-            Brightness.light)
+        if (WidgetsBinding.instance.platformDispatcher.platformBrightness == Brightness.light)
           return lightStyle;
         else
           return darkStyle;
@@ -104,8 +103,7 @@ mixin Utils {
   Future goToView(Widget view, {bool replace = false}) {
     final route = PageRouteBuilder(
       pageBuilder: (_, __, ___) => view,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-          SharedAxisTransition(
+      transitionsBuilder: (context, animation, secondaryAnimation, child) => SharedAxisTransition(
         child: child,
         animation: animation,
         secondaryAnimation: secondaryAnimation,
@@ -114,8 +112,6 @@ mixin Utils {
       ),
     );
 
-    return replace
-        ? navigator.currentState!.pushReplacement(route)
-        : navigator.currentState!.push(route);
+    return replace ? navigator.currentState!.pushReplacement(route) : navigator.currentState!.push(route);
   }
 }

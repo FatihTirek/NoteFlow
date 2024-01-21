@@ -15,8 +15,7 @@ class LanguagePickerController {
     language = ValueNotifier(ref.read(appThemeController).language);
   }
 
-  void showContributeDialog() =>
-      showModal(context: ref.context, builder: (_) => ContributeDialog());
+  void showContributeDialog() => showModal(context: ref.context, builder: (_) => ContributeDialog());
 
   void onChanged(Language? value) => language.value = value!;
 

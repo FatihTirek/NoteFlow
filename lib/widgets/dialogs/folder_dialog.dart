@@ -81,8 +81,7 @@ class _FolderDialogState extends ConsumerState<FolderDialog> {
                   borderSide: BorderSide(width: 1.25, color: primaryColor),
                 ),
               ),
-              contextMenuBuilder: (_, editableTextState) =>
-                  AppContextMenu(editableTextState),
+              contextMenuBuilder: (_, editableTextState) => AppContextMenu(editableTextState),
             ),
           ),
         ),

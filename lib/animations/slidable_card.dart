@@ -13,8 +13,7 @@ class SlidableCard extends ConsumerStatefulWidget {
   _SlidableCardState createState() => _SlidableCardState();
 }
 
-class _SlidableCardState extends ConsumerState<SlidableCard>
-    with SingleTickerProviderStateMixin {
+class _SlidableCardState extends ConsumerState<SlidableCard> with SingleTickerProviderStateMixin {
   late AnimationController controller;
 
   double dx = 0;
@@ -38,9 +37,8 @@ class _SlidableCardState extends ConsumerState<SlidableCard>
   @override
   Widget build(BuildContext context) {
     final value = dx.abs() / 224;
-    final animation =
-        Tween(end: end == 0 ? 0.0 : 1.0, begin: 0.5 + (value > 0.5 ? 0.5 : value))
-            .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
+    final animation = Tween(end: end == 0 ? 0.0 : 1.0, begin: 0.5 + (value > 0.5 ? 0.5 : value))
+        .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),

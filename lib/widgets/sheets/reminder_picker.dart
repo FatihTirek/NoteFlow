@@ -122,16 +122,12 @@ class _ReminderPickerState extends ConsumerState<ReminderPicker> with Utils {
                 childCount: DateTime(now.year + 5, 1, 1).difference(now).inDays,
                 builder: (_, index) {
                   final date = now.add(Duration(days: index));
-                  final style = date.year != now.year
-                      ? textTheme.headlineSmall
+                  final style = date.year != now.year 
+                      ? textTheme.headlineSmall 
                       : textTheme.headlineMedium;
 
                   return Text(
-                    date.toLocalizedText(
-                      context,
-                      todayAsText: true,
-                      shortenedYear: true,
-                    ),
+                    date.toLocalizedText(context, todayAsText: true, shortenedYear: true),
                     style: style,
                   );
                 },

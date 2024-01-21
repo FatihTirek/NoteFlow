@@ -7,8 +7,7 @@ import '../shared/app_theme_controller.dart';
 class FontPickerController {
   void onTapFont(WidgetRef ref, Font font) async {
     final withinFreeTier = Font.values.indexOf(font) <= 3;
-    final value = withinFreeTier ||
-        await ref.read(appThemeController.notifier).isPremiumUser(ref.context);
+    final value = withinFreeTier || await ref.read(appThemeController.notifier).isPremiumUser(ref.context);
 
     if (value) {
       ref.read(appThemeController.notifier).setFont(font);

@@ -40,19 +40,13 @@ class AppTheme {
           : _onMediumEmphasiseDark;
 
   static Color onLowEmphasise(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light
-          ? _onLowEmphasiseLight
-          : _onLowEmphasiseDark;
+      Theme.of(context).brightness == Brightness.light ? _onLowEmphasiseLight : _onLowEmphasiseDark;
 
   static Color onInactive(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light
-          ? _onInactiveLight
-          : _onInactiveDark;
+      Theme.of(context).brightness == Brightness.light ? _onInactiveLight : _onInactiveDark;
 
   static Color highEmphasise(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light
-          ? _highEmphasiseLight
-          : _highEmphasiseDark;
+      Theme.of(context).brightness == Brightness.light ? _highEmphasiseLight : _highEmphasiseDark;
 
   static Color mediumEmphasise(BuildContext context, [bool system = false]) =>
       (system ? MediaQuery.of(context).platformBrightness : Theme.of(context).brightness) == Brightness.light
@@ -60,16 +54,12 @@ class AppTheme {
           : _mediumEmphasiseDark;
 
   static Color lowEmphasise(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light
-          ? _lowEmphasiseLight
-          : _lowEmphasiseDark;
+      Theme.of(context).brightness == Brightness.light ? _lowEmphasiseLight : _lowEmphasiseDark;
 
   static Color inactive(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light
-          ? _inactiveLight
-          : _inactiveDark;
+      Theme.of(context).brightness == Brightness.light ? _inactiveLight : _inactiveDark;
 
-    static final darkTheme = ThemeData(
+  static final darkTheme = ThemeData(
     useMaterial3: false,
     brightness: Brightness.dark,
     primaryColor: _primaryColorDark,
@@ -168,664 +158,281 @@ class AppTheme {
   static TextStyle _headlineLarge(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 27.5,
-          height: 1.25,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 27.5, height: 1.25);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 27,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 27);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 26,
-          height: 1.3,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 26, height: 1.3);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 27.5,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 27.5);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 26.5,
-          height: 1.25,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 26.5, height: 1.25);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 26,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 26);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 26.5,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 26.5);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 27,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 27);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 27,
-          height: 1.35,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 27, height: 1.35);
     }
   }
 
   static TextStyle _headlineMedium(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 22.5,
-          height: 1.25,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 22.5, height: 1.25);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 22,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 22);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 21,
-          height: 1.3,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 21, height: 1.3);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 22.5,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 22.5);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 21.5,
-          height: 1.25,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 21.5, height: 1.25);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 21,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 21);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 21.5,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 21.5);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 22,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 22);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 22,
-          height: 1.35,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 22, height: 1.35);
     }
   }
 
   static TextStyle _headlineSmall(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 21.5,
-          height: 1.25,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 21.5, height: 1.25);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 21,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 21);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 20,
-          height: 1.3,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 20, height: 1.3);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 21.5,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 21.5);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 20.5,
-          height: 1.25,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 20.5, height: 1.25);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 20,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 20);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 20.5,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 20.5);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 21,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 21);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 21,
-          height: 1.35,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 21, height: 1.35);
     }
   }
 
   static TextStyle _titleLarge(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 19.5,
-          height: 1.25,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 19.5, height: 1.25);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 19,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 19);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 18,
-          height: 1.3,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 18, height: 1.3);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 19.5,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 19.5);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 18.5,
-          height: 1.25,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 18.5, height: 1.25);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 18,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 18);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 18.5,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 18.5);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 19,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 19);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 19,
-          height: 1.35,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 19, height: 1.35);
     }
   }
 
   static TextStyle _titleMedium(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 18.5,
-          height: 1.25,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 18.5, height: 1.25);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 18,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 18);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 17,
-          height: 1.3,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 17, height: 1.3);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 18.5,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 18.5);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 17.5,
-          height: 1.25,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 17.5, height: 1.25);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 17,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 17);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 17.5,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 17.5);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 18,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 18);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 18,
-          height: 1.35,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 18, height: 1.35);
     }
   }
 
   static TextStyle _titleSmall(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 17.5,
-          height: 1.25,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 17.5, height: 1.25);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 17,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 17);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
-          height: 1.3,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 16, height: 1.3);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 17.5,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 17.5);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 16.5,
-          height: 1.25,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 16.5, height: 1.25);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 16);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 16.5,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 16.5);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 17,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 17);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 17,
-          height: 1.35,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 17, height: 1.35);
     }
   }
 
   static TextStyle _bodyLarge(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
-          height: 1.25,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 16, height: 1.25);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 16);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 15,
-          height: 1.3,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 15, height: 1.3);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 16.5,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 16.5);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 15.5,
-          height: 1.25,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 15.5, height: 1.25);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 15,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 15);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 15.5,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 15.5);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 16);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
-          height: 1.35,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 16, height: 1.35);
     }
   }
 
   static TextStyle _bodyMedium(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 15.5,
-          height: 1.25,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 15.5, height: 1.25);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 15,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 15);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 14,
-          height: 1.3,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 14, height: 1.3);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 15.5,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 15.5);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 14.5,
-          height: 1.25,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 14.5, height: 1.25);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 14,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 14);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 14.5,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 14.5);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 15,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 15);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 15,
-          height: 1.35,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 15, height: 1.35);
     }
   }
 
   static TextStyle _bodySmall(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 14.5,
-          height: 1.25,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 14.5, height: 1.25);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 14,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 14);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 13,
-          height: 1.3,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 13, height: 1.3);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 14.25,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 14.25);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 13.5,
-          height: 1.25,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 13.5, height: 1.25);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 13,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 13);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 13.75,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 13.75);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 13.75,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 13.75);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 14,
-          height: 1.35,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 14, height: 1.35);
     }
   }
 
   static TextStyle _labelLarge(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 18.5,
-          height: 1.25,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 18.5, height: 1.25);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 18,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 18);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 17,
-          height: 1.3,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 17, height: 1.3);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 18.5,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 18.5);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 17.5,
-          height: 1.25,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 17.5, height: 1.25);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 17,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 17);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 17.5,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 17.5);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 18,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 18);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 18,
-          height: 1.35,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 18, height: 1.35);
     }
   }
 
   static TextStyle _labelMedium(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 16.5,
-          height: 1.25,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 16.5, height: 1.25);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 16);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 15,
-          height: 1.3,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 15, height: 1.3);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 16.5,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 16.5);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 15.5,
-          height: 1.25,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 15.5, height: 1.25);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 15,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 15);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 15.5,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 15.5);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 16);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
-          height: 1.35,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 16, height: 1.35);
     }
   }
 
   static TextStyle _labelSmall(Font font) {
     switch (font) {
       case Font.JosefinSans:
-        return GoogleFonts.josefinSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 12.5,
-          height: 1.25,
-          letterSpacing: 0,
-        );
+        return GoogleFonts.josefinSans(fontWeight: FontWeight.w600, fontSize: 12.5, height: 1.25, letterSpacing: 0);
       case Font.PtSans:
-        return GoogleFonts.ptSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 12,
-          letterSpacing: 0,
-        );
+        return GoogleFonts.ptSans(fontWeight: FontWeight.w600, fontSize: 12, letterSpacing: 0);
       case Font.Rubik:
-        return GoogleFonts.rubik(
-          fontWeight: FontWeight.w500,
-          fontSize: 11,
-          height: 1.3,
-          letterSpacing: 0,
-        );
+        return GoogleFonts.rubik(fontWeight: FontWeight.w500, fontSize: 11, height: 1.3, letterSpacing: 0);
       case Font.SourceSans:
-        return GoogleFonts.sourceSans3(
-          fontWeight: FontWeight.w600,
-          fontSize: 12.5,
-          letterSpacing: 0,
-        );
+        return GoogleFonts.sourceSans3(fontWeight: FontWeight.w600, fontSize: 12.5, letterSpacing: 0);
       case Font.FiraSans:
-        return GoogleFonts.firaSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 11.5,
-          height: 1.25,
-          letterSpacing: 0,
-        );
+        return GoogleFonts.firaSans(fontWeight: FontWeight.w500, fontSize: 11.5, height: 1.25, letterSpacing: 0);
       case Font.OpenSans:
-        return GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 11,
-          letterSpacing: 0,
-        );
+        return GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 11, letterSpacing: 0);
       case Font.QuickSand:
-        return GoogleFonts.quicksand(
-          fontWeight: FontWeight.w600,
-          fontSize: 11.75,
-          letterSpacing: 0,
-        );
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w600, fontSize: 11.75, letterSpacing: 0);
       case Font.IBMPlexSans:
-        return GoogleFonts.ibmPlexSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 11.75,
-          letterSpacing: 0.1,
-        );
+        return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 11.75, letterSpacing: 0.1);
       case Font.Kanit:
-        return GoogleFonts.kanit(
-          fontWeight: FontWeight.w500,
-          fontSize: 12,
-          height: 1.35,
-          letterSpacing: 0.1,
-        );
+        return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 12, height: 1.35, letterSpacing: 0.1);
     }
   }
 
   static ThemeData merge(ThemeData themeData, Font font) {
-    final color = themeData.brightness == Brightness.light
-        ? _highEmphasiseLight
-        : _highEmphasiseDark;
+    final color = themeData.brightness == Brightness.light ? _highEmphasiseLight : _highEmphasiseDark;
 
     return themeData.copyWith(
       textTheme: TextTheme(

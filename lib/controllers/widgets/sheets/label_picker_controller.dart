@@ -21,8 +21,7 @@ class LabelPickerController {
   ValueListenable listenable() => GetIt.I<LabelService>().listenable;
 
   List<Label> getAllLabels(WidgetRef ref) {
-    final labels =
-        GetIt.I<LabelService>().getAllAndSort(ref.read(appThemeController).labelSortType);
+    final labels = GetIt.I<LabelService>().getAllAndSort(ref.read(appThemeController).labelSortType);
 
     _labelsAmount = labels.length;
     return labels;
@@ -30,8 +29,7 @@ class LabelPickerController {
 
   void showLabelDialog(WidgetRef ref) async {
     final withinFreeTier = _labelsAmount < 5;
-    final value = withinFreeTier ||
-        await ref.read(appThemeController.notifier).isPremiumUser(ref.context);
+    final value = withinFreeTier || await ref.read(appThemeController.notifier).isPremiumUser(ref.context);
 
     if (value) showModal(context: ref.context, builder: (_) => LabelDialog());
   }

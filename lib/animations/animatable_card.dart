@@ -17,8 +17,7 @@ class AnimatableCard extends StatefulWidget {
   State<AnimatableCard> createState() => _AnimatableCardState();
 }
 
-class _AnimatableCardState extends State<AnimatableCard>
-    with SingleTickerProviderStateMixin {
+class _AnimatableCardState extends State<AnimatableCard> with SingleTickerProviderStateMixin {
   final controller = AnimatableCardEntranceController.instance;
 
   late AnimationController entranceAnimController;
@@ -31,14 +30,13 @@ class _AnimatableCardState extends State<AnimatableCard>
       duration: const Duration(milliseconds: 500),
     );
 
-    if (controller.contains(widget.id)) {
+    if (controller.contains(widget.id))
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         await entranceAnimController.forward();
         controller.remove(widget.id);
       });
-    } else {
+    else
       entranceAnimController.value = 1.0;
-    }
   }
 
   @override

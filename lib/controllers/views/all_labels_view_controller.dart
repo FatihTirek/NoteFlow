@@ -51,8 +51,7 @@ class AllLabelsViewController with Utils {
   void showLabelDialog([Label? label]) async {
     if (label == null) {
       final withinFreeTier = cachedAllLabels.length < 5;
-      final value = withinFreeTier ||
-          await ref.read(appThemeController.notifier).isPremiumUser(ref.context);
+      final value = withinFreeTier || await ref.read(appThemeController.notifier).isPremiumUser(ref.context);
 
       if (value) showModal(context: ref.context, builder: (_) => LabelDialog());
     } else {

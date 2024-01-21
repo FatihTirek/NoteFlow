@@ -19,15 +19,13 @@ class NoteCard extends ConsumerWidget with Utils {
   final bool isGridView;
   final Note note;
 
-  const NoteCard(this.note, {this.isGridView = true})
-      : controller = const NoteCardController();
+  const NoteCard(this.note, {this.isGridView = true}) : controller = const NoteCardController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final backgroundColor = getNoteBackgroundColor(ref, note.backgroundIndex);
-    final tappable =
-        !ref.watch(contextualBarController.select((state) => state.active)) &&
-            noteWidgetLaunchDetails.launchAction != NoteWidgetLaunchAction.Select;
+    final tappable = !ref.watch(contextualBarController.select((state) => state.active)) &&
+        noteWidgetLaunchDetails.launchAction != NoteWidgetLaunchAction.Select;
 
     return ClipRRect(
       clipBehavior: Clip.hardEdge,
@@ -51,10 +49,7 @@ class NoteCard extends ConsumerWidget with Utils {
               closedShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
                 side: note.backgroundIndex == null
-                    ? BorderSide(
-                        width: 1.25,
-                        color: Theme.of(context).colorScheme.outline,
-                      )
+                    ? BorderSide(width: 1.25, color: Theme.of(context).colorScheme.outline)
                     : BorderSide.none,
               ),
             ),
@@ -71,8 +66,8 @@ class NoteCard extends ConsumerWidget with Utils {
                 child: Icon(
                   Icons.push_pin_sharp,
                   size: 15,
-                  color: note.backgroundIndex == null
-                      ? Theme.of(context).primaryColor
+                  color: note.backgroundIndex == null 
+                      ? Theme.of(context).primaryColor 
                       : backgroundColor.getOnTextColor(),
                 ),
               ),
@@ -95,9 +90,7 @@ class _NoteCardBody extends ConsumerWidget with Utils {
     final textTheme = Theme.of(context).textTheme;
     final barState = ref.watch(contextualBarController);
     final showLabels = ref.watch(appThemeController).showLabels;
-    final showContent = ref.watch(appThemeController).titleOnly
-        ? note.title.isEmpty
-        : note.content.isNotEmpty;
+    final showContent = ref.watch(appThemeController).titleOnly ? note.title.isEmpty : note.content.isNotEmpty;
 
     final limit = isGridView ? 4 : 8;
     final residuals = note.labelIDs.length - limit;
@@ -125,8 +118,7 @@ class _NoteCardBody extends ConsumerWidget with Utils {
               maxLines: isGridView ? 12 : 6,
               overflow: TextOverflow.ellipsis,
               style: textTheme.bodySmall!.copyWith(
-                color: note.contentColor ??
-                    (note.backgroundIndex != null
+                color: note.contentColor ?? (note.backgroundIndex != null
                         ? AppTheme.onMediumEmphasise(context)
                         : AppTheme.mediumEmphasise(context)),
               ),
@@ -141,8 +133,8 @@ class _NoteCardBody extends ConsumerWidget with Utils {
                 softWrap: false,
                 overflow: TextOverflow.fade,
                 style: textTheme.labelSmall!.copyWith(
-                  color: note.backgroundIndex != null
-                      ? AppTheme.onLowEmphasise(context)
+                  color: note.backgroundIndex != null 
+                      ? AppTheme.onLowEmphasise(context) 
                       : AppTheme.lowEmphasise(context),
                 ),
               ),
@@ -163,8 +155,7 @@ class _NoteCardBody extends ConsumerWidget with Utils {
                     activeColor: note.backgroundIndex == null
                         ? Theme.of(ref.context).primaryColor
                         : AppTheme.highEmphasise(context),
-                    onChanged: (_) =>
-                        ref.read(contextualBarController.notifier).onTapCard(note),
+                    onChanged: (_) => ref.read(contextualBarController.notifier).onTapCard(note),
                   ),
                 ),
             ],
@@ -175,10 +166,10 @@ class _NoteCardBody extends ConsumerWidget with Utils {
               spacing: 4,
               runSpacing: 4,
               children: [
-                ...controller.getCurrentLabels(note, limit).map((label) =>
-                    buildChip(label.name, backgroundColor, textTheme.labelSmall!)),
-                if (residuals.sign == 1)
-                  buildChip('+$residuals', backgroundColor, textTheme.labelSmall!)
+                ...controller
+                    .getCurrentLabels(note, limit)
+                    .map((label) => buildChip(label.name, backgroundColor, textTheme.labelSmall!)),
+                if (residuals.sign == 1) buildChip('+$residuals', backgroundColor, textTheme.labelSmall!)
               ],
             ),
         ],
@@ -193,11 +184,7 @@ class _NoteCardBody extends ConsumerWidget with Utils {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        child: Text(
-          label,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
+        child: Text(label, maxLines: 1, overflow: TextOverflow.ellipsis),
       ),
     );
   }

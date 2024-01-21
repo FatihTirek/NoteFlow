@@ -61,22 +61,13 @@ class _SearchState extends ConsumerState<SearchView> {
                   decoration: InputDecoration(
                     filled: true,
                     isDense: true,
-                    fillColor: Theme.of(context).colorScheme.onSurface,
                     hintText: AppLocalizations.instance.w16,
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
-                    hintStyle: bodyLarge.copyWith(
-                      color: AppTheme.lowEmphasise(context),
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+                    fillColor: Theme.of(context).colorScheme.onSurface,
+                    contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    hintStyle: bodyLarge.copyWith(color: AppTheme.lowEmphasise(context)),
+                    border: OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(8)),
                   ),
-                  contextMenuBuilder: (_, editableTextState) =>
-                      AppContextMenu(editableTextState),
+                  contextMenuBuilder: (_, editableTextState) => AppContextMenu(editableTextState),
                 ),
                 actions: [
                   ValueListenableBuilder(

@@ -56,25 +56,19 @@ class _SettingsViewState extends ConsumerState<SettingsView> {
               tileColor: surface,
               onTap: controller.showThemePicker,
               title: buildTitle(localizations.w34),
-              trailing: buildValueText(
-                ref.read(appThemeController.notifier).getCurrentTheme(),
-              ),
+              trailing: buildValueText(ref.read(appThemeController.notifier).getCurrentTheme()),
             ),
             ListTile(
               tileColor: surface,
               onTap: controller.showLanguagePicker,
               title: buildTitle(localizations.w36),
-              trailing: buildValueText(
-                ref.read(appThemeController.notifier).getCurrentLanguage(),
-              ),
+              trailing: buildValueText(ref.read(appThemeController.notifier).getCurrentLanguage()),
             ),
             ListTile(
               tileColor: surface,
               onTap: controller.showFontPicker,
               title: buildTitle(localizations.w35),
-              trailing: buildValueText(
-                ref.read(appThemeController.notifier).getCurrentFont(),
-              ),
+              trailing: buildValueText(ref.read(appThemeController.notifier).getCurrentFont()),
             ),
             ListTile(
               tileColor: surface,
@@ -99,8 +93,7 @@ class _SettingsViewState extends ConsumerState<SettingsView> {
               checkColor: textColor,
               title: buildTitle(localizations.w90),
               value: ref.watch(appThemeController).titleOnly,
-              onChanged: (value) =>
-                  ref.read(appThemeController.notifier).setTitleOnly(value!),
+              onChanged: (value) => ref.read(appThemeController.notifier).setTitleOnly(value!),
             ),
             CheckboxListTile(
               activeColor: primaryColor,
@@ -109,8 +102,7 @@ class _SettingsViewState extends ConsumerState<SettingsView> {
               visualDensity: VisualDensity.standard,
               title: buildTitle(localizations.w91),
               value: ref.watch(appThemeController).showLabels,
-              onChanged: (value) =>
-                  ref.read(appThemeController.notifier).setShowLabels(value!),
+              onChanged: (value) => ref.read(appThemeController.notifier).setShowLabels(value!),
             ),
             buildSectionTile(localizations.p3(2)),
             ListTile(
@@ -173,22 +165,13 @@ class _SettingsViewState extends ConsumerState<SettingsView> {
   }
 
   Widget buildSectionTile(String title, [bool ignore = false]) {
-    final side = BorderSide(
-      width: 1.25,
-      color: Theme.of(context).colorScheme.outline,
-    );
+    final side = BorderSide(width: 1.25, color: Theme.of(context).colorScheme.outline);
 
     return ListTile(
       tileColor: Colors.transparent,
       contentPadding: const EdgeInsets.only(top: 4, left: 16),
       shape: Border(top: ignore ? BorderSide.none : side, bottom: side),
-      title: Text(
-        title,
-        style: Theme.of(context)
-            .textTheme
-            .titleMedium!
-            .copyWith(color: Theme.of(context).primaryColor),
-      ),
+      title: Text(title, style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).primaryColor)),
     );
   }
 
@@ -207,8 +190,7 @@ class _SettingsViewState extends ConsumerState<SettingsView> {
     );
   }
 
-  Widget buildTitle(String text) =>
-      Text(text, style: Theme.of(context).textTheme.bodyLarge);
+  Widget buildTitle(String text) => Text(text, style: Theme.of(context).textTheme.bodyLarge);
 
   Widget buildValueText(String text) => Text(
         text,
@@ -218,11 +200,6 @@ class _SettingsViewState extends ConsumerState<SettingsView> {
         style: Theme.of(context).textTheme.bodyMedium,
       );
 
-  Widget buildSubTitle(String text) => Text(
-        text,
-        style: Theme.of(context)
-            .textTheme
-            .bodySmall!
-            .copyWith(color: AppTheme.lowEmphasise(context)),
-      );
+  Widget buildSubTitle(String text) =>
+      Text(text, style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppTheme.lowEmphasise(context)));
 }

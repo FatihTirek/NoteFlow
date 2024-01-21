@@ -25,8 +25,7 @@ class FolderCard extends ConsumerStatefulWidget {
   _FolderCardState createState() => _FolderCardState();
 }
 
-class _FolderCardState extends ConsumerState<FolderCard>
-    with SingleTickerProviderStateMixin, Utils {
+class _FolderCardState extends ConsumerState<FolderCard> with SingleTickerProviderStateMixin, Utils {
   late FolderCardController controller;
 
   @override
@@ -67,19 +66,13 @@ class _FolderCardState extends ConsumerState<FolderCard>
                 backgroundColor: colorScheme.surface,
                 onTap: () => controller.onTapEdit(widget.folder),
                 icon: Icon(Icons.edit_outlined, color: primaryColor),
-                borderSide: BorderSide(
-                  color: colorScheme.outline,
-                  width: 1.25,
-                ),
+                borderSide: BorderSide(color: colorScheme.outline, width: 1.25),
               ),
               SlidableCardAction(
                 backgroundColor: colorScheme.surface,
                 onTap: () => controller.onTapDelete(widget.folder),
                 icon: Icon(Icons.delete_outline_rounded, color: primaryColor),
-                borderSide: BorderSide(
-                  color: colorScheme.outline,
-                  width: 1.25,
-                ),
+                borderSide: BorderSide(color: colorScheme.outline, width: 1.25),
               ),
             ],
           ),
@@ -107,10 +100,7 @@ class _FolderCardState extends ConsumerState<FolderCard>
             : BorderSide(color: colorScheme.outline, width: 1.25),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 8,
-          horizontal: 16,
-        ),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Row(
           children: [
             preImage,
@@ -125,10 +115,7 @@ class _FolderCardState extends ConsumerState<FolderCard>
               ),
             ),
             const SizedBox(width: 16),
-            Text(
-              widget.folder.numberOfNotes.toString(),
-              style: textTheme.bodyMedium,
-            ),
+            Text(widget.folder.numberOfNotes.toString(), style: textTheme.bodyMedium),
           ],
         ),
       ),

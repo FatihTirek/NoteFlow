@@ -28,16 +28,8 @@ class SortTypePicker extends ConsumerWidget {
         'icon': Icons.sort_by_alpha_outlined,
         'enum': FolderSortType.AlphabeticallyZA
       },
-      {
-        'text': AppLocalizations.instance.w98,
-        'icon': Icons.access_time_outlined,
-        'enum': FolderSortType.CreatedNF
-      },
-      {
-        'text': AppLocalizations.instance.w99,
-        'icon': Icons.access_time_outlined,
-        'enum': FolderSortType.CreatedOF
-      },
+      {'text': AppLocalizations.instance.w98, 'icon': Icons.access_time_outlined, 'enum': FolderSortType.CreatedNF},
+      {'text': AppLocalizations.instance.w99, 'icon': Icons.access_time_outlined, 'enum': FolderSortType.CreatedOF},
     ];
 
     final _itemsLabel = [
@@ -51,44 +43,16 @@ class SortTypePicker extends ConsumerWidget {
         'icon': Icons.sort_by_alpha_outlined,
         'enum': LabelSortType.AlphabeticallyZA
       },
-      {
-        'text': AppLocalizations.instance.w98,
-        'icon': Icons.access_time_outlined,
-        'enum': LabelSortType.CreatedNF
-      },
-      {
-        'text': AppLocalizations.instance.w99,
-        'icon': Icons.access_time_outlined,
-        'enum': LabelSortType.CreatedOF
-      },
+      {'text': AppLocalizations.instance.w98, 'icon': Icons.access_time_outlined, 'enum': LabelSortType.CreatedNF},
+      {'text': AppLocalizations.instance.w99, 'icon': Icons.access_time_outlined, 'enum': LabelSortType.CreatedOF},
     ];
 
     final _itemsNote = [
-      {
-        'text': AppLocalizations.instance.w89,
-        'icon': Icons.push_pin_sharp,
-        'enum': NoteSortType.Pinned
-      },
-      {
-        'text': AppLocalizations.instance.w98,
-        'icon': Icons.access_time_outlined,
-        'enum': NoteSortType.CreatedNF
-      },
-      {
-        'text': AppLocalizations.instance.w99,
-        'icon': Icons.access_time_outlined,
-        'enum': NoteSortType.CreatedOF
-      },
-      {
-        'text': AppLocalizations.instance.w38,
-        'icon': Icons.timelapse_outlined,
-        'enum': NoteSortType.EditedNF
-      },
-      {
-        'text': AppLocalizations.instance.w39,
-        'icon': Icons.timelapse_outlined,
-        'enum': NoteSortType.EditedOF
-      },
+      {'text': AppLocalizations.instance.w89, 'icon': Icons.push_pin_sharp, 'enum': NoteSortType.Pinned},
+      {'text': AppLocalizations.instance.w98, 'icon': Icons.access_time_outlined, 'enum': NoteSortType.CreatedNF},
+      {'text': AppLocalizations.instance.w99, 'icon': Icons.access_time_outlined, 'enum': NoteSortType.CreatedOF},
+      {'text': AppLocalizations.instance.w38, 'icon': Icons.timelapse_outlined, 'enum': NoteSortType.EditedNF},
+      {'text': AppLocalizations.instance.w39, 'icon': Icons.timelapse_outlined, 'enum': NoteSortType.EditedOF},
     ];
 
     Object currentSortType;
@@ -118,20 +82,14 @@ class SortTypePicker extends ConsumerWidget {
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-              child: Text(
-                AppLocalizations.instance.w95,
-                style: textTheme.titleLarge,
-              ),
+              child: Text(AppLocalizations.instance.w95, style: textTheme.titleLarge),
             ),
             ...items.map((object) {
               final active = currentSortType == object['enum'];
               final color = active ? primaryColor.withOpacity(.16) : null;
 
               return Theme(
-                data: Theme.of(context).copyWith(
-                  splashColor: color,
-                  highlightColor: color,
-                ),
+                data: Theme.of(context).copyWith(splashColor: color, highlightColor: color),
                 child: ListTile(
                   tileColor: color,
                   onTap: () => Navigator.pop(context, object['enum']),
@@ -141,9 +99,7 @@ class SortTypePicker extends ConsumerWidget {
                   ),
                   title: Text(
                     object['text'],
-                    style: active
-                        ? textTheme.bodyLarge!.copyWith(color: primaryColor)
-                        : textTheme.bodyLarge,
+                    style: active ? textTheme.bodyLarge!.copyWith(color: primaryColor) : textTheme.bodyLarge,
                   ),
                 ),
               );

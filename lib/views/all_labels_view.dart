@@ -12,8 +12,7 @@ class AllLabelsView extends ConsumerStatefulWidget {
   _AllLabelsViewState createState() => _AllLabelsViewState();
 }
 
-class _AllLabelsViewState extends ConsumerState<AllLabelsView>
-    with SingleTickerProviderStateMixin {
+class _AllLabelsViewState extends ConsumerState<AllLabelsView> with SingleTickerProviderStateMixin {
   late AllLabelsViewController controller;
 
   @override
@@ -37,8 +36,7 @@ class _AllLabelsViewState extends ConsumerState<AllLabelsView>
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final labelSortType =
-        ref.watch(appThemeController.select((state) => state.labelSortType));
+    final labelSortType = ref.watch(appThemeController.select((state) => state.labelSortType));
 
     return ValueListenableBuilder(
       valueListenable: controller.searchMode,
@@ -59,7 +57,7 @@ class _AllLabelsViewState extends ConsumerState<AllLabelsView>
             animation: Listenable.merge([
               controller.listenable,
               controller.searchMode,
-              controller.searchedLabels
+              controller.searchedLabels,
             ]),
             builder: (_, __) {
               final labels = controller.searchMode.value
@@ -74,12 +72,11 @@ class _AllLabelsViewState extends ConsumerState<AllLabelsView>
                       (label) => GestureDetector(
                         onTap: () => controller.showLabelDialog(label),
                         child: Material(
-                          textStyle: Theme.of(context).textTheme.bodyMedium,
                           color: colorScheme.surface,
+                          textStyle: Theme.of(context).textTheme.bodyMedium,
                           child: Padding(
                             child: Text(label.name),
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),

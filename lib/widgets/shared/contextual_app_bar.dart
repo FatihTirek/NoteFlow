@@ -27,27 +27,15 @@ class ContextualAppBar extends ConsumerWidget implements PreferredSizeWidget {
         pinned: true,
         forceElevated: false,
         actions: buildActions(ref),
-        leading: IconButton(
-          icon: Icon(Icons.clear_rounded),
-          onPressed: controller.closeBar,
-        ),
-        title: Text(
-          ref.watch(contextualBarController).notes.length.toString(),
-          style: textTheme.titleLarge,
-        ),
+        leading: IconButton(icon: Icon(Icons.clear_rounded), onPressed: controller.closeBar),
+        title: Text(ref.watch(contextualBarController).notes.length.toString(), style: textTheme.titleLarge),
       );
     }
 
     return AppBar(
       actions: buildActions(ref),
-      leading: IconButton(
-        icon: Icon(Icons.clear_rounded),
-        onPressed: controller.closeBar,
-      ),
-      title: Text(
-        ref.watch(contextualBarController).notes.length.toString(),
-        style: textTheme.titleLarge,
-      ),
+      leading: IconButton(icon: Icon(Icons.clear_rounded), onPressed: controller.closeBar),
+      title: Text(ref.watch(contextualBarController).notes.length.toString(), style: textTheme.titleLarge),
     );
   }
 
@@ -82,14 +70,8 @@ class ContextualAppBar extends ConsumerWidget implements PreferredSizeWidget {
             child: ListTile(
               dense: true,
               horizontalTitleGap: 0,
-              leading: Icon(
-                Icons.drive_file_move_outlined,
-                color: AppTheme.lowEmphasise(ref.context),
-              ),
-              title: Text(
-                AppLocalizations.instance.w23,
-                style: textTheme.labelMedium,
-              ),
+              title: Text(AppLocalizations.instance.w23, style: textTheme.labelMedium),
+              leading: Icon(Icons.drive_file_move_outlined, color: AppTheme.lowEmphasise(ref.context)),
             ),
           ),
           PopupMenuItem(
@@ -98,14 +80,8 @@ class ContextualAppBar extends ConsumerWidget implements PreferredSizeWidget {
             child: ListTile(
               dense: true,
               horizontalTitleGap: 0,
-              leading: Icon(
-                Icons.delete_outline_rounded,
-                color: AppTheme.lowEmphasise(ref.context),
-              ),
-              title: Text(
-                AppLocalizations.instance.w24,
-                style: textTheme.labelMedium,
-              ),
+              title: Text(AppLocalizations.instance.w24, style: textTheme.labelMedium),
+              leading: Icon(Icons.delete_outline_rounded, color: AppTheme.lowEmphasise(ref.context)),
             ),
           ),
         ],

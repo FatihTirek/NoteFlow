@@ -19,8 +19,7 @@ class AppThemeController extends AutoDisposeNotifier<AppThemeState> {
     if (appThemeState == null) {
       final locales = AppLocalizationsDelegate.locales;
       final systemLocale = Platform.localeName.substring(0, 2);
-      final languageCode =
-          locales.firstWhere((e) => e == systemLocale, orElse: () => locales.first);
+      final languageCode = locales.firstWhere((e) => e == systemLocale, orElse: () => locales.first);
       final language = Language.values[locales.indexOf(languageCode)];
 
       return AppThemeState(language: language);
@@ -31,11 +30,7 @@ class AppThemeController extends AutoDisposeNotifier<AppThemeState> {
 
   Future<bool> isPremiumUser(BuildContext context) async {
     if (!state.isPremium) {
-      await Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => PremiumView()),
-      );
-
+      await Navigator.push(context, MaterialPageRoute(builder: (_) => PremiumView()));
       return state.isPremium;
     }
 
@@ -118,18 +113,15 @@ class AppThemeController extends AutoDisposeNotifier<AppThemeState> {
   }
 
   void setLabelSortType(LabelSortType labelSortType) {
-    if (labelSortType != state.labelSortType)
-      _update(state.copyWith(labelSortType: labelSortType));
+    if (labelSortType != state.labelSortType) _update(state.copyWith(labelSortType: labelSortType));
   }
 
   void setFolderSortType(FolderSortType folderSortType) {
-    if (folderSortType != state.folderSortType)
-      _update(state.copyWith(folderSortType: folderSortType));
+    if (folderSortType != state.folderSortType) _update(state.copyWith(folderSortType: folderSortType));
   }
 
   void setNoteSortType(NoteSortType noteSortType) {
-    if (noteSortType != state.noteSortType)
-      _update(state.copyWith(noteSortType: noteSortType));
+    if (noteSortType != state.noteSortType) _update(state.copyWith(noteSortType: noteSortType));
   }
 
   void setLanguage(Language language) {
@@ -157,6 +149,4 @@ class AppThemeController extends AutoDisposeNotifier<AppThemeState> {
   }
 }
 
-final appThemeController =
-    NotifierProvider.autoDispose<AppThemeController, AppThemeState>(
-        () => AppThemeController());
+final appThemeController = NotifierProvider.autoDispose<AppThemeController, AppThemeState>(() => AppThemeController());

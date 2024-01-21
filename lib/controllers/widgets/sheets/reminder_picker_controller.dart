@@ -18,8 +18,7 @@ class ReminderPickerController {
     hour = reminder?.hour ?? (now.minute ~/ 5 == 11 ? now.hour + 1 : now.hour);
     date = reminder ?? now;
 
-    dateController =
-        FixedExtentScrollController(initialItem: date.difference(now).inDays);
+    dateController = FixedExtentScrollController(initialItem: date.difference(now).inDays);
     minuteController = FixedExtentScrollController(initialItem: minute ~/ 5);
     hourController = FixedExtentScrollController(initialItem: hour);
   }
@@ -36,8 +35,7 @@ class ReminderPickerController {
 
   void onDateChanged(int value) => date = now.add(Duration(days: value));
 
-  void onTapDone(BuildContext context) =>
-      Navigator.pop(context, DateTime(date.year, date.month, date.day, hour, minute));
+  void onTapDone(BuildContext context) => Navigator.pop(context, DateTime(date.year, date.month, date.day, hour, minute));
 
   void onTapCancel(BuildContext context) => Navigator.pop(context);
 

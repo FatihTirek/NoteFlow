@@ -41,9 +41,7 @@ class ThemePicker extends ConsumerWidget {
                 onChanged: controller.onChanged,
                 value: ThemeMode.values[index],
                 contentPadding: EdgeInsets.zero,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4),
-                ),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
               ),
               child: Text(
                 ref.read(appThemeController.notifier).getTheme(ThemeMode.values[index]),
