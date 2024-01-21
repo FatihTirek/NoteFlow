@@ -99,7 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "w44" : MessageLookupByLibrary.simpleMessage("Lütfen yedekleme dosyasının cihazın indirilenler klasöründe nf_backup.json olarak bulunduğundan emin olun"),
     "w45" : MessageLookupByLibrary.simpleMessage("Hakkında"),
     "w46" : MessageLookupByLibrary.simpleMessage("Geribildirim gönder"),
-    "w47" : MessageLookupByLibrary.simpleMessage("Derecelendir"),
+    "w47" : MessageLookupByLibrary.simpleMessage("Derecelendirin"),
     "w49" : MessageLookupByLibrary.simpleMessage("Başarılı"),
     "w5" : MessageLookupByLibrary.simpleMessage("Tüm Notlar"),
     "w50" : MessageLookupByLibrary.simpleMessage("Bilinmeyen bir hata oluştu"),
