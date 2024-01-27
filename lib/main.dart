@@ -12,7 +12,9 @@ import 'utils.dart';
 
 const isDebug = true;
 
-late Image preImage;
+late Image preImageFolder;
+late Image preImagePinDark;
+late Image preImagePinLight;
 
 void main() async {
   GoogleFonts.config.allowRuntimeFetching = isDebug;
@@ -50,8 +52,12 @@ class _NoteFlowState extends ConsumerState<NoteFlow> with Utils {
     final language = ref.watch(appThemeController.select((state) => state.language));
     final font = ref.watch(appThemeController.select((state) => state.font));
 
-    preImage = Image.asset('assets/img/folder.png', width: 48, height: 48);
-    precacheImage(preImage.image, context);
+    preImageFolder = Image.asset('assets/img/folder.png', width: 48, height: 48);
+    preImagePinDark = Image.asset('assets/img/pin_dark.png', width: 25.6, height: 25.6);
+    preImagePinLight = Image.asset('assets/img/pin_light.png', width: 25.6, height: 25.6);
+    precacheImage(preImageFolder.image, context);
+    precacheImage(preImagePinDark.image, context);
+    precacheImage(preImagePinLight.image, context);
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: getUIStyle(themeMode),

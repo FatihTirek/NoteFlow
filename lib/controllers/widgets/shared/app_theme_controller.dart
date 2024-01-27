@@ -43,8 +43,6 @@ class AppThemeController extends AutoDisposeNotifier<AppThemeState> {
 
   String getCurrentLanguage() => getLanguage(state.language);
 
-  String getCurrentNoteSortType() => getNoteSortType(state.noteSortType);
-
   String getCurrentStartupFolderName() {
     if (state.startupFolderID != null)
       return GetIt.I<FolderService>().get(state.startupFolderID!).name;

@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../controllers/views/note_details_view_controller.dart';
+import '../controllers/views/note_view_controller.dart';
 import '../controllers/widgets/shared/app_theme_controller.dart';
 import '../i18n/localizations.dart';
 import '../models/note.dart';
@@ -14,18 +14,18 @@ import '../widgets/shared/app_context_menu.dart';
 
 enum _PopUpMenuOption { Pin, Share, Delete }
 
-class NoteDetailsView extends ConsumerStatefulWidget {
+class NoteView extends ConsumerStatefulWidget {
   final Note? note;
   final String? folderID;
 
-  const NoteDetailsView({this.note, this.folderID});
+  const NoteView({this.note, this.folderID});
 
   @override
-  _NoteDetailsViewState createState() => _NoteDetailsViewState();
+  _NoteViewState createState() => _NoteViewState();
 }
 
-class _NoteDetailsViewState extends ConsumerState<NoteDetailsView> with SingleTickerProviderStateMixin, Utils {
-  late NoteDetailsViewController controller;
+class _NoteViewState extends ConsumerState<NoteView> with SingleTickerProviderStateMixin, Utils {
+  late NoteViewController controller;
 
   final titleFocus = FocusNode();
   final contentFocus = FocusNode();
@@ -33,7 +33,7 @@ class _NoteDetailsViewState extends ConsumerState<NoteDetailsView> with SingleTi
   @override
   void initState() {
     super.initState();
-    controller = NoteDetailsViewController(
+    controller = NoteViewController(
       ref,
       widget.note,
       widget.folderID,

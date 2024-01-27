@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../extensions/color_extension.dart';
 import '../../controllers/widgets/shared/contextual_appbar_controller.dart';
-import '../../views/note_details_view.dart';
+import '../../views/note_view.dart';
 
 class AppFloatingActionButton extends ConsumerStatefulWidget {
   final String? folderID;
@@ -59,7 +59,7 @@ class _AnimatedFloatingActionButtonState extends ConsumerState<AppFloatingAction
           closedColor: primaryColor,
           openColor: Theme.of(context).colorScheme.surface,
           transitionType: ContainerTransitionType.fadeThrough,
-          openBuilder: (_, __) => NoteDetailsView(folderID: widget.folderID),
+          openBuilder: (_, __) => NoteView(folderID: widget.folderID),
           closedShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(64)),
           closedBuilder: (_, __) => SizedBox(
             width: 60,

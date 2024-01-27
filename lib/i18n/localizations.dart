@@ -15,8 +15,7 @@ class AppLocalizations {
     });
   }
 
-  static AppLocalizations get instance =>
-      AppLocalizationsDelegate.instance ?? AppLocalizations();
+  static AppLocalizations get instance => AppLocalizationsDelegate.instance ?? AppLocalizations();
 
   String p0(int num) => Intl.plural(
         num,
@@ -300,7 +299,7 @@ class AppLocalizations {
         name: 'w74',
       );
   String get w75 => Intl.message(
-        'NoteFlow made by independent developer and it needs to be translated to other languages. So, If you want to contribute to the translation please email me from feedback section. It really helps to other people and also me :)',
+        'NoteFlow made by independent developer and it needs to be translated to other languages. If you want to contribute to the translation please email me from feedback section. It really helps to other people and also me :)',
         name: 'w75',
       );
   String get w76 => Intl.message(
@@ -384,7 +383,7 @@ class AppLocalizations {
         name: 'w99',
       );
   String get w102 => Intl.message(
-        'Note: If you already have backup file you need to override it. Otherwise, the system will create it as a new file that will consume your storage space unnecessarily. To override, simply tap on it and then press save button',
+        'Note: If you already have a backup file you should override it. Otherwise, system will create it as a new file that will consume your storage space unnecessarily. To override, simply tap on it and then press save button',
         name: 'w102',
       );
   String get w103 => Intl.message(
@@ -486,6 +485,10 @@ class AppLocalizations {
   String get w127 => Intl.message(
         'Cancel Reminder',
         name: 'w127',
+      );
+  String get w128 => Intl.message(
+        'Filter',
+        name: 'w128',
       );
 }
 

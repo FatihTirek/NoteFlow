@@ -149,6 +149,7 @@ class _AllLabelsViewState extends ConsumerState<AllLabelsView> with SingleTicker
         IconButton(
           onPressed: controller.showSortPicker,
           icon: Icon(Icons.sort_outlined),
+          iconSize: 25,
         ),
         IconButton(
           onPressed: controller.showLabelDialog,

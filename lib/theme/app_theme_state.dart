@@ -8,7 +8,7 @@ enum LabelSortType { AlphabeticallyAZ, AlphabeticallyZA, CreatedNF, CreatedOF }
 
 enum FolderSortType { AlphabeticallyAZ, AlphabeticallyZA, CreatedNF, CreatedOF }
 
-enum Font { JosefinSans, PtSans, Rubik, SourceSans, FiraSans, OpenSans, QuickSand, IBMPlexSans, Kanit }
+enum Font { JosefinSans, PtSans, Rubik, SourceSans, FiraSans, OpenSans, QuickSand, IBMPlexSans, Kanit, Righteous }
 
 class AppThemeState {
   final Font font;

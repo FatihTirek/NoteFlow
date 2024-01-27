@@ -129,6 +129,7 @@ class _AllFoldersViewState extends ConsumerState<AllFoldersView> with SingleTick
         IconButton(
           onPressed: controller.showSortPicker,
           icon: Icon(Icons.sort_outlined),
+          iconSize: 25,
         ),
         IconButton(
           onPressed: controller.showFolderDialog,

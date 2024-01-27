@@ -79,14 +79,6 @@ class _SettingsViewState extends ConsumerState<SettingsView> {
               ),
             ),
             buildSectionTile(localizations.w22),
-            ListTile(
-              tileColor: surface,
-              onTap: controller.showSortPicker,
-              title: buildFlexibleTitle(
-                localizations.w60,
-                ref.read(appThemeController.notifier).getCurrentNoteSortType(),
-              ),
-            ),
             CheckboxListTile(
               activeColor: primaryColor,
               tileColor: surface,

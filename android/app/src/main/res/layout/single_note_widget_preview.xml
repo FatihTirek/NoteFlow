@@ -1,5 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/note_widget_initial_background_color"
+    android:background="@color/single_note_widget_initial_background_color"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,19 +9,19 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:src="@drawable/change_circle"
+            android:src="@drawable/icon_change_circle"
             android:layout_marginVertical="4dp"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
 
         <ImageView
-            android:src="@drawable/note_widget_divider"
+            android:src="@drawable/single_note_widget_divider"
             android:layout_width="1dp"
             android:layout_height="match_parent"/>
 
         <ImageView
-            android:src="@drawable/add_circle"
+            android:src="@drawable/icon_add_circle"
             android:layout_marginVertical="4dp"
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -29,26 +29,26 @@
     </LinearLayout>
 
     <ImageView
-        android:src="@drawable/note_widget_divider"
+        android:src="@drawable/single_note_widget_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
     <TextView
-        android:text="@string/note_widget_preview_title"
+        android:text="@string/single_note_widget_preview_title"
+        android:textColor="@color/single_note_widget_initial_title_color"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/note_widget_initial_title_color"
         android:textSize="16sp"
         android:includeFontPadding="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:text="@string/note_widget_preview_content"
+        android:text="@string/single_note_widget_preview_content"
+        android:textColor="@color/single_note_widget_initial_content_color"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        android:textColor="@color/note_widget_initial_content_color"
         android:textSize="14sp"
         android:includeFontPadding="false"
         android:layout_width="wrap_content"

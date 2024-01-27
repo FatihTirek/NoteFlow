@@ -5,6 +5,6 @@
     android:updatePeriodMillis="0"
     android:widgetCategory="home_screen"
     android:resizeMode="horizontal|vertical"
-    android:initialLayout="@layout/note_widget"
-    android:initialKeyguardLayout="@layout/note_widget"
-    android:previewImage="@drawable/note_widget_preview" />
+    android:initialLayout="@layout/single_note_widget"
+    android:initialKeyguardLayout="@layout/single_note_widget"
+    android:previewImage="@drawable/single_note_widget_preview" />

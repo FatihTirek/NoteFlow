@@ -2,7 +2,7 @@
 <resources>
     <color name="splash_color">#FAFAFA</color>
     <color name="ic_launcher_background">#FAF6EB</color>
-    <color name="note_widget_initial_title_color">#242424</color>
-    <color name="note_widget_initial_content_color">#545454</color>
-    <color name="note_widget_initial_background_color">#FFFFFF</color>
+    <color name="single_note_widget_initial_title_color">#242424</color>
+    <color name="single_note_widget_initial_content_color">#545454</color>
+    <color name="single_note_widget_initial_background_color">#FFFFFF</color>
 </resources>

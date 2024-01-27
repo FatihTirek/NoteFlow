@@ -24,7 +24,6 @@ import '../../services/folder_service.dart';
 import '../../services/label_service.dart';
 import '../../services/note_service.dart';
 import '../../utils.dart';
-import '../../widgets/sheets/sort_type_picker.dart';
 import '../main_controller.dart';
 import '../widgets/shared/app_theme_controller.dart';
 
@@ -44,11 +43,6 @@ class SettingsViewController with Utils {
   void showLanguagePicker() => showModal(context: ref.context, builder: (_) => LanguagePicker(ref));
 
   void showFontPicker() => showSheet(ref.context, FontPicker());
-
-  void showSortPicker() async {
-    final value = await showSheet(ref.context, SortTypePicker(SortTypePickerMode.Note));
-    if (value != null) ref.read(appThemeController.notifier).setNoteSortType(value);
-  }
 
   void openNotificationSettings() => channelMain.invokeMethod('openNotificationSettings');
 
@@ -84,7 +78,7 @@ class SettingsViewController with Utils {
       map[StringConstants.dbFolders] = GetIt.I<FolderService>().getAllRaw();
 
       if (androidDeviceInfo.version.sdkInt >= 30) {
-        await channelMain.invokeMethod('createFile', {
+        channelMain.invokeMethod('createBackupFile', {
           'json': jsonEncode(map),
           'error': AppLocalizations.instance.w50,
           'success': AppLocalizations.instance.w49,
@@ -110,7 +104,10 @@ class SettingsViewController with Utils {
         Map json;
 
         if (androidDeviceInfo.version.sdkInt >= 30)
-          json = jsonDecode(await channelMain.invokeMethod('openFile'));
+          json = jsonDecode(await channelMain.invokeMethod('getBackupFile', {
+            'unknownError': AppLocalizations.instance.w50,
+            'notFound': AppLocalizations.instance.w53,
+          }));
         else
           json = jsonDecode(await file.readAsString());
 

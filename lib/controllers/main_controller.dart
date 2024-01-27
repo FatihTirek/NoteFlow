@@ -14,7 +14,7 @@ import 'package:timezone/data/latest.dart' as timezone;
 import '../constants.dart';
 import '../utils.dart';
 import '../views/home_view.dart';
-import '../views/note_details_view.dart';
+import '../views/note_view.dart';
 import '../firebase_options.dart';
 import '../i18n/localizations.dart';
 import '../theme/app_theme_state.dart';
@@ -46,7 +46,7 @@ Future<void> _onReceiveNotification(NotificationResponse response) async {
   else
     note = GetIt.I<NoteService>().get(data);
 
-  navigator.currentState?.push(MaterialPageRoute(builder: (_) => NoteDetailsView(note: note)));
+  navigator.currentState?.push(MaterialPageRoute(builder: (_) => NoteView(note: note)));
 }
 
 class NoteFlowController with Utils {
@@ -130,15 +130,15 @@ class NoteFlowController with Utils {
 
     if (notificationAppLaunchDetails!.didNotificationLaunchApp) {
       final payload = jsonDecode(notificationAppLaunchDetails!.notificationResponse!.payload!);
-      view = NoteDetailsView(note: payload is Map ? Note.fromMap(payload) : GetIt.I<NoteService>().get(payload));
+      view = NoteView(note: payload is Map ? Note.fromMap(payload) : GetIt.I<NoteService>().get(payload));
     } else {
       switch (noteWidgetLaunchDetails.launchAction) {
         case NoteWidgetLaunchAction.Show:
           final noteID = noteWidgetLaunchDetails.launchedNoteID!;
-          view = NoteDetailsView(note: GetIt.I<NoteService>().get(noteID));
+          view = NoteView(note: GetIt.I<NoteService>().get(noteID));
           break;
         case NoteWidgetLaunchAction.Add:
-          view = NoteDetailsView();
+          view = NoteView();
           break;
         default:
           view = HomeView();

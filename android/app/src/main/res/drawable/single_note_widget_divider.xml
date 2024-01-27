@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-    <solid android:color="@color/note_widget_initial_title_color"/>
+    <solid android:color="@color/single_note_widget_initial_title_color"/>
 </shape>

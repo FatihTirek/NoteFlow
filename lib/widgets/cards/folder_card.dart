@@ -103,7 +103,7 @@ class _FolderCardState extends ConsumerState<FolderCard> with SingleTickerProvid
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Row(
           children: [
-            preImage,
+            preImageFolder,
             const SizedBox(width: 16),
             Expanded(
               child: Text(

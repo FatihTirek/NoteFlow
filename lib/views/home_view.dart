@@ -13,7 +13,7 @@ import '../widgets/shared/app_floating_action_button.dart';
 import '../widgets/shared/contextual_app_bar.dart';
 import '../widgets/shared/note_layout_resolver.dart';
 
-enum _PopUpMenuOption { Labels, Folders, Settings }
+enum _PopUpMenuOption { Search, Filter, Labels, Folders, Settings }
 
 class HomeView extends ConsumerStatefulWidget {
   @override
@@ -85,19 +85,14 @@ class _HomeViewState extends ConsumerState<HomeView> {
                                 ? null
                                 : [
                                     IconButton(
-                                      onPressed: controller.goSearchView,
-                                      icon: Icon(Icons.search_outlined),
-                                    ),
-                                    IconButton(
-                                      onPressed: controller.goFilterView,
-                                      icon: Icon(Icons.filter_alt_outlined),
+                                      onPressed: controller.showSortPicker,
+                                      icon: Icon(Icons.sort_outlined),
+                                      iconSize: 25,
                                     ),
                                     IconButton(
                                       iconSize: isGridView ? 26 : 24,
                                       onPressed: ref.read(appThemeController.notifier).setIsGridView,
-                                      icon: Icon(
-                                        isGridView ? Icons.view_list_outlined : Icons.grid_view_outlined,
-                                      ),
+                                      icon: Icon(isGridView ? Icons.view_list_outlined : Icons.grid_view_outlined),
                                     ),
                                     buildPopUpMenu()
                                   ],
@@ -135,6 +130,16 @@ class _HomeViewState extends ConsumerState<HomeView> {
   Widget buildPopUpMenu() {
     final items = [
       {
+        'enum': _PopUpMenuOption.Search,
+        'icon': Icons.search_outlined,
+        'text': AppLocalizations.instance.w12,
+      },
+      {
+        'enum': _PopUpMenuOption.Filter,
+        'icon': Icons.filter_alt_outlined,
+        'text': AppLocalizations.instance.w128,
+      },
+      {
         'enum': _PopUpMenuOption.Labels,
         'icon': Icons.label_outline,
         'text': AppLocalizations.instance.w83,
@@ -165,28 +170,30 @@ class _HomeViewState extends ConsumerState<HomeView> {
           case _PopUpMenuOption.Settings:
             controller.goSettingsView();
             break;
+          case _PopUpMenuOption.Search:
+            controller.goSearchView();
+            break;
+          case _PopUpMenuOption.Filter:
+            controller.goFilterView();
+            break;
         }
       },
-      itemBuilder: (_) => items
-          .map(
-            (item) => PopupMenuItem(
-              value: item['enum'] as _PopUpMenuOption,
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: ListTile(
-                dense: true,
-                horizontalTitleGap: 0,
-                title: Text(
-                  item['text'] as String,
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
-                leading: Icon(
-                  item['icon'] as IconData,
-                  color: AppTheme.lowEmphasise(context),
+      itemBuilder: (_) => [
+        ...items
+            .map(
+              (item) => PopupMenuItem(
+                value: item['enum'] as _PopUpMenuOption,
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                child: ListTile(
+                  dense: true,
+                  horizontalTitleGap: 0,
+                  leading: Icon(item['icon'] as IconData, color: AppTheme.lowEmphasise(context)),
+                  title: Text(item['text'] as String, style: Theme.of(context).textTheme.labelMedium),
                 ),
               ),
-            ),
-          )
-          .toList(),
+            )
+            .toList()
+      ]..insert(2, PopupMenuDivider()),
     );
   }
 

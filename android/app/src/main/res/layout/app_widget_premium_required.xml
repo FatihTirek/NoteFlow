@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/note_widget_initial_background_color"
+    android:background="@color/single_note_widget_initial_background_color"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:text="@string/note_widget_premium_required_text"
+        android:text="@string/single_note_widget_premium_required"
+        android:textColor="@color/single_note_widget_initial_content_color"
         android:textSize="14sp"
         android:gravity="center"
         android:layout_marginHorizontal="16dp"
         android:includeFontPadding="false"
         android:textAlignment="center"
-        android:textColor="@color/note_widget_initial_content_color"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

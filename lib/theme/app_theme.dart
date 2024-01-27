@@ -15,8 +15,10 @@ class AppTheme {
   static const _surfaceLight = Color(0xFFFFFFFF);
   static const _onSurfaceDark = Color(0xff272A2A);
   static const _onSurfaceLight = Color(0xffE9E9E9);
-  static const _outlineDark = Color(0xFF272A2A);
-  static const _outlineLight = Color(0xFFDBDBDB);
+  static const _backgroundSurfaceDividerDark = Color(0xFF272A2A);
+  static const _backgroundSurfaceDividerLight = Color(0xFFDBDBDB);
+  static const _surfaceDividerDark = Color(0xFF444448);
+  static const _surfaceDividerLight = Color(0xFFD2D2D2);
 
   static const _highEmphasiseDark = Color(0xFFEEEEEE);
   static const _highEmphasiseLight = Color(0xFF242424);
@@ -71,7 +73,7 @@ class AppTheme {
       background: _backgroundDark,
       surface: _surfaceDark,
       onSurface: _onSurfaceDark,
-      outline: _outlineDark,
+      outline: _backgroundSurfaceDividerDark,
       primary: _primaryColorDark,
       secondary: _primaryColorDark,
     ),
@@ -79,15 +81,15 @@ class AppTheme {
       elevation: 0,
       color: _surfaceDark,
       systemOverlayStyle: SystemUiOverlayStyle.light,
-      shape: Border(bottom: BorderSide(color: _outlineDark, width: 1.25)),
+      shape: Border(bottom: BorderSide(color: _backgroundSurfaceDividerDark, width: 1.25)),
     ),
     dialogTheme: DialogTheme(
       backgroundColor: _backgroundDark,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     ),
     popupMenuTheme: PopupMenuThemeData(
-      iconColor: _iconColorDark,
       color: _onSurfaceDark,
+      iconColor: _iconColorDark,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     ),
     radioTheme: RadioThemeData(
@@ -99,6 +101,7 @@ class AppTheme {
       selectionHandleColor: _primaryColorDark,
     ),
     iconTheme: IconThemeData(color: _iconColorDark),
+    dividerTheme: DividerThemeData(thickness: 1.25, color: _surfaceDividerDark),
     tooltipTheme: TooltipThemeData(
       height: 0,
       waitDuration: Duration.zero,
@@ -119,7 +122,7 @@ class AppTheme {
       background: _backgroundLight,
       surface: _surfaceLight,
       onSurface: _onSurfaceLight,
-      outline: _outlineLight,
+      outline: _backgroundSurfaceDividerLight,
       primary: _primaryColorLight,
       secondary: _primaryColorLight,
     ),
@@ -127,15 +130,15 @@ class AppTheme {
       elevation: 0,
       color: _surfaceLight,
       systemOverlayStyle: SystemUiOverlayStyle.dark,
-      shape: Border(bottom: BorderSide(color: _outlineLight, width: 1.25)),
+      shape: Border(bottom: BorderSide(color: _backgroundSurfaceDividerLight, width: 1.25)),
     ),
     dialogTheme: DialogTheme(
       backgroundColor: _backgroundLight,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     ),
     popupMenuTheme: PopupMenuThemeData(
-      iconColor: _iconColorLight,
       color: _surfaceLight,
+      iconColor: _iconColorLight,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     ),
     radioTheme: RadioThemeData(
@@ -147,6 +150,7 @@ class AppTheme {
       selectionHandleColor: _primaryColorLight,
     ),
     iconTheme: IconThemeData(color: _iconColorLight),
+    dividerTheme: DividerThemeData(thickness: 1.25, color: _surfaceDividerLight),
     tooltipTheme: TooltipThemeData(
       height: 0,
       waitDuration: Duration.zero,
@@ -175,6 +179,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 27);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 27, height: 1.35);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 26.75, letterSpacing: 0.05);
     }
   }
 
@@ -198,6 +204,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 22);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 22, height: 1.35);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 21.75, letterSpacing: 0.05);
     }
   }
 
@@ -221,6 +229,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 21);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 21, height: 1.35);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 20.75, letterSpacing: 0.05);
     }
   }
 
@@ -244,6 +254,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 19);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 19, height: 1.35);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 18.75, letterSpacing: 0.05);
     }
   }
 
@@ -267,6 +279,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 18);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 18, height: 1.35);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 17.75, letterSpacing: 0.05);
     }
   }
 
@@ -290,6 +304,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 17);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 17, height: 1.35);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 16.75, letterSpacing: 0.05);
     }
   }
 
@@ -313,6 +329,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 16);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 16, height: 1.35);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 15.75, letterSpacing: 0.05);
     }
   }
 
@@ -336,6 +354,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 15);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 15, height: 1.35);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 14.75, letterSpacing: 0.05);
     }
   }
 
@@ -359,6 +379,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 13.75);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 14, height: 1.35);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 13.75, letterSpacing: 0.05);
     }
   }
 
@@ -382,6 +404,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 18);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 18, height: 1.35);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 17.75, letterSpacing: 0.05);
     }
   }
 
@@ -405,6 +429,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 16);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 16, height: 1.35);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 15.75, letterSpacing: 0.05);
     }
   }
 
@@ -428,6 +454,8 @@ class AppTheme {
         return GoogleFonts.ibmPlexSans(fontWeight: FontWeight.w500, fontSize: 11.75, letterSpacing: 0.1);
       case Font.Kanit:
         return GoogleFonts.kanit(fontWeight: FontWeight.w500, fontSize: 12, height: 1.35, letterSpacing: 0.1);
+      case Font.Righteous:
+        return GoogleFonts.righteous(fontSize: 11.75, letterSpacing: 0);
     }
   }
 

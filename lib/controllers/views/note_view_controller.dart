@@ -27,7 +27,7 @@ import '../../services/folder_service.dart';
 import '../../utils.dart';
 import '../main_controller.dart';
 
-class NoteDetailsViewController with Utils {
+class NoteViewController with Utils {
   final WidgetRef ref;
   final AnimationController animationController;
 
@@ -49,7 +49,7 @@ class NoteDetailsViewController with Utils {
   late UndoHistoryController titleHistoryController;
   late UndoHistoryController contentHistoryController;
 
-  NoteDetailsViewController(
+  NoteViewController(
     this.ref,
     Note? note,
     String? folderID,

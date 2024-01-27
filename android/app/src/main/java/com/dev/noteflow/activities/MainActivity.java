@@ -4,14 +4,13 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 
+import android.provider.OpenableColumns;
 import android.provider.Settings;
 import android.provider.DocumentsContract;
-import android.provider.OpenableColumns;
 
 import android.widget.Toast;
 
 import android.content.Intent;
-import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
@@ -20,9 +19,10 @@ import android.media.RingtoneManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+
 import android.annotation.SuppressLint;
 
-import com.dev.noteflow.providers.NoteWidgetProvider;
+import com.dev.noteflow.providers.SingleNoteWidgetProvider;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -42,27 +42,26 @@ public class MainActivity extends FlutterActivity {
     private MethodChannel.Result result;
 
     private static final String DOWNLOADS_FOLDER = "content://com.android.externalstorage.documents/tree/primary%3ADownloads/document/primary%3ADownloads";
-    private static final String BACKUP_FILE_TITLE = "nf_backup.json";
+    private static final String CHANNEL_MAIN = "com.dev.noteflow.channel.MAIN";
+    private static final String BACKUP_FILE_NAME = "nf_backup.json";
     private static final int ACTION_OPEN_SOUND_PICKER = 1;
-    private static final int ACTION_CREATE_FILE = 2;
-    private static final int ACTION_OPEN_FILE = 3;
-
-    @SuppressWarnings("unchecked")
+    private static final int ACTION_CREATE_BACKUP_FILE = 2;
+    private static final int ACTION_OPEN_BACKUP_FILE = 3;
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
 
-        new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), "com.dev.noteflow.channel.MAIN")
+        new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL_MAIN)
                 .setMethodCallHandler((call, result) -> {
                     this.result = result;
                     this.call = call;
 
                     switch (call.method) {
-                        case "openFile":
-                            openFile();
+                        case "getBackupFile":
+                            getBackupFile();
                             break;
-                        case "createFile":
-                            createFile();
+                        case "createBackupFile":
+                            createBackupFile();
                             break;
                         case "showToast":
                             showToast(call.argument("message"), call.argument("short"));
@@ -80,13 +79,13 @@ public class MainActivity extends FlutterActivity {
                             getNoteWidgetLaunchDetails();
                             break;
                         case "initNoteWidget":
-                            NoteWidgetProvider.initNoteWidget(getIntent(), getApplicationContext(), (HashMap<String, Object>) call.arguments);
+                            SingleNoteWidgetProvider.initWidget(getIntent(), getApplicationContext(), (HashMap<String, Object>) call.arguments);
                             break;
                         case "updateNoteWidget":
-                            NoteWidgetProvider.updateNoteWidget(getApplicationContext(), (HashMap<String, Object>) call.arguments);
+                            SingleNoteWidgetProvider.updateWidget(getApplicationContext(), (HashMap<String, Object>) call.arguments);
                             break;
                         case "deleteNoteWidget":
-                            NoteWidgetProvider.deleteNoteWidget(getApplicationContext(), (String) call.arguments);
+                            SingleNoteWidgetProvider.deleteWidget(getApplicationContext(), (String) call.arguments);
                             break;
                     }
                 });
@@ -96,18 +95,13 @@ public class MainActivity extends FlutterActivity {
     @SuppressLint("Range")
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-
         if (resultCode == Activity.RESULT_OK && intent != null) {
             if (requestCode == ACTION_OPEN_SOUND_PICKER) {
                 Uri uri = intent.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
 
-                if (uri != null) {
-                    result.success(uri.toString());
-                } else {
-                    result.success(null);
-                }
-            } else if (requestCode == ACTION_CREATE_FILE) {
+                if (uri != null) result.success(uri.toString());
+                else result.success(null);
+            } else if (requestCode == ACTION_CREATE_BACKUP_FILE) {
                 Uri uri = intent.getData();
 
                 if (uri != null) {
@@ -117,15 +111,15 @@ public class MainActivity extends FlutterActivity {
 
                     try {
                         OutputStream stream = getContentResolver().openOutputStream(uri, "wt");
-                        stream.write(Objects.requireNonNull(json).getBytes());
+                        Objects.requireNonNull(stream).write(Objects.requireNonNull(json).getBytes());
                         stream.close();
 
-                        showToast(success, false);
+                        showToast(success, true);
                     } catch (IOException e) {
-                        showToast(error, false);
+                        showToast(error, true);
                     }
                 }
-            } else if (requestCode == ACTION_OPEN_FILE) {
+            } else if (requestCode == ACTION_OPEN_BACKUP_FILE) {
                 Uri uri = intent.getData();
 
                 if (uri != null) {
@@ -137,7 +131,7 @@ public class MainActivity extends FlutterActivity {
                         }
                     }
 
-                    if (name.equals(BACKUP_FILE_TITLE)) {
+                    if (name.equals(BACKUP_FILE_NAME)) {
                         StringBuilder builder = new StringBuilder();
 
                         try {
@@ -147,85 +141,71 @@ public class MainActivity extends FlutterActivity {
 
                             String json;
 
-                            while ((json = bufferedReader.readLine()) != null) {
-                                builder.append(json);
-                            }
+                            while ((json = bufferedReader.readLine()) != null) builder.append(json);
 
                             result.success(builder.toString());
                         } catch (IOException e) {
-                            result.success("{}");
+                            showToast(call.argument("unknownError"), true);
                         }
                     } else {
-                        result.success("{}");
+                        showToast(call.argument("notFound"), true);
                     }
-                } else {
-                    result.success("{}");
                 }
             }
         }
+
+        super.onActivityResult(requestCode, resultCode, intent);
     }
 
-    @SuppressLint("InlinedApi")
-    private void createFile() {
-        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("application/json");
+    private void createBackupFile() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+            intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, Uri.parse(DOWNLOADS_FOLDER));
+            intent.putExtra(Intent.EXTRA_TITLE, BACKUP_FILE_NAME);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType("application/json");
 
-        intent.putExtra(Intent.EXTRA_TITLE, BACKUP_FILE_TITLE);
-        intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, Uri.parse(DOWNLOADS_FOLDER));
-
-        startActivityForResult(intent, ACTION_CREATE_FILE);
+            startActivityForResult(intent, ACTION_CREATE_BACKUP_FILE);
+        }
     }
 
-    @SuppressLint("InlinedApi")
-    private void openFile() {
-        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("application/json");
+    private void getBackupFile() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, Uri.parse(DOWNLOADS_FOLDER));
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType("application/json");
 
-        intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, Uri.parse(DOWNLOADS_FOLDER));
-
-        startActivityForResult(intent, ACTION_OPEN_FILE);
+            startActivityForResult(intent, ACTION_OPEN_BACKUP_FILE);
+        }
     }
 
     private void getNoteWidgetLaunchDetails() {
         Intent intent = getIntent();
 
-        if (intent != null) {
-            HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("noteId", intent.getStringExtra(NoteWidgetProvider.EXTRA_NOTE_ID));
-            hashMap.put("launchAction", intent.getIntExtra(NoteWidgetProvider.EXTRA_LAUNCH_ACTION, -1));
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("noteId", intent.getStringExtra(SingleNoteWidgetProvider.EXTRA_NOTE_ID));
+        hashMap.put("launchAction", intent.getIntExtra(SingleNoteWidgetProvider.EXTRA_LAUNCH_ACTION, -1));
 
-            result.success(hashMap);
-            return;
-        }
-
-        result.success(null);
+        result.success(hashMap);
     }
 
-    private void showToast(String message, boolean lengthShort) {
-        Toast.makeText(getApplicationContext(), message, lengthShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG).show();
-        result.success(true);
+    private void showToast(String message, boolean brief) {
+        Toast.makeText(getApplicationContext(), message, brief ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG).show();
     }
 
     private void getAppVersion() {
-        Context context = getApplicationContext();
-        PackageInfo packageInfo = null;
-
         try {
-            packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
+           PackageInfo packageInfo = getApplicationContext().getPackageManager()
+                    .getPackageInfo(getApplicationContext().getPackageName(), 0);
 
-        if (packageInfo != null) {
             result.success(packageInfo.versionName);
-        } else {
+        } catch (PackageManager.NameNotFoundException e) {
             result.success("???");
         }
     }
 
-    @SuppressLint("InlinedApi")
+
     void openNotificationSettings() {
         Intent intent;
 
@@ -233,7 +213,7 @@ public class MainActivity extends FlutterActivity {
             intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
                     .putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
         } else {
-            intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+            intent = new Intent("android.settings.APP_NOTIFICATION_SETTINGS")
                     .putExtra("app_package", getPackageName())
                     .putExtra("app_uid", getApplicationInfo().uid);
         }
@@ -251,7 +231,9 @@ public class MainActivity extends FlutterActivity {
         } else {
             String soundUri = call.argument("soundUri");
             Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
-            Uri uri = soundUri == null ? RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION) : Uri.parse(soundUri);
+            Uri uri = soundUri == null
+                    ? RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+                    : Uri.parse(soundUri);
 
             intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
             intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, uri);

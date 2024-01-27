@@ -12,6 +12,7 @@ import '../../models/note.dart';
 import '../../services/folder_service.dart';
 import '../../services/note_service.dart';
 import '../../utils.dart';
+import '../../widgets/sheets/sort_type_picker.dart';
 import '../widgets/shared/app_theme_controller.dart';
 
 class HomeViewController with Utils {
@@ -68,6 +69,11 @@ class HomeViewController with Utils {
 
     if (folderID == null) return 0;
     return allFolders.value.indexWhere((folder) => folder.id == folderID) + 1;
+  }
+
+  void showSortPicker() async {
+    final value = await showSheet(ref.context, SortTypePicker(SortTypePickerMode.Note));
+    if (value != null) ref.read(appThemeController.notifier).setNoteSortType(value);
   }
 
   void goAllFoldersView() => goToView(AllFoldersView());

@@ -16,10 +16,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:label="NoteFlow"
         android:requestLegacyExternalStorage="true">
-        <receiver android:exported="false"
-            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
-        <receiver android:exported="false"
-            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
+
+        <service
+            android:name=".services.SingleNoteWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
+        <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
@@ -28,7 +31,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".providers.NoteWidgetProvider"
+            android:name=".providers.SingleNoteWidgetProvider"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -36,7 +39,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/note_widget_info" />
+                android:resource="@xml/single_note_widget" />
         </receiver>
 
         <activity
@@ -66,7 +69,6 @@
             -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 

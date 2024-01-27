@@ -716,4 +716,10 @@
     "placeholders_order": [],
     "placeholders": {}
   },
+  "w128": "Filtrele",
+  "@w128": {
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  }
 }
