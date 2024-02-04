@@ -1,5 +1,6 @@
 package com.dev.noteflow.services;
 
+import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 
@@ -24,7 +25,7 @@ public class SingleNoteWidgetService extends RemoteViewsService {
 
         public SingleNoteWidgetFactory(Context context, Intent intent) {
             this.context = context;
-            this.appWidgetId = intent.getIntExtra("appWidgetId", 0);
+            this.appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, 0);
         }
 
         private SharedPreferences preferences;
@@ -39,6 +40,7 @@ public class SingleNoteWidgetService extends RemoteViewsService {
         public void onDataSetChanged() {
             String json = preferences.getString("flutter." + appWidgetId, null);
             if (json != null) singleNoteWidget = new Gson().fromJson(json, SingleNoteWidget.class);
+            else singleNoteWidget = null;
         }
 
         @Override
@@ -79,9 +81,7 @@ public class SingleNoteWidgetService extends RemoteViewsService {
         }
 
         @Override
-        public RemoteViews getLoadingView() {
-            return null;
-        }
+        public RemoteViews getLoadingView() { return null; }
 
         @Override
         public int getViewTypeCount() { return 1; }
@@ -90,8 +90,6 @@ public class SingleNoteWidgetService extends RemoteViewsService {
         public long getItemId(int i) { return i; }
 
         @Override
-        public boolean hasStableIds() {
-            return true;
-        }
+        public boolean hasStableIds() { return true; }
     }
 }

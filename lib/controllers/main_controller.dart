@@ -18,20 +18,20 @@ import '../views/note_view.dart';
 import '../firebase_options.dart';
 import '../i18n/localizations.dart';
 import '../theme/app_theme_state.dart';
-import '../models/app_widget_launch_details.dart';
+import '../models/single_note_widget_launch_details.dart';
 import '../models/note.dart';
 import '../services/folder_service.dart';
 import '../services/label_service.dart';
 import '../services/note_service.dart';
-import '../services/note_widget_service.dart';
+import '../services/single_note_widget_service.dart';
 import '../services/theme_service.dart';
 import 'widgets/shared/app_theme_controller.dart';
 
 late String appVersion;
 // late bool canAuthenticateWithFingerprint;
 late AndroidDeviceInfo androidDeviceInfo;
-late NoteWidgetLaunchDetails noteWidgetLaunchDetails;
 late NotificationAppLaunchDetails? notificationAppLaunchDetails;
+late SingleNoteWidgetLaunchDetails singleNoteWidgetLaunchDetails;
 
 final GlobalKey<NavigatorState> navigator = GlobalKey<NavigatorState>();
 final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -75,7 +75,7 @@ class NoteFlowController with Utils {
     GetIt.I.registerSingleton(LabelService());
     GetIt.I.registerSingleton(ThemeService());
     GetIt.I.registerSingleton(FolderService());
-    GetIt.I.registerSingleton(NoteWidgetService());
+    GetIt.I.registerSingleton(SingleNoteWidgetService());
 
     await Hive.initFlutter();
     await GetIt.I<NoteService>().init();
@@ -86,13 +86,13 @@ class NoteFlowController with Utils {
 
     androidDeviceInfo = await DeviceInfoPlugin().androidInfo;
     appVersion = await channelMain.invokeMethod('getAppVersion');
-    noteWidgetLaunchDetails = await GetIt.I<NoteWidgetService>().getLaunchDetails();
+    singleNoteWidgetLaunchDetails = await GetIt.I<SingleNoteWidgetService>().getLaunchDetails();
     notificationAppLaunchDetails = await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
   }
 
   void initState(WidgetRef ref) {
-    GetIt.I<NoteWidgetService>().unlockWidgetIfDonatedBefore(ref);
-    GetIt.I<NoteWidgetService>().updateAppWidgetIfThemeChanged(ref);
+    GetIt.I<SingleNoteWidgetService>().unlockWidgetIfDonatedBefore(ref);
+    GetIt.I<SingleNoteWidgetService>().updateAppWidgetIfThemeChanged(ref);
 
     InAppPurchase.instance.purchaseStream.listen((event) {
       event.forEach((details) async {
@@ -132,12 +132,12 @@ class NoteFlowController with Utils {
       final payload = jsonDecode(notificationAppLaunchDetails!.notificationResponse!.payload!);
       view = NoteView(note: payload is Map ? Note.fromMap(payload) : GetIt.I<NoteService>().get(payload));
     } else {
-      switch (noteWidgetLaunchDetails.launchAction) {
-        case NoteWidgetLaunchAction.Show:
-          final noteID = noteWidgetLaunchDetails.launchedNoteID!;
+      switch (singleNoteWidgetLaunchDetails.launchAction) {
+        case SingleNoteWidgetLaunchAction.Show:
+          final noteID = singleNoteWidgetLaunchDetails.launchedNoteID!;
           view = NoteView(note: GetIt.I<NoteService>().get(noteID));
           break;
-        case NoteWidgetLaunchAction.Add:
+        case SingleNoteWidgetLaunchAction.Add:
           view = NoteView();
           break;
         default:

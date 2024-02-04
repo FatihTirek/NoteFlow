@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../animations/bouncing_app_bar_animator.dart';
+import '../animations/bounceable_app_bar.dart';
 import '../controllers/views/all_folders_view_controller.dart';
 import '../controllers/widgets/shared/app_theme_controller.dart';
 import '../i18n/localizations.dart';
@@ -46,9 +46,9 @@ class _AllFoldersViewState extends ConsumerState<AllFoldersView> with SingleTick
         onPopInvoked: (_) => controller.closeSearchBarIfOpened(),
       ),
       child: Scaffold(
-        appBar: BouncingAppBarAnimator(
-          main: buildAppBar(),
-          other: buildSearchBar(),
+        appBar: BounceableAppBar(
+          primary: buildAppBar(),
+          secondary: buildSearchBar(),
           controller: controller.animationController,
         ),
         body: AnimatedBuilder(

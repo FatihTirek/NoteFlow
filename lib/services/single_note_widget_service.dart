@@ -6,23 +6,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../constants.dart';
 import '../controllers/widgets/shared/app_theme_controller.dart';
 import '../i18n/localizations.dart';
-import '../models/app_widget_launch_details.dart';
+import '../models/single_note_widget_launch_details.dart';
 import '../models/note.dart';
 import '../theme/app_theme.dart';
 import '../utils.dart';
 import '../extensions/color_extension.dart';
 import 'note_service.dart';
 
-class NoteWidgetService with Utils {
+class SingleNoteWidgetService with Utils {
   void initWidget(Note note, WidgetRef ref) async {
     if (!await isWidgetExist(note.id))
-      channelMain.invokeMethod('initNoteWidget', _toMap(note, ref));
+      channelMain.invokeMethod('initSingleNoteWidget', _toMap(note, ref));
     else
       showToast(AppLocalizations.instance.w116);
   }
 
   void updateWidgetIfExist(Note note, WidgetRef ref) async {
-    if (await isWidgetExist(note.id)) channelMain.invokeMethod('updateNoteWidget', _toMap(note, ref));
+    if (await isWidgetExist(note.id)) channelMain.invokeMethod('updateSingleNoteWidget', _toMap(note, ref));
   }
 
   void updateAppWidgetIfThemeChanged(WidgetRef ref) async {
@@ -55,11 +55,11 @@ class NoteWidgetService with Utils {
   }
 
   void deleteWidgetIfExist(String id) async {
-    if (await isWidgetExist(id)) channelMain.invokeMethod('deleteNoteWidget', id);
+    if (await isWidgetExist(id)) channelMain.invokeMethod('deleteSingleNoteWidget', id);
   }
 
-  Future<NoteWidgetLaunchDetails> getLaunchDetails() async =>
-      NoteWidgetLaunchDetails.fromMap(await channelMain.invokeMethod('getNoteWidgetLaunchDetails'));
+  Future<SingleNoteWidgetLaunchDetails> getLaunchDetails() async =>
+      SingleNoteWidgetLaunchDetails.fromMap(await channelMain.invokeMethod('getSingleNoteWidgetLaunchDetails'));
 
   Future<bool> isWidgetExist(String id) async {
     final prefs = await SharedPreferences.getInstance();

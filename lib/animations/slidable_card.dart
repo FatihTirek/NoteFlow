@@ -16,7 +16,7 @@ class SlidableCard extends ConsumerStatefulWidget {
 class _SlidableCardState extends ConsumerState<SlidableCard> with SingleTickerProviderStateMixin {
   late AnimationController controller;
 
-  double dx = 0;
+  double begin = 0;
   double end = 0;
 
   @override
@@ -36,7 +36,7 @@ class _SlidableCardState extends ConsumerState<SlidableCard> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    final value = dx.abs() / 224;
+    final value = begin.abs() / 224;
     final animation = Tween(end: end == 0 ? 0.0 : 1.0, begin: 0.5 + (value > 0.5 ? 0.5 : value))
         .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
 
@@ -57,7 +57,7 @@ class _SlidableCardState extends ConsumerState<SlidableCard> with SingleTickerPr
                       child: GestureDetector(
                         child: child,
                         onTap: () {
-                          onResetAnimation();
+                          resetAnimation();
                           child.onTap();
                         },
                       ),
@@ -71,11 +71,11 @@ class _SlidableCardState extends ConsumerState<SlidableCard> with SingleTickerPr
             animation: controller,
             child: GestureDetector(
               child: widget.child,
-              onHorizontalDragEnd: (_) => onDragEnd(),
-              onHorizontalDragUpdate: (details) => onDragUpdate(details),
+              onHorizontalDragEnd: onDragEnd,
+              onHorizontalDragUpdate: onDragUpdate,
             ),
             builder: (_, child) => Transform.translate(
-              offset: Offset(translateAnimation().value, 0),
+              offset: Offset(translate().value, 0),
               child: child,
             ),
           ),
@@ -84,50 +84,47 @@ class _SlidableCardState extends ConsumerState<SlidableCard> with SingleTickerPr
     );
   }
 
-  void onDragEnd() async {
-    if ((dx <= -24 && end == 0) || (dx <= -80 && end == -112)) {
+  void onDragEnd(DragEndDetails details) async {
+    if ((begin <= -24 && end == 0) || (begin <= -80 && end == -112)) {
       setState(() {
         end = -112;
       });
       await controller.forward();
       setState(() {
-        dx = -112;
+        begin = -112;
       });
       controller.reset();
     } else {
-      onResetAnimation();
+      resetAnimation();
     }
   }
 
   void onDragUpdate(DragUpdateDetails details) {
-    if (dx <= 0) {
-      final value = dx + details.primaryDelta!;
+    if (begin <= 0) {
+      final value = begin + details.primaryDelta!;
 
-      if (value > 0) {
-        setState(() {
-          dx = 0;
-        });
-      } else {
-        setState(() {
-          dx = value;
-        });
-      }
+      setState(() {
+        if (value > 0)
+          begin = 0;
+        else
+          begin = value;
+      });
     }
   }
 
-  void onResetAnimation() async {
+  void resetAnimation() async {
     setState(() {
       end = 0;
     });
     await controller.forward();
     setState(() {
-      dx = 0;
+      begin = 0;
     });
     controller.reset();
   }
 
-  Animation<double> translateAnimation() {
-    return Tween(begin: dx, end: end).animate(
+  Animation<double> translate() {
+    return Tween(begin: begin, end: end).animate(
       CurvedAnimation(
         curve: Curves.ease,
         parent: controller,
@@ -137,10 +134,10 @@ class _SlidableCardState extends ConsumerState<SlidableCard> with SingleTickerPr
 }
 
 class SlidableCardAction extends StatelessWidget {
-  final Color backgroundColor;
-  final BorderSide borderSide;
-  final VoidCallback onTap;
   final Icon icon;
+  final VoidCallback onTap;
+  final BorderSide borderSide;
+  final Color backgroundColor;
 
   const SlidableCardAction({
     required this.icon,

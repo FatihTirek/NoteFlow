@@ -65,12 +65,10 @@ public class SingleNoteWidgetProvider extends AppWidgetProvider {
                 context, 1, showIntent, PendingIntent.FLAG_IMMUTABLE);
 
         Intent intent = new Intent(context, SingleNoteWidgetService.class);
-        intent.putExtra("appWidgetId", appWidgetId);
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
 
         if (singleNoteWidget == null) {
-            // showPendingIntent.cancel();
-
             views.setInt(R.id.single_note_widget_icon_add, "setColorFilter", context.getColor(R.color.single_note_widget_initial_title_color));
             views.setInt(R.id.single_note_widget_icon_select, "setColorFilter", context.getColor(R.color.single_note_widget_initial_title_color));
             views.setInt(R.id.single_note_widget_divider_vertical, "setColorFilter", context.getColor(R.color.single_note_widget_initial_title_color));
@@ -87,7 +85,6 @@ public class SingleNoteWidgetProvider extends AppWidgetProvider {
         views.setEmptyView(R.id.single_note_widget_listview, R.id.single_note_widget_empty_view);
         views.setRemoteAdapter(R.id.single_note_widget_listview, intent);
         views.setOnClickPendingIntent(R.id.single_note_widget_icon_add, addPendingIntent);
-        views.setOnClickPendingIntent(R.id.single_note_widget_background, showPendingIntent);
         views.setOnClickPendingIntent(R.id.single_note_widget_icon_select, changePendingIntent);
         views.setPendingIntentTemplate(R.id.single_note_widget_listview, showPendingIntent);
 

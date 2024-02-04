@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'animatable_card_entrance_controller.dart';
-
 class AnimatableCard extends StatefulWidget {
   final String id;
   final Widget child;
@@ -20,28 +18,28 @@ class AnimatableCard extends StatefulWidget {
 class _AnimatableCardState extends State<AnimatableCard> with SingleTickerProviderStateMixin {
   final controller = AnimatableCardEntranceController.instance;
 
-  late AnimationController entranceAnimController;
+  late AnimationController animationController;
 
   @override
   void initState() {
     super.initState();
-    entranceAnimController = AnimationController(
+    animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
     );
 
     if (controller.contains(widget.id))
       WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await entranceAnimController.forward();
+        await animationController.forward();
         controller.remove(widget.id);
       });
     else
-      entranceAnimController.value = 1.0;
+      animationController.value = 1;
   }
 
   @override
   void dispose() {
-    entranceAnimController.dispose();
+    animationController.dispose();
     super.dispose();
   }
 
@@ -66,7 +64,7 @@ class _AnimatableCardState extends State<AnimatableCard> with SingleTickerProvid
   }
 
   Animation<double> fadeEnterAnimation() {
-    return CurveTween(curve: const Interval(0.5, 0.8)).animate(entranceAnimController);
+    return CurveTween(curve: const Interval(0.5, 0.8)).animate(animationController);
   }
 
   Animation<double> fadeExitAnimation() {
@@ -81,13 +79,13 @@ class _AnimatableCardState extends State<AnimatableCard> with SingleTickerProvid
   Animation<double> scaleAnimation() {
     return Tween<double>(begin: 0.80, end: 1.00)
         .chain(CurveTween(curve: Curves.ease))
-        .animate(entranceAnimController);
+        .animate(animationController);
   }
 
   Animation<double> sizeEnterAnimation() {
     return Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
-        parent: entranceAnimController,
+        parent: animationController,
         curve: Interval(0.0, 0.5, curve: Curves.ease),
       ),
     );
@@ -101,4 +99,18 @@ class _AnimatableCardState extends State<AnimatableCard> with SingleTickerProvid
       ),
     );
   }
+}
+
+class AnimatableCardEntranceController {
+  static final _instance = AnimatableCardEntranceController._internal();
+
+  static AnimatableCardEntranceController get instance => _instance;
+
+  AnimatableCardEntranceController._internal();
+
+  final _elements = <String>[];
+
+  void add(String id) => _elements.add(id);
+  void remove(String id) => _elements.remove(id);
+  bool contains(String id) => _elements.contains(id);
 }

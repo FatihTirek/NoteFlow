@@ -19,10 +19,10 @@ import '../../widgets/sheets/label_picker.dart';
 import '../../widgets/sheets/note_background_picker.dart';
 import '../../widgets/sheets/reminder_picker.dart';
 import '../../i18n/localizations.dart';
-import '../../models/app_widget_launch_details.dart';
+import '../../models/single_note_widget_launch_details.dart';
 import '../../models/note.dart';
 import '../../services/note_service.dart';
-import '../../services/note_widget_service.dart';
+import '../../services/single_note_widget_service.dart';
 import '../../services/folder_service.dart';
 import '../../utils.dart';
 import '../main_controller.dart';
@@ -88,7 +88,7 @@ class NoteViewController with Utils {
     if (write) _writeOrDeleteOrPass(schedule: true, update: true);
 
     final value = notificationAppLaunchDetails!.didNotificationLaunchApp ||
-        noteWidgetLaunchDetails.launchAction != NoteWidgetLaunchAction.None;
+        singleNoteWidgetLaunchDetails.launchAction != SingleNoteWidgetLaunchAction.None;
 
     if (value)
       SystemNavigator.pop();
@@ -264,7 +264,7 @@ class NoteViewController with Utils {
       GetIt.I<NoteService>().write(note);
 
       if (schedule) GetIt.I<NoteService>().scheduleNotification(note, ref);
-      if (update) GetIt.I<NoteWidgetService>().updateWidgetIfExist(note, ref);
+      if (update) GetIt.I<SingleNoteWidgetService>().updateWidgetIfExist(note, ref);
     } else if (isPreviouslySaved && !currentlyHasText) {
       isPreviouslySaved = false;
       GetIt.I<NoteService>().delete(currentNoteID, await currentNotificationID);

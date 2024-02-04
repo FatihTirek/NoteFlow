@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../services/note_widget_service.dart';
+import '../../../services/single_note_widget_service.dart';
 import '../../../views/premium_view.dart';
 import '../../../i18n/localizations.dart';
 import '../../../theme/app_theme_state.dart';
@@ -138,7 +138,7 @@ class AppThemeController extends AutoDisposeNotifier<AppThemeState> {
 
   void upgradePremium() {
     _update(state.copyWith(isPremium: true));
-    GetIt.I<NoteWidgetService>().unlockWidget();
+    GetIt.I<SingleNoteWidgetService>().unlockWidget();
   }
 
   void _update(AppThemeState appThemeState) {

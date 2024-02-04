@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BouncingAppBarAnimator extends StatelessWidget implements PreferredSizeWidget {
-  final PreferredSizeWidget main;
-  final PreferredSizeWidget other;
+class BounceableAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final PreferredSizeWidget primary;
+  final PreferredSizeWidget secondary;
   final AnimationController controller;
 
-  const BouncingAppBarAnimator({
-    required this.main,
-    required this.other,
+  const BounceableAppBar({
+    required this.primary,
+    required this.secondary,
     required this.controller,
   });
 
@@ -17,10 +17,10 @@ class BouncingAppBarAnimator extends StatelessWidget implements PreferredSizeWid
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      child: other,
+      child: secondary,
       animation: controller,
       builder: (_, child) {
-        if (controller.value <= 0.36) return Opacity(opacity: exit().value, child: main);
+        if (controller.value <= 0.36) return Opacity(opacity: exit().value, child: primary);
 
         return Opacity(
           opacity: entrance().value,

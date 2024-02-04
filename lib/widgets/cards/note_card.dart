@@ -8,7 +8,7 @@ import '../../controllers/widgets/shared/app_theme_controller.dart';
 import '../../controllers/widgets/shared/contextual_appbar_controller.dart';
 import '../../extensions/datetime_extension.dart';
 import '../../main.dart';
-import '../../models/app_widget_launch_details.dart';
+import '../../models/single_note_widget_launch_details.dart';
 import '../../models/note.dart';
 import '../../theme/app_theme.dart';
 import '../../utils.dart';
@@ -25,7 +25,7 @@ class NoteCard extends ConsumerWidget with Utils {
   Widget build(BuildContext context, WidgetRef ref) {
     final backgroundColor = getNoteBackgroundColor(ref, note.backgroundIndex);
     final tappable = !ref.watch(contextualBarController.select((state) => state.active)) &&
-        noteWidgetLaunchDetails.launchAction != NoteWidgetLaunchAction.Select;
+        singleNoteWidgetLaunchDetails.launchAction != SingleNoteWidgetLaunchAction.Select;
 
     return Stack(
       clipBehavior: Clip.none,

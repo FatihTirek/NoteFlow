@@ -75,16 +75,16 @@ public class MainActivity extends FlutterActivity {
                         case "openNotificationSettings":
                             openNotificationSettings();
                             break;
-                        case "getNoteWidgetLaunchDetails":
-                            getNoteWidgetLaunchDetails();
+                        case "getSingleNoteWidgetLaunchDetails":
+                            getSingleNoteWidgetLaunchDetails();
                             break;
-                        case "initNoteWidget":
+                        case "initSingleNoteWidget":
                             SingleNoteWidgetProvider.initWidget(getIntent(), getApplicationContext(), (HashMap<String, Object>) call.arguments);
                             break;
-                        case "updateNoteWidget":
+                        case "updateSingleNoteWidget":
                             SingleNoteWidgetProvider.updateWidget(getApplicationContext(), (HashMap<String, Object>) call.arguments);
                             break;
-                        case "deleteNoteWidget":
+                        case "deleteSingleNoteWidget":
                             SingleNoteWidgetProvider.deleteWidget(getApplicationContext(), (String) call.arguments);
                             break;
                     }
@@ -180,7 +180,7 @@ public class MainActivity extends FlutterActivity {
         }
     }
 
-    private void getNoteWidgetLaunchDetails() {
+    private void getSingleNoteWidgetLaunchDetails() {
         Intent intent = getIntent();
 
         HashMap<String, Object> hashMap = new HashMap<>();

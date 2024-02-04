@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../constants.dart';
 import '../../../models/label.dart';
 import '../../../services/label_service.dart';
 import '../../../widgets/dialogs/label_dialog.dart';
@@ -28,7 +29,7 @@ class LabelPickerController {
   }
 
   void showLabelDialog(WidgetRef ref) async {
-    final withinFreeTier = _labelsAmount < 5;
+    final withinFreeTier = _labelsAmount < IntegerConstants.freeTierLabelLimit;
     final value = withinFreeTier || await ref.read(appThemeController.notifier).isPremiumUser(ref.context);
 
     if (value) showModal(context: ref.context, builder: (_) => LabelDialog());

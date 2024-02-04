@@ -28,7 +28,7 @@
             <ImageView
                 android:id="@+id/single_note_widget_divider_vertical"
                 android:src="@drawable/single_note_widget_divider"
-                android:layout_width="1dp"
+                android:layout_width="1.25dp"
                 android:layout_height="match_parent"/>
 
             <ImageView
@@ -44,7 +44,7 @@
             android:id="@+id/single_note_widget_divider_horizontal"
             android:src="@drawable/single_note_widget_divider"
             android:layout_width="match_parent"
-            android:layout_height="1dp"/>
+            android:layout_height="1.25dp" />
 
         <ListView
             android:id="@+id/single_note_widget_listview"
@@ -52,7 +52,7 @@
             android:dividerHeight="8dp"
             android:padding="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent" />
 
         <TextView
             android:id="@+id/single_note_widget_empty_view"

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../constants.dart';
 import '../../theme/app_theme_state.dart';
 import '../../widgets/dialogs/label_dialog.dart';
 import '../../widgets/sheets/sort_type_picker.dart';
@@ -50,7 +51,7 @@ class AllLabelsViewController with Utils {
 
   void showLabelDialog([Label? label]) async {
     if (label == null) {
-      final withinFreeTier = cachedAllLabels.length < 5;
+      final withinFreeTier = cachedAllLabels.length < IntegerConstants.freeTierLabelLimit;
       final value = withinFreeTier || await ref.read(appThemeController.notifier).isPremiumUser(ref.context);
 
       if (value) showModal(context: ref.context, builder: (_) => LabelDialog());

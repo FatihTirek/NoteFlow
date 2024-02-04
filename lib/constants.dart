@@ -10,6 +10,11 @@ class StringConstants {
   static const clearFlag = 'flag.CLEAR';
 }
 
+class IntegerConstants {
+  static const freeTierLabelLimit = 5;
+  static const freeTierFontLimit = 3;
+}
+
 class ColorConstants {
   static const noteBackgroundsLight = [
     const Color(0xffffab91),

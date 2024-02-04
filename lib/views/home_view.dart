@@ -7,7 +7,7 @@ import '../controllers/views/home_view_controller.dart';
 import '../controllers/widgets/shared/app_theme_controller.dart';
 import '../controllers/widgets/shared/contextual_appbar_controller.dart';
 import '../i18n/localizations.dart';
-import '../models/app_widget_launch_details.dart';
+import '../models/single_note_widget_launch_details.dart';
 import '../theme/app_theme.dart';
 import '../widgets/shared/app_floating_action_button.dart';
 import '../widgets/shared/contextual_app_bar.dart';
@@ -42,7 +42,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
     final primaryColor = Theme.of(context).primaryColor;
     final active = ref.watch(contextualBarController.select((state) => state.active));
     final isGridView = ref.watch(appThemeController.select((state) => state.isGridView));
-    final isSelectAction = noteWidgetLaunchDetails.launchAction == NoteWidgetLaunchAction.Select;
+    final isSelectAction = singleNoteWidgetLaunchDetails.launchAction == SingleNoteWidgetLaunchAction.Select;
 
     return PopScope(
       canPop: !active,

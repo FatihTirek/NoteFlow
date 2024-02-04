@@ -17,7 +17,7 @@ import '../models/note.dart';
 import '../theme/app_theme_state.dart';
 import '../utils.dart';
 import 'folder_service.dart';
-import 'note_widget_service.dart';
+import 'single_note_widget_service.dart';
 
 class NoteService with Utils {
   ValueListenable get listenable => Hive.box(StringConstants.dbNotes).listenable();
@@ -58,7 +58,7 @@ class NoteService with Utils {
 
   void delete(String id, int notificationID) {
     Hive.box(StringConstants.dbNotes).delete(id);
-    GetIt.I<NoteWidgetService>().deleteWidgetIfExist(id);
+    GetIt.I<SingleNoteWidgetService>().deleteWidgetIfExist(id);
     flutterLocalNotificationsPlugin.cancel(notificationID);
   }
 
