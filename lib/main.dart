@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'controllers/main_controller.dart';
 import 'controllers/widgets/shared/app_theme_controller.dart';
@@ -10,15 +9,12 @@ import 'i18n/localizations.dart';
 import 'theme/app_theme.dart';
 import 'utils.dart';
 
-const isDebug = true;
-
 late Image preImageFolder;
 late Image preImagePinDark;
 late Image preImagePinLight;
 
 void main() async {
-  GoogleFonts.config.allowRuntimeFetching = isDebug;
-  await NoteFlowController.initializeApp(isDebug);
+  await NoteFlowController.initializeApp();
   runApp(ProviderScope(child: NoteFlow()));
 }
 

@@ -53,13 +53,11 @@ class NoteFlowController with Utils {
   final _productIDs = ['premium', 'donation'];
   final _statuses = [PurchaseStatus.purchased, PurchaseStatus.restored];
 
-  static Future<void> initializeApp(bool isDebug) async {
+  static Future<void> initializeApp() async {
     WidgetsFlutterBinding.ensureInitialized();
 
-    if (!isDebug) {
-      await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-      FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-    }
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
     timezone.initializeTimeZones();
     await flutterLocalNotificationsPlugin.initialize(
