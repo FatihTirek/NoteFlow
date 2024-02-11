@@ -90,7 +90,6 @@ class NoteFlowController with Utils {
 
   void initState(WidgetRef ref) {
     GetIt.I<SingleNoteWidgetService>().unlockWidgetIfDonatedBefore(ref);
-    GetIt.I<SingleNoteWidgetService>().updateAppWidgetIfThemeChanged(ref);
 
     InAppPurchase.instance.purchaseStream.listen((event) {
       event.forEach((details) async {

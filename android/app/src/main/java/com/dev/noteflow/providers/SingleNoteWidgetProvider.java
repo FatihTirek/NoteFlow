@@ -69,17 +69,45 @@ public class SingleNoteWidgetProvider extends AppWidgetProvider {
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
 
         if (singleNoteWidget == null) {
-            views.setInt(R.id.single_note_widget_icon_add, "setColorFilter", context.getColor(R.color.single_note_widget_initial_title_color));
-            views.setInt(R.id.single_note_widget_icon_select, "setColorFilter", context.getColor(R.color.single_note_widget_initial_title_color));
-            views.setInt(R.id.single_note_widget_divider_vertical, "setColorFilter", context.getColor(R.color.single_note_widget_initial_title_color));
-            views.setInt(R.id.single_note_widget_divider_horizontal, "setColorFilter", context.getColor(R.color.single_note_widget_initial_title_color));
-            views.setInt(R.id.single_note_widget_background, "setColorFilter", context.getColor(R.color.single_note_widget_initial_background_color));
+            views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_0);
         } else {
-            views.setInt(R.id.single_note_widget_icon_add, "setColorFilter", context.getColor(R.color.single_note_widget_initial_title_color));
-            views.setInt(R.id.single_note_widget_icon_select, "setColorFilter", context.getColor(R.color.single_note_widget_initial_title_color));
-            views.setInt(R.id.single_note_widget_divider_vertical, "setColorFilter", context.getColor(R.color.single_note_widget_initial_title_color));
-            views.setInt(R.id.single_note_widget_divider_horizontal, "setColorFilter", context.getColor(R.color.single_note_widget_initial_title_color));
-            views.setInt(R.id.single_note_widget_background, "setColorFilter", singleNoteWidget.backgroundColor);
+            switch (singleNoteWidget.backgroundCIndex) {
+                case 1:
+                    views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_1);
+                    break;
+                case 2:
+                    views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_2);
+                    break;
+                case 3:
+                    views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_3);
+                    break;
+                case 4:
+                    views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_4);
+                    break;
+                case 5:
+                    views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_5);
+                    break;
+                case 6:
+                    views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_6);
+                    break;
+                case 7:
+                    views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_7);
+                    break;
+                case 8:
+                    views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_8);
+                    break;
+                case 9:
+                    views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_9);
+                    break;
+                case 10:
+                    views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_10);
+                    break;
+                default:
+                    views.setInt(R.id.single_note_widget_background, "setImageResource", R.drawable.single_note_widget_background_0);
+                    break;
+            }
+
+
         }
 
         views.setEmptyView(R.id.single_note_widget_listview, R.id.single_note_widget_empty_view);

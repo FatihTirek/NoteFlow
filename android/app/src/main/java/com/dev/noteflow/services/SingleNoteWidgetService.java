@@ -64,13 +64,17 @@ public class SingleNoteWidgetService extends RemoteViewsService {
             if (!singleNoteWidget.title.isEmpty()) {
                 views.setInt(R.id.single_note_widget_title, "setVisibility", View.VISIBLE);
                 views.setTextViewText(R.id.single_note_widget_title, singleNoteWidget.title);
-                views.setTextColor(R.id.single_note_widget_title, context.getColor(R.color.single_note_widget_initial_title_color));
             }
 
             if (!singleNoteWidget.content.isEmpty()) {
                 views.setInt(R.id.single_note_widget_content, "setVisibility", View.VISIBLE);
                 views.setTextViewText(R.id.single_note_widget_content, singleNoteWidget.content);
-                views.setTextColor(R.id.single_note_widget_content, singleNoteWidget.contentColor);
+
+                if (singleNoteWidget.contentCIndex == 1) {
+                    views.setTextColor(R.id.single_note_widget_content, context.getColor(R.color.single_note_widget_content_color_1));
+                } else {
+                    views.setTextColor(R.id.single_note_widget_content, context.getColor(R.color.single_note_widget_content_color_0));
+                }
             }
 
             if (!singleNoteWidget.title.isEmpty() && !singleNoteWidget.content.isEmpty()) {
