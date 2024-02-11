@@ -13,7 +13,7 @@ Feeling overwhelmed by complex note-taking apps? Meet Noteflow, the Android app 
 • Multi-Operations: Perform actions on multiple notes simultaneously for efficient management.  
 • Powerful Search: Find specific notes instantly with comprehensive search capabilities.  
 • Flexible Sorting: Organize your notes based on creation time, edited time, and pinned status.  
-• Note Filter: Narrow down your note list by color and label for focused searching.  
+• Flexible Filtering: Narrow down your note list by color and label for focused searching.  
 • Multiple Viewing Options: Choose between grid and list layouts to visualize your notes in your preferred style.  
 • Pin Important Notes: Keep frequently accessed notes at the top for quick reference.  
 • Reminder: Set reminders for important notes to never miss a deadline or crucial task.  
