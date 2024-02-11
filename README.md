@@ -20,4 +20,4 @@ Feeling overwhelmed by complex note-taking apps? Meet Noteflow, the Android app 
 • Labels: Categorize and group your notes with flexible labels for better organization.    
 • Folders: Create folders to further organize your notes and keep them neatly categorized.  
 
-Available on Google Play Store: [https://play.google.com/store/apps/details?id=com.dev.noteflow&hl=en&gl=US]
+Available on Google Play Store: [https://play.google.com/store/apps/details?id=com.dev.noteflow]
