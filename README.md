@@ -1,6 +1,6 @@
 # NoteFlow - Simplicity at its Heart
 
-Feeling overwhelmed by complex note-taking apps? Meet Noteflow, the Android app designed to bring simplicity and ease back to your note-taking experience. Whether you're jotting down quick ideas, capturing important lectures, or organizing your daily tasks, Noteflow empowers you to capture, manage, and access your notes with effortless clarity. It prioritizes a clean and intuitive interface that lets you focus on what matters most: your thoughts and ideas. No more struggling with cluttered menus or overwhelming features.
+Feeling overwhelmed by complex note-taking apps? Meet Noteflow, an app designed to bring simplicity and ease back to your note-taking experience. Whether you're jotting down quick ideas, capturing important lectures, or organizing your daily tasks, Noteflow empowers you to capture, manage, and access your notes with effortless clarity. It prioritizes a clean and intuitive interface that lets you focus on what matters most: your thoughts and ideas. No more struggling with cluttered menus or overwhelming features.
 
 ## Features
 • Quick Notes: Instantly capture thoughts and ideas with lightning-fast note creation.  
