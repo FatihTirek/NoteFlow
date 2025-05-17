@@ -74,7 +74,7 @@ class NoteViewController with Utils {
     currentNotificationID = (note?.notificationID ?? GetIt.I<NoteService>().generateNotificationID()) as FutureOr<int>;
   }
 
-  List<Label> getCurrentLabels() => GetIt.I<LabelService>().getFromIDs(selectedLabelIDs.value);
+  List<Label> getCurrentLabels() => GetIt.I<LabelService>().getAllFromIDs(selectedLabelIDs.value);
 
   void dispose() {
     titleController.dispose();

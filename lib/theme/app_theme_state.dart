@@ -23,6 +23,7 @@ class AppThemeState {
   final NoteSortType noteSortType;
   final LabelSortType labelSortType;
   final FolderSortType folderSortType;
+  final bool showOnlyUsedLabelsInFilter;
 
   const AppThemeState({
     this.soundUri,
@@ -34,6 +35,7 @@ class AppThemeState {
     this.font = Font.PtSans,
     this.language = Language.English,
     this.themeMode = ThemeMode.system,
+    this.showOnlyUsedLabelsInFilter = false,
     this.noteSortType = NoteSortType.CreatedNF,
     this.labelSortType = LabelSortType.CreatedNF,
     this.folderSortType = FolderSortType.CreatedNF,
@@ -54,6 +56,7 @@ class AppThemeState {
     map['startupFolderID'] = this.startupFolderID;
     map['labelSortType'] = this.labelSortType.index;
     map['folderSortType'] = this.folderSortType.index;
+    map['showOnlyUsedLabelsInFilter'] = this.showOnlyUsedLabelsInFilter;
 
     return map;
   }
@@ -69,6 +72,7 @@ class AppThemeState {
     final language = Language.values.elementAt(map['language']);
     final themeMode = ThemeMode.values.elementAt(map['themeMode']);
     final noteSortType = NoteSortType.values.elementAt(map['criteria']);
+    final showOnlyUsedLabelsInFilter = map['showOnlyUsedLabelsInFilter'] ?? false;
     final labelSortType = LabelSortType.values.elementAt(map['labelSortType'] ?? 2);
     final folderSortType = FolderSortType.values.elementAt(map['folderSortType'] ?? 2);
 
@@ -85,6 +89,7 @@ class AppThemeState {
       labelSortType: labelSortType,
       folderSortType: folderSortType,
       startupFolderID: startupFolderID,
+      showOnlyUsedLabelsInFilter: showOnlyUsedLabelsInFilter
     );
   }
 
@@ -104,6 +109,7 @@ class AppThemeState {
     NoteSortType? noteSortType,
     LabelSortType? labelSortType,
     FolderSortType? folderSortType,
+    bool? showOnlyUsedLabelsInFilter,
     bool acceptNullStartupFolderID = false,
   }) {
     return AppThemeState(
@@ -118,6 +124,7 @@ class AppThemeState {
       noteSortType: noteSortType ?? this.noteSortType,
       labelSortType: labelSortType ?? this.labelSortType,
       folderSortType: folderSortType ?? this.folderSortType,
+      showOnlyUsedLabelsInFilter: showOnlyUsedLabelsInFilter ?? this.showOnlyUsedLabelsInFilter,
       startupFolderID: acceptNullStartupFolderID ? null : startupFolderID ?? this.startupFolderID,
     );
   }

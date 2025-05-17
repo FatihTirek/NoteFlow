@@ -61,6 +61,7 @@ class _FolderDialogState extends ConsumerState<FolderDialog> {
               cursorColor: primaryColor,
               style: textTheme.bodyLarge,
               controller: controller.textEditingController,
+              onSubmitted: (_) => controller.onTapDone(widget.folder),
               decoration: InputDecoration(
                 filled: true,
                 counterStyle: textTheme.bodySmall,

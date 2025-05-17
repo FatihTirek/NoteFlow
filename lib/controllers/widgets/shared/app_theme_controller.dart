@@ -110,6 +110,10 @@ class AppThemeController extends AutoDisposeNotifier<AppThemeState> {
     if (showLabels != state.showLabels) _update(state.copyWith(showLabels: showLabels));
   }
 
+  void setShowOnlyUsedLabelsInFilter(bool showOnlyUsedLabelsInFilter) {
+    if (showOnlyUsedLabelsInFilter != state.showOnlyUsedLabelsInFilter) _update(state.copyWith(showOnlyUsedLabelsInFilter: showOnlyUsedLabelsInFilter));
+  }
+
   void setLabelSortType(LabelSortType labelSortType) {
     if (labelSortType != state.labelSortType) _update(state.copyWith(labelSortType: labelSortType));
   }

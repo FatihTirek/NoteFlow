@@ -9,8 +9,9 @@ enum SortTypePickerMode { Folder, Label, Note }
 
 class SortTypePicker extends ConsumerWidget {
   final SortTypePickerMode pickerMode;
+  final Object? initialSortType;
 
-  const SortTypePicker(this.pickerMode);
+  const SortTypePicker(this.pickerMode, {this.initialSortType});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -60,15 +61,15 @@ class SortTypePicker extends ConsumerWidget {
 
     switch (pickerMode) {
       case SortTypePickerMode.Folder:
-        currentSortType = ref.read(appThemeController).folderSortType;
+        currentSortType = initialSortType ?? ref.read(appThemeController).folderSortType;
         items = _itemsFolder;
         break;
       case SortTypePickerMode.Label:
-        currentSortType = ref.read(appThemeController).labelSortType;
+        currentSortType = initialSortType ?? ref.read(appThemeController).labelSortType;
         items = _itemsLabel;
         break;
       case SortTypePickerMode.Note:
-        currentSortType = ref.read(appThemeController).noteSortType;
+        currentSortType = initialSortType ?? ref.read(appThemeController).noteSortType;
         items = _itemsNote;
         break;
     }

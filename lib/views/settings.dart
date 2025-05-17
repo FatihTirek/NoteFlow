@@ -96,6 +96,15 @@ class _SettingsViewState extends ConsumerState<SettingsView> {
               value: ref.watch(appThemeController).showLabels,
               onChanged: (value) => ref.read(appThemeController.notifier).setShowLabels(value!),
             ),
+            CheckboxListTile(
+              activeColor: primaryColor,
+              tileColor: surface,
+              checkColor: textColor,
+              visualDensity: VisualDensity.standard,
+              title: buildTitle(localizations.w129),
+              value: ref.watch(appThemeController).showOnlyUsedLabelsInFilter,
+              onChanged: (value) => ref.read(appThemeController.notifier).setShowOnlyUsedLabelsInFilter(value!),
+            ),
             buildSectionTile(localizations.p3(2)),
             ListTile(
               minVerticalPadding: 12,

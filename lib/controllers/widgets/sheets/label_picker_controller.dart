@@ -22,7 +22,7 @@ class LabelPickerController {
   ValueListenable listenable() => GetIt.I<LabelService>().listenable;
 
   List<Label> getAllLabels(WidgetRef ref) {
-    final labels = GetIt.I<LabelService>().getAllAndSort(ref.read(appThemeController).labelSortType);
+    final labels = GetIt.I<LabelService>().getAllSorted(ref.read(appThemeController).labelSortType);
 
     _labelsAmount = labels.length;
     return labels;

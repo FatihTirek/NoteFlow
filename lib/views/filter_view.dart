@@ -2,22 +2,39 @@ import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:noteflow/controllers/widgets/shared/app_theme_controller.dart';
 
 import '../constants.dart';
 import '../extensions/text_style_extension.dart';
 import '../controllers/views/filter_view_controller.dart';
 import '../controllers/widgets/shared/contextual_appbar_controller.dart';
 import '../i18n/localizations.dart';
-import '../utils.dart';
+import '../models/folder.dart';
 import '../widgets/shared/app_filter_chip.dart';
 import '../widgets/shared/contextual_app_bar.dart';
 import '../widgets/shared/note_layout_resolver.dart';
 
-class FilterView extends ConsumerWidget with Utils {
-  final controller = FilterViewController();
+class FilterView extends ConsumerStatefulWidget {
+  final Folder? folder;
+
+  const FilterView({this.folder});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _FilterViewState createState() => _FilterViewState();
+}
+
+class _FilterViewState extends ConsumerState<FilterView> {
+  late FilterViewController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = FilterViewController(ref, widget.folder);
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    print(controller.cachedCurrentDisplayedNotes);
     final titleLarge = Theme.of(context).textTheme.titleLarge!;
     final background = Theme.of(context).colorScheme.background;
     final active = ref.watch(contextualBarController.select((state) => state.active));
@@ -27,17 +44,24 @@ class FilterView extends ConsumerWidget with Utils {
       onPopInvoked: (_) => ref.read(contextualBarController.notifier).closeBarIfNeeded(),
       child: BackdropScaffold(
         stickyFrontLayer: true,
-        revealBackLayerAtStart: true,
+        revealBackLayerAtStart: widget.folder == null,
         frontLayerScrim: Colors.black54,
         backLayerBackgroundColor: background,
         frontLayerBackgroundColor: background,
         frontLayerShape: const RoundedRectangleBorder(),
         appBar: active
-            ? ContextualAppBar(controller.cachedNotes)
+            ? ContextualAppBar(controller.cachedCurrentDisplayedNotes)
             : BackdropAppBar(
                 automaticallyImplyLeading: false,
-                actions: [BackdropToggleButton(color: titleLarge.color!)],
-                title: Text(AppLocalizations.instance.w86, style: titleLarge),
+                actions: [
+                  IconButton(
+                    onPressed: () => controller.showSortPicker(ref), 
+                    icon: Icon(Icons.sort_outlined), 
+                    iconSize: 25,
+                    ), 
+                  BackdropToggleButton(color: titleLarge.color!),
+                  ],
+                title: Text(widget.folder?.name ?? AppLocalizations.instance.w86, style: titleLarge),
                 leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back_outlined)),
               ),
         backLayer: Column(
@@ -45,12 +69,13 @@ class FilterView extends ConsumerWidget with Utils {
           children: [buildColorListView(ref), buildLabelGridView(ref)],
         ),
         frontLayer: AnimatedBuilder(
-          builder: (_, __) => NoteLayoutResolver(controller.getNotesFromBackgroundIndexesAndLabelIDs(ref)),
+          builder: (_, __) => NoteLayoutResolver(controller.getFilteredNotes()),
           animation: Listenable.merge(
             [
               controller.selectedBackgroundIndexes,
               controller.noteListenable(),
               controller.selectedLabelIDs,
+              controller.selectedSortType,
             ],
           ),
         ),
@@ -85,7 +110,7 @@ class FilterView extends ConsumerWidget with Utils {
         width: 48,
         height: 48,
         child: Material(
-          color: getNoteBackgroundColor(ref, index),
+          color: controller.getNoteBackgroundColor(ref, index),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
             side: contains
@@ -105,9 +130,11 @@ class FilterView extends ConsumerWidget with Utils {
     return SizedBox(
       height: 2 * (bodyMedium.getSingleLineTextHeight(ref.context) + 16) + 38,
       child: ValueListenableBuilder(
-        valueListenable: controller.labelListenable(),
+        valueListenable: controller.noteListenable(),
         builder: (_, __, ___) {
-          final labels = controller.getAllLabels(ref);
+          final labels =  ref.read(appThemeController).showOnlyUsedLabelsInFilter 
+              ? controller.getOnlyUsedLabels(ref)
+              : controller.getAllLabels(ref);
 
           return MasonryGridView.builder(
             mainAxisSpacing: 6,

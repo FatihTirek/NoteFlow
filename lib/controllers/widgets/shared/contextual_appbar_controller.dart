@@ -48,7 +48,7 @@ class ContextualBarController extends AutoDisposeNotifier<ContextualAppBarState>
     if (notes.length == state.notes.length)
       state = state.copyWith(notes: []);
     else
-      state = state.copyWith(notes: notes);
+      state = state.copyWith(notes: List.from(notes));
   }
 
   void onTapPin() {

@@ -71,6 +71,7 @@ class _LabelDialogState extends ConsumerState<LabelDialog> {
               cursorColor: primaryColor,
               style: textTheme.bodyLarge,
               controller: controller.textEditingController,
+              onSubmitted: (_) => controller.onTapDone(widget.label),
               decoration: InputDecoration(
                 filled: true,
                 counterStyle: textTheme.bodySmall,

@@ -16,7 +16,7 @@ class NoteCardController {
   const NoteCardController();
 
   List<Label> getCurrentLabels(Note note, int limit) =>
-      GetIt.I<LabelService>().getFromIDs(note.labelIDs.sublist(0, min(limit, note.labelIDs.length)));
+      GetIt.I<LabelService>().getAllFromIDs(note.labelIDs.sublist(0, min(limit, note.labelIDs.length)));
 
   void onTapCard(WidgetRef ref, Note note) {
     if (singleNoteWidgetLaunchDetails.launchAction == SingleNoteWidgetLaunchAction.Select) {

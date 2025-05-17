@@ -30,28 +30,11 @@ class NoteService with Utils {
 
   List<Map> getAllRaw() => Hive.box(StringConstants.dbNotes).values.toList().cast<Map>();
 
-  List<Note> getFromFolderID(String id) => getAll().where((note) => note.folderID == id).toList();
+  List<Note> getAllFromFolderID(String id) => getAll().where((note) => note.folderID == id).toList();
 
-  List<Note> getFromLabelIDs(List<String> ids) {
+  List<Note> getAllFromLabelIDs(List<String> ids) {
     if (ids.isEmpty) return [];
     return getAll().where((note) => note.labelIDs.toSet().containsAll(ids)).toList();
-  }
-
-  List<Note> getFromBgIndexesAndLabelIDs(List<String> ids, List<int?> indexes) {
-    if (ids.isNotEmpty || indexes.isNotEmpty) {
-      bool Function(Note note) test;
-
-      if (ids.isEmpty)
-        test = (note) => indexes.contains(note.backgroundIndex);
-      else if (indexes.isEmpty)
-        test = (note) => note.labelIDs.toSet().containsAll(ids);
-      else
-        test = (note) => indexes.contains(note.backgroundIndex) && note.labelIDs.toSet().containsAll(ids);
-
-      return getAll().where(test).toList();
-    }
-
-    return [];
   }
 
   void write(Note note) => Hive.box(StringConstants.dbNotes).put(note.id, note.toMap());
@@ -62,7 +45,7 @@ class NoteService with Utils {
     flutterLocalNotificationsPlugin.cancel(notificationID);
   }
 
-  void deleteFromFolderID(String id) => getFromFolderID(id).forEach((note) => delete(note.id, note.notificationID));
+  void deleteFromFolderID(String id) => getAllFromFolderID(id).forEach((note) => delete(note.id, note.notificationID));
 
   List<Note> sort(List<Note> notes, NoteSortType noteSortType) {
     return [...notes]..sort((a, b) {

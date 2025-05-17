@@ -60,6 +60,11 @@ class HomeViewController with Utils {
     GetIt.I<NoteService>().listenable.removeListener(() {});
   }
 
+  List<Note> getAllNotes() => GetIt.I<NoteService>().sort(
+          GetIt.I<NoteService>().getAll(),
+          ref.read(appThemeController).noteSortType,
+        );
+
   List<Note> getNotesFromFolderID(String? id) => id != null ? allNotes.value.where((note) => note.folderID == id).toList() : allNotes.value;
 
   List<Note> getCurrentNotes(int index) => getNotesFromFolderID(index == 0 ? null : allFolders.value[index - 1].id);

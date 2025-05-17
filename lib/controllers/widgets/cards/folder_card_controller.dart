@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
+import 'package:noteflow/views/filter_view.dart';
 
-import '../../../views/folder_view.dart';
 import '../../../widgets/dialogs/delete_dialog.dart';
 import '../../../widgets/dialogs/folder_dialog.dart';
 import '../../../i18n/localizations.dart';
@@ -21,7 +21,7 @@ class FolderCardController {
   void onTapCard(Folder folder) {
     Navigator.push(
       ref.context,
-      MaterialPageRoute(builder: (_) => FolderView(folder: folder)),
+      MaterialPageRoute(builder: (_) => FilterView(folder: folder)),
     );
   }
 

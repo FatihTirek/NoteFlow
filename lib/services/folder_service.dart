@@ -64,7 +64,7 @@ class FolderService {
 
     if (!isMigratedV1) {
       getAll().forEach((folder) {
-        final notes = GetIt.I<NoteService>().getFromFolderID(folder.id);
+        final notes = GetIt.I<NoteService>().getAllFromFolderID(folder.id);
         write(folder.copyWith(numberOfNotes: notes.length));
       });
 

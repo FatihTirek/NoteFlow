@@ -490,6 +490,10 @@ class AppLocalizations {
         'Filter',
         name: 'w128',
       );
+  String get w129 => Intl.message(
+        'Show only used labels in filter sections',
+        name: 'w129',
+      );
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

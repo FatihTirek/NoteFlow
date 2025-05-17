@@ -34,7 +34,7 @@ class AllLabelsViewController with Utils {
   ValueListenable get listenable => GetIt.I<LabelService>().listenable;
 
   List<Label> getAllLabels(LabelSortType labelSortType) {
-    final labels = GetIt.I<LabelService>().getAllAndSort(labelSortType);
+    final labels = GetIt.I<LabelService>().getAllSorted(labelSortType);
 
     cachedAllLabels = labels;
     return labels;

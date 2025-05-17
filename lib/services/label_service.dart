@@ -14,11 +14,11 @@ class LabelService {
 
   Label get(String id) => Label.fromMap(Hive.box(StringConstants.dbLabels).get(id));
 
-  List<Label> getFromIDs(List<String> ids) => ids.map((e) => get(e)).toList();
+  List<Label> getAllFromIDs(List<String> ids) => ids.map((e) => get(e)).toList();
 
   List<Label> getAll() => Hive.box(StringConstants.dbLabels).values.map((e) => Label.fromMap(e)).toList();
 
-  List<Label> getAllAndSort(LabelSortType labelSortType) {
+  List<Label> getAllSorted(LabelSortType labelSortType) {
     return getAll()
       ..sort((a, b) {
         switch (labelSortType) {
@@ -40,7 +40,7 @@ class LabelService {
 
   void delete(String id) {
     Hive.box(StringConstants.dbLabels).delete(id);
-    GetIt.I<NoteService>().getFromLabelIDs([id]).forEach((note) {
+    GetIt.I<NoteService>().getAllFromLabelIDs([id]).forEach((note) {
       GetIt.I<NoteService>().write(note.removeLabel(id));
     });
   }
