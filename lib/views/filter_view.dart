@@ -11,6 +11,7 @@ import '../controllers/widgets/shared/contextual_appbar_controller.dart';
 import '../i18n/localizations.dart';
 import '../models/folder.dart';
 import '../widgets/shared/app_filter_chip.dart';
+import '../widgets/shared/app_floating_action_button.dart';
 import '../widgets/shared/contextual_app_bar.dart';
 import '../widgets/shared/note_layout_resolver.dart';
 
@@ -44,6 +45,7 @@ class _FilterViewState extends ConsumerState<FilterView> {
       onPopInvoked: (_) => ref.read(contextualBarController.notifier).closeBarIfNeeded(),
       child: BackdropScaffold(
         stickyFrontLayer: true,
+        floatingActionButton: widget.folder != null ? AppFloatingActionButton(folderID: widget.folder!.id) : null,
         revealBackLayerAtStart: widget.folder == null,
         frontLayerScrim: Colors.black54,
         backLayerBackgroundColor: background,
