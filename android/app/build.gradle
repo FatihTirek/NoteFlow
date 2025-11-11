@@ -32,12 +32,12 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace "com.dev.noteflow"
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.dev.noteflow"
         minSdkVersion 23
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
