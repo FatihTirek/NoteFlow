@@ -123,7 +123,6 @@ class NoteService with Utils {
         NotificationDetails(android: details),
         payload: jsonEncode(note.id),
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-        uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       );
     }
   }

@@ -79,11 +79,12 @@ class AppTheme {
     ),
     appBarTheme: AppBarTheme(
       elevation: 0,
-      color: _surfaceDark,
+      backgroundColor: _surfaceDark,
+      iconTheme: IconThemeData(color: _iconColorDark),
       systemOverlayStyle: SystemUiOverlayStyle.light,
       shape: Border(bottom: BorderSide(color: _backgroundSurfaceDividerDark, width: 1.25)),
     ),
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       backgroundColor: _backgroundDark,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     ),
@@ -101,6 +102,7 @@ class AppTheme {
       selectionHandleColor: _primaryColorDark,
     ),
     iconTheme: IconThemeData(color: _iconColorDark),
+    primaryIconTheme: IconThemeData(color: _iconColorDark),
     dividerTheme: DividerThemeData(thickness: 1.25, color: _surfaceDividerDark),
     tooltipTheme: TooltipThemeData(
       height: 0,
@@ -128,11 +130,12 @@ class AppTheme {
     ),
     appBarTheme: AppBarTheme(
       elevation: 0,
-      color: _surfaceLight,
+      backgroundColor: _surfaceLight,
       systemOverlayStyle: SystemUiOverlayStyle.dark,
+      iconTheme: IconThemeData(color: _iconColorLight),
       shape: Border(bottom: BorderSide(color: _backgroundSurfaceDividerLight, width: 1.25)),
     ),
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       backgroundColor: _backgroundLight,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     ),
@@ -150,6 +153,7 @@ class AppTheme {
       selectionHandleColor: _primaryColorLight,
     ),
     iconTheme: IconThemeData(color: _iconColorLight),
+    primaryIconTheme: IconThemeData(color: _iconColorLight),
     dividerTheme: DividerThemeData(thickness: 1.25, color: _surfaceDividerLight),
     tooltipTheme: TooltipThemeData(
       height: 0,
